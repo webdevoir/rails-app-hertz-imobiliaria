@@ -1,0 +1,2 @@
+class PropertyArea < ApplicationRecord
+end
