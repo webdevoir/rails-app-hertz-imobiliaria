@@ -1,3 +1,3 @@
 class BankAccount < ApplicationRecord
-  belongs_to :landlord
+  has_one :landlord
 end

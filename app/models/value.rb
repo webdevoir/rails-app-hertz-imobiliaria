@@ -1,3 +1,3 @@
 class Value < ApplicationRecord
-  belongs_to :property
+  has_one :property
 end

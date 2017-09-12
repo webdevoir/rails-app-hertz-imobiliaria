@@ -5,7 +5,6 @@ class CreateBankAccounts < ActiveRecord::Migration[5.0]
       t.string :bank
       t.string :agency
       t.string :number
-      t.references :landlord, foreign_key: true
 
       t.timestamps
     end
