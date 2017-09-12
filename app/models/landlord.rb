@@ -1,4 +1,4 @@
 class Landlord < ApplicationRecord
   belongs_to :user
-  belongs_to :bank_account
+  has_many :properties
 end
