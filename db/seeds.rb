@@ -13,10 +13,11 @@ DetailsType.create(name: "laje")
 ExteriorDetailsType.create(name: "rua sem saida")
 
 Landlord.create(user: User.first, name:"Juan Manuel Couso")
-Property.create(landlord: Landlord.first, code: 23423)
-PropertyAddress.create(cep:"12123123", property: Property.first)
-Value.create(value: 100, property: Property.first)
-PropertyArea.create(total_area: 1000, property: Property.first)
+PropertyAddress.create(cep:"12123123")
+Value.create(value: 100)
+PropertyArea.create(total_area: 1000)
+
+Property.create(landlord: Landlord.first, property_area: PropertyArea.first, value: Value.first, property_address: PropertyAddress.first, code: 23423)
 
 PrivateDetail.create(property: Property.first, private_details_type: PrivateDetailsType.first)
 Detail.create(property: Property.first, details_type: DetailsType.first)
