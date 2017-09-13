@@ -6,7 +6,6 @@ class PropertiesController < ApplicationController
   end
 
   def home
-    @propeties = Property.all
   end
 
 end

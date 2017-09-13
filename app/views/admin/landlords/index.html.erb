@@ -1,0 +1,14 @@
+
+
+
+<h3>Proprietarios</h3>
+<%= link_to "Novo proprietario", new_admin_landlord_path, class: "btn btn-primary" %>
+<br>
+<br>
+<% @landlords.each do |landlord| %>
+<%= landlord.name %>
+<%= link_to "Ver", admin_landlord_path(landlord) %>
+<%= link_to "Editar", edit_admin_landlord_path(landlord) %>
+<% end %>
+
+

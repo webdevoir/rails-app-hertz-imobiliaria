@@ -1,0 +1,20 @@
+<%= simple_form_for ([:admin, @landlord]) do |f| %>
+<%= f.input :name, label: 'Nome' %>
+<%= f.input :rg, label: 'Documento' %>
+<%= f.input :cpf, label: 'CPF' %>
+<%= f.input :birthday, label: 'Data de Nacimento' %>
+<%= f.input :martial_status, label: 'Estado Civil' %>
+<%= f.input :profession, label: 'Profissão' %>
+<%= f.input :phone, label: 'Telefone' %>
+<%= f.input :email, label: 'Email' %>
+<%= f.input :address, label: 'Endereço' %>
+<%= f.input :cep, label: 'CEP' %>
+<p><b>Deposito</b></p>
+<%= f.collection_radio_buttons :deposit, [[true, 'Sim'] ,[false, 'Nao']], :first, :last %>
+<p><b>Conta</b></p>
+<%= f.collection_radio_buttons :type, [[true, 'Conta Corrente'] ,[false, 'Conta Poupança']], :first, :last %>
+<%= f.input :adm_rate, label: 'Taxa Administração Mesal' %>
+<%= f.input :first_rate, label: 'Taxa Administrativa 1º' %>
+<br>
+<%= f.button :submit, value: 'criar' %>
+<% end %>
