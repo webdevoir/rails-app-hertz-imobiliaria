@@ -1,3 +1,3 @@
 class PrivateDetailsType < ApplicationRecord
-  belongs_to :private_detail
+  has_many :private_detail
 end
