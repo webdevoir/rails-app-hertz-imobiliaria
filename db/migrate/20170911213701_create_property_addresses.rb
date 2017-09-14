@@ -10,6 +10,7 @@ class CreatePropertyAddresses < ActiveRecord::Migration[5.0]
       t.string :number
       t.string :complement
       t.string :condo_name
+      t.references :property, foreign_key: true
 
       t.timestamps
     end

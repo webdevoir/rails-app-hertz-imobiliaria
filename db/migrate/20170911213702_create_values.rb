@@ -5,6 +5,7 @@ class CreateValues < ActiveRecord::Migration[5.0]
       t.decimal :iptu
       t.decimal :condo_amount
       t.decimal :rate
+      t.references :property, foreign_key: true
 
 
       t.timestamps

@@ -1,0 +1,16 @@
+<%= simple_form_for([:admin, @landlord, @property]) do |f| %>
+  <%= f.input :code %>
+  <%= f.input :bussiness_type %>
+  <%= f.input :property_kind %>
+  <%= f.input :property_state %>
+  <%= f.input :position %>
+  <%= f.input :style %>
+  <%= f.input :construction_year %>
+  <%= f.input :bathrooms %>
+  <%= f.input :rooms %>
+  <%= f.input :garages %>
+  <%= f.input :suites %>
+  <%= f.input :description %>
+  <%= f.input :conditions %>
+  <%= f.button :submit %>
+<% end %>

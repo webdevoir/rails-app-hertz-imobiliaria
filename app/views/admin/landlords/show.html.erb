@@ -9,7 +9,5 @@ Quantidades de Propriedades Cadastradas:
 <%= @landlord.properties.count %>
 <br>
 
-<%= link_to '+ Cadastrar Novo Propriedade', edit_admin_landlord_path(@landlord), class: "btn btn-danger" %>
+<%= link_to '+ Cadastrar Novo Propriedade', new_admin_landlord_property_path(@landlord), class: "btn btn-danger" %>
 <%= link_to 'editar', edit_admin_landlord_path(@landlord), class: "btn btn-primary" %>
-
-
