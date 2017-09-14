@@ -1,6 +1,6 @@
-class CreateValues < ActiveRecord::Migration[5.0]
+class CreatePropertyValues < ActiveRecord::Migration[5.0]
   def change
-    create_table :values do |t|
+    create_table :property_values do |t|
       t.decimal :value
       t.decimal :iptu
       t.decimal :condo_amount
