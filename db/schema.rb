@@ -101,9 +101,6 @@ ActiveRecord::Schema.define(version: 20170912005218) do
 
   create_table "properties", force: :cascade do |t|
     t.integer  "landlord_id"
-    t.integer  "property_area_id"
-    t.integer  "value_id"
-    t.integer  "property_address_id"
     t.integer  "code"
     t.string   "bussiness_type"
     t.string   "property_type"
@@ -117,14 +114,11 @@ ActiveRecord::Schema.define(version: 20170912005218) do
     t.integer  "garages"
     t.integer  "suites"
     t.text     "description"
-    t.boolean  "published"
-    t.text     "consitions"
-    t.datetime "created_at",          null: false
-    t.datetime "updated_at",          null: false
+    t.boolean  "published",         default: false
+    t.text     "conditions"
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
     t.index ["landlord_id"], name: "index_properties_on_landlord_id", using: :btree
-    t.index ["property_address_id"], name: "index_properties_on_property_address_id", using: :btree
-    t.index ["property_area_id"], name: "index_properties_on_property_area_id", using: :btree
-    t.index ["value_id"], name: "index_properties_on_value_id", using: :btree
   end
 
   create_table "property_addresses", force: :cascade do |t|
@@ -137,8 +131,10 @@ ActiveRecord::Schema.define(version: 20170912005218) do
     t.string   "number"
     t.string   "complement"
     t.string   "condo_name"
+    t.integer  "property_id"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
+    t.index ["property_id"], name: "index_property_addresses_on_property_id", using: :btree
   end
 
   create_table "property_areas", force: :cascade do |t|
@@ -146,8 +142,10 @@ ActiveRecord::Schema.define(version: 20170912005218) do
     t.float    "total_area"
     t.float    "usable_area"
     t.float    "area_land"
+    t.integer  "property_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.index ["property_id"], name: "index_property_areas_on_property_id", using: :btree
   end
 
   create_table "users", force: :cascade do |t|
@@ -172,8 +170,10 @@ ActiveRecord::Schema.define(version: 20170912005218) do
     t.decimal  "iptu"
     t.decimal  "condo_amount"
     t.decimal  "rate"
+    t.integer  "property_id"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
+    t.index ["property_id"], name: "index_values_on_property_id", using: :btree
   end
 
   add_foreign_key "details", "details_types"
@@ -185,8 +185,8 @@ ActiveRecord::Schema.define(version: 20170912005218) do
   add_foreign_key "landlords", "users"
   add_foreign_key "private_details", "private_details_types"
   add_foreign_key "private_details", "properties"
-  add_foreign_key "properties", "\"values\"", column: "value_id"
   add_foreign_key "properties", "landlords"
-  add_foreign_key "properties", "property_addresses"
-  add_foreign_key "properties", "property_areas"
+  add_foreign_key "property_addresses", "properties"
+  add_foreign_key "property_areas", "properties"
+  add_foreign_key "values", "properties"
 end

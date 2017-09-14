@@ -9,7 +9,7 @@ class Admin::PropertiesController < ApplicationController
     @property = Property.new(property_params)
     @property.landlord = Landlord.find(params[:landlord_id])
     if @property.save!
-      redirect_to admin_landlord(@property.landlord)
+      redirect_to admin_landlord_path(@property.landlord)
     else
       render :new
     end
