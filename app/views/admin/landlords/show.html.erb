@@ -1,0 +1,15 @@
+<%= link_to 'voltar', admin_landlords_path %>
+
+<h1>Proprietario</h1>
+
+<p>Nome: <%= @landlord.name %> </p>
+<p>Documento:<%= @landlord.rg %> </p>
+
+Quantidades de Propriedades Cadastradas:
+<%= @landlord.properties.count %>
+<br>
+
+<%= link_to '+ Cadastrar Novo Propriedade', edit_admin_landlord_path(@landlord), class: "btn btn-danger" %>
+<%= link_to 'editar', edit_admin_landlord_path(@landlord), class: "btn btn-primary" %>
+
+

@@ -11,10 +11,12 @@
 <%= f.input :cep, label: 'CEP' %>
 <p><b>Deposito</b></p>
 <%= f.collection_radio_buttons :deposit, [[true, 'Sim'] ,[false, 'Nao']], :first, :last %>
-<p><b>Conta</b></p>
-<%= f.collection_radio_buttons :type, [[true, 'Conta Corrente'] ,[false, 'Conta Poupança']], :first, :last %>
+<%= f.input :type, label: 'tipo' %>
+<%= f.input :bank, label: 'Banco' %>
+<%= f.input :agency, label: 'Numero de Agencia' %>
+<%= f.input :number, label: 'Numero de Conta' %>
 <%= f.input :adm_rate, label: 'Taxa Administração Mesal' %>
 <%= f.input :first_rate, label: 'Taxa Administrativa 1º' %>
 <br>
-<%= f.button :submit, value: 'criar' %>
+<%= f.button :submit, value: 'Salvar' %>
 <% end %>

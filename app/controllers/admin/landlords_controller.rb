@@ -1,5 +1,5 @@
 class Admin::LandlordsController < ApplicationController
-
+before_action :set_landlord, only: [:edit, :update, :destroy, :show]
   def index
     @landlords = Landlord.all
   end
@@ -7,21 +7,42 @@ class Admin::LandlordsController < ApplicationController
   def show
   end
 
-  def create
-  end
-
   def new
     @landlord = Landlord.new
-    @bank_account = BankAccount.new
   end
+
+  def create
+    @landlord = current_user.landlords.new(landlord_params)
+    if @landlord.save
+      redirect_to admin_landlords_path
+    else
+      render :new
+    end
+  end
+
 
   def edit
   end
 
   def update
+    if @landlord.update(landlord_params)
+      redirect_to admin_landlords_path
+    else
+      render :edit
+    end
   end
 
   def destroy
+  end
+
+  private
+
+  def  landlord_params
+    params.require(:landlord).permit(:name, :rg, :cpf, :birthday, :martial_status, :profession, :phone, :email, :address, :cep, :deposit, :adm_rate, :first_rate)
+  end
+
+  def set_landlord
+    @landlord = Landlord.find(params[:id])
   end
 
 end

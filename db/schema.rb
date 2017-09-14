@@ -15,15 +15,6 @@ ActiveRecord::Schema.define(version: 20170912005218) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "bank_accounts", force: :cascade do |t|
-    t.string   "type"
-    t.string   "bank"
-    t.string   "agency"
-    t.string   "number"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "details", force: :cascade do |t|
     t.integer  "property_id"
     t.integer  "details_type_id"
@@ -83,11 +74,13 @@ ActiveRecord::Schema.define(version: 20170912005218) do
     t.boolean  "deposit"
     t.decimal  "adm_rate"
     t.decimal  "first_rate"
+    t.string   "type"
+    t.string   "bank"
+    t.string   "agency"
+    t.string   "number"
     t.integer  "user_id"
-    t.integer  "bank_account_id"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
-    t.index ["bank_account_id"], name: "index_landlords_on_bank_account_id", using: :btree
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
     t.index ["user_id"], name: "index_landlords_on_user_id", using: :btree
   end
 
@@ -189,7 +182,6 @@ ActiveRecord::Schema.define(version: 20170912005218) do
   add_foreign_key "exterior_details", "properties"
   add_foreign_key "interior_details", "interior_details_types"
   add_foreign_key "interior_details", "properties"
-  add_foreign_key "landlords", "bank_accounts"
   add_foreign_key "landlords", "users"
   add_foreign_key "private_details", "private_details_types"
   add_foreign_key "private_details", "properties"

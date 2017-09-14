@@ -14,8 +14,11 @@ class CreateLandlords < ActiveRecord::Migration[5.0]
       t.boolean :deposit
       t.decimal :adm_rate
       t.decimal :first_rate
+      t.string :type
+      t.string :bank
+      t.string :agency
+      t.string :number
       t.references :user, foreign_key: true
-      t.references :bank_account, foreign_key: true
 
       t.timestamps
     end
