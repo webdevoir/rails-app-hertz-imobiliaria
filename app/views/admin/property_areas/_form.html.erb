@@ -1,0 +1,7 @@
+<%= simple_form_for([:admin, landlord, property, property_area]) do |f| %>
+  <%= f.input :scale%>
+  <%= f.input :total_area %>
+  <%= f.input :usable_area %>
+  <%= f.input :area_land %>
+  <%= f.button :submit %>
+<% end %>

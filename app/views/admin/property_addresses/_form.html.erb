@@ -1,0 +1,11 @@
+<%= simple_form_for([:admin, landlord, property, property_address]) do |f| %>
+  <%= f.input :cep %>
+  <%= f.input :state %>
+  <%= f.input :city %>
+  <%= f.input :neighborhood %>
+  <%= f.input :street %>
+  <%= f.input :number %>
+  <%= f.input :complement %>
+  <%= f.input :condo_name %>
+  <%= f.button :submit %>
+<% end %>

@@ -11,7 +11,7 @@ class Admin::PropertyAddressesController < ApplicationController
     @landlord = Landlord.find(params[:landlord_id])
     @property_address.property = @landlord.properties.find(params[:property_id])
     if @property_address.save!
-      redirect_to new_admin_landlord_property_property_areas(@landlord, @property_address.property)
+      redirect_to new_admin_landlord_property_property_areas_path(@landlord, @property_address.property)
     else
       render :new
     end
@@ -20,7 +20,7 @@ class Admin::PropertyAddressesController < ApplicationController
   private
 
   def property_address_params
-    params.requiere(:property_address).permit(:cep, :country, :city, :neighborhood, :street, :number, :complement, :condo_name)
+    params.require(:property_address).permit(:cep, :country, :city, :neighborhood, :street, :number, :complement, :condo_name)
   end
 
 end
