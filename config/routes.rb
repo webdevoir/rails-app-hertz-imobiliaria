@@ -8,7 +8,12 @@ Rails.application.routes.draw do
     get 'overview', to: 'properties#overview'
     resources :properties, only: [:index, :show]
     resources :landlords do
-      resources :properties
+      resources :properties do
+        resource :property_addresses, only: [:new, :create, :update]
+        resource :property_areas, only: [:new, :create, :update]
+        resource :property_values, only: [:new, :create, :update]
+      end
+
     end
   end
 
