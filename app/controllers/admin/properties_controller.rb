@@ -17,6 +17,9 @@ class Admin::PropertiesController < ApplicationController
 
   def show
     @property = Property.find(params[:id])
+    @address = PropertyAddress.where(property_id: @property).first
+    @area = PropertyArea.where(property_id: @property).first
+    @value = PropertyValue.where(property_id: @property).first
   end
 
   private
