@@ -5,6 +5,7 @@ before_action :set_landlord, only: [:edit, :update, :destroy, :show]
   end
 
   def show
+
   end
 
   def new

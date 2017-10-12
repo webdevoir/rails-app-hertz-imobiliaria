@@ -49,7 +49,8 @@
 
     <% @landlord.properties.each do |property| %>
       <div class="landlord-property-card">
-        <%= property.code %>
+        <p>Codigo:<%= property.code %><p>
+        <p><%= property.address(property).street %>, <%= property.address(property).number  %><p>
       </div>
     <% end %>
   </div>

@@ -8,4 +8,9 @@ class Property < ApplicationRecord
   has_many :interior_details_types, through: :interior_details
   has_many :exterior_details
   has_many :exterior_details_types, through: :exterior_details
+
+
+  def address(id)
+    PropertyAddress.find(id)
+  end
 end
