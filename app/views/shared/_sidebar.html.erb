@@ -2,33 +2,27 @@
 .sidebar {
   background-color: white;
   margin: 1em;
-  padding:-1px;
   border: 1px solid black;
 
 }
 
-.sidebar ul {
-    margin-left: -2em;
+.sidebar .sidebar-button{
+  display:block;
+  width:100%;
+  padding: 0.5em;
+  text-decoration: none;
+  color: black;
 }
-
-
-.sidebar ul > li {
-  border-top: 1px solid black;
-  list-style: none;
-}
-
 
 
 </style>
 
 
 <div class="sidebar">
-  <ul>
-    <li>Visão Geral</li>
-    <li>Proprietarios</li>
-    <li>Imoveis</li>
-    <li>Emprendimentos</li>
-    <li>Messagens</li>
-  </ul>
+    <%= link_to "Visão Geral", "#", class:"sidebar-button"  %>
+    <%= link_to "Proprietarios", "#", class:"sidebar-button"  %>
+    <%= link_to "Imoveis", "#", class:"sidebar-button"  %>
+    <%= link_to "Emprendimentos", "#", class:"sidebar-button"  %>
+    <%= link_to "Messagens", "#", class:"sidebar-button"  %>
 
 </div>
