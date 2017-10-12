@@ -1,0 +1,20 @@
+.sidebar {
+  background-color: white;
+  margin: 1em;
+  border: 1px solid black;
+  box-shadow: 2px 2px 5px #808080;
+
+  .sidebar-button {
+    display:block;
+    width:100%;
+    padding: 0.5em;
+    text-decoration: none;
+    color: black;
+
+    &:hover{
+      background-color: #f88004;
+      color:white;
+   }
+  }
+}
+
