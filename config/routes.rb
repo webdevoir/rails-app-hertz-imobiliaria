@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   resources :properties, only: [:index, :show]
 
   namespace :admin do
-    get 'overview', to: 'properties#overview'
+    get '/', to: 'properties#dashboard'
     resources :properties, only: [:index, :show]
     resources :landlords do
       resources :properties do

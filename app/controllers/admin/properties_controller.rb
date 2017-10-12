@@ -22,6 +22,9 @@ class Admin::PropertiesController < ApplicationController
     @value = PropertyValue.where(property_id: @property).first
   end
 
+  def deshbord
+  end
+
   private
 
   def property_params
