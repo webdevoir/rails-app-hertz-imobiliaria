@@ -1,20 +1,35 @@
 <style>
+  .landlord {
+    display:flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 30px;
+  }
 
  .landlord-info {
   background-color: white;
   border: 1px solid black;
+  margin-top: 10px ;
  }
+
 </style>
 
+<%= link_to 'voltar', admin_landlords_path %>
+
 <div class="row">
-  <div class="col-md-4">
+  <div class="col-md-3">
+    <br>
+    <br>
     <%= render 'shared/sidebar' %>
   </div>
 
-  <div class="col-md-8">
-    <%= link_to 'voltar', admin_landlords_path %>
-    <div class="landord">
-      <h1>Proprietario</h1>
+  <div class="col-md-9">
+    <div class="landlord">
+      <p>Proprietario</p>
+      <div class="controles">
+      <%= link_to '+ Cadastrar Nova Propriedade', new_admin_landlord_property_path(@landlord), class: "btn btn-danger" %>
+      <%= link_to 'editar', edit_admin_landlord_path(@landlord), class: "btn btn-primary" %>
+    </div>
     </div>
     <div class="landlord-info">
       <p>Nome: <%= @landlord.name %> </p>
@@ -24,9 +39,5 @@
       <p>Quantidades de Propriedades Cadastradas:<%= @landlord.properties.count %></p>
     </div>
     <br>
-    <div>
-      <%= link_to '+ Cadastrar Novo Propriedade', new_admin_landlord_property_path(@landlord), class: "btn btn-danger" %>
-      <%= link_to 'editar', edit_admin_landlord_path(@landlord), class: "btn btn-primary" %>
-    </div>
   </div>
 </div>
