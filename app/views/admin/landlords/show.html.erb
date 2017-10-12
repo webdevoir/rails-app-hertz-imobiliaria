@@ -14,6 +14,12 @@
   box-shadow: 2px 2px 5px #808080;
  }
 
+ .landlord-property-card {
+  background-color: white;
+  margin:0.5em 0;
+  padding:0.5em;
+ }
+
 </style>
 <%= link_to 'voltar', admin_landlords_path %>
 
@@ -38,7 +44,13 @@
       <p>Quantidades de Propriedades Cadastradas: <%= @landlord.properties.count %></p>
       <%= link_to 'editar', edit_admin_landlord_path(@landlord), class: "btn btn-primary" %>
     </div>
-    <%= link_to '+ Cadastrar Nova Propriedade', new_admin_landlord_property_path(@landlord), class: "btn btn-danger" %>
     <br>
+    <%= link_to '+ Cadastrar Nova Propriedade', new_admin_landlord_property_path(@landlord), class: "btn btn-danger" %>
+
+    <% @landlord.properties.each do |property| %>
+      <div class="landlord-property-card">
+        <%= property.code %>
+      </div>
+    <% end %>
   </div>
 </div>
