@@ -1,19 +1,25 @@
+<style>
+
+ .landlord-info {
+  background-color: white;
+  border: 1px solid black;
+ }
+</style>
+
+
+
 <%= link_to 'voltar', admin_landlords_path %>
-
+<div class="landord">
 <h1>Proprietario</h1>
-<h1>Propietarios de Propriedades</h1>
-<div>
-
+</div>
+<div class="landlord-info">
   <p>Nome: <%= @landlord.name %> </p>
   <p>Documento:<%= @landlord.rg %> </p>
-  <p>Telefone: <%= landlord.phone %>
-  <p>Email: <% landlord.email %></p>
-</div>
-
-Quantidades de Propriedades Cadastradas:
-<%= @landlord.properties.count %>
+  <p>Telefone: <%= @landlord.phone %></p>
+  <p>Email: <% @landlord.email %></p>
+  <p>Quantidades de Propriedades Cadastradas:<%= @landlord.properties.count %></p>
+  </div>
 <br>
-
 <div>
   <%= link_to '+ Cadastrar Novo Propriedade', new_admin_landlord_property_path(@landlord), class: "btn btn-danger" %>
   <%= link_to 'editar', edit_admin_landlord_path(@landlord), class: "btn btn-primary" %>
