@@ -11,6 +11,7 @@
   border: 1px solid black;
   margin-top: 12px ;
   padding: 0.5em;
+  box-shadow: 2px 2px 5px #808080;
  }
 
 </style>
@@ -28,18 +29,16 @@
   <div class="col-md-9">
     <div class="landlord">
       <p>Proprietario</p>
-      <div class="controles">
-      <%= link_to '+ Cadastrar Nova Propriedade', new_admin_landlord_property_path(@landlord), class: "btn btn-danger" %>
-      <%= link_to 'editar', edit_admin_landlord_path(@landlord), class: "btn btn-primary" %>
-    </div>
     </div>
     <div class="landlord-info">
       <p>Nome: <%= @landlord.name %> </p>
       <p>Documento:<%= @landlord.rg %> </p>
       <p>Telefone: <%= @landlord.phone %></p>
       <p>Email: <% @landlord.email %></p>
-      <p>Quantidades de Propriedades Cadastradas:<%= @landlord.properties.count %></p>
+      <p>Quantidades de Propriedades Cadastradas: <%= @landlord.properties.count %></p>
+      <%= link_to 'editar', edit_admin_landlord_path(@landlord), class: "btn btn-primary" %>
     </div>
+    <%= link_to '+ Cadastrar Nova Propriedade', new_admin_landlord_property_path(@landlord), class: "btn btn-danger" %>
     <br>
   </div>
 </div>
