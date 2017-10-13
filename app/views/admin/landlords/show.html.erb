@@ -14,11 +14,37 @@
       <p>Proprietario</p>
     </div>
     <div class="landlord-info">
+      <p>Informações Basicas<o>
       <p>Nome: <%= @landlord.name %> </p>
-      <p>Documento:<%= @landlord.rg %> </p>
+
       <p>Telefone: <%= @landlord.phone %></p>
       <p>Email: <% @landlord.email %></p>
       <p>Quantidades de Propriedades Cadastradas: <%= @landlord.properties.count %></p>
+      <div class="landlord-more-info">
+        <div class="dados">
+          <%= @landlord.rg %>
+          <%= @landlord.cpf %>
+          <%= @landlord.birthday %>
+          <%= @landlord.martial_status %>
+          <%= @landlord.profession %>
+        </div>
+        <div class="dados">
+          t.string   "address"
+          t.string   "cep"
+        </div>
+        <div class="dados">
+          t.boolean  "deposit"
+          t.decimal  "adm_rate"
+          t.decimal  "first_rate"
+        </div>
+
+        <div class="dados">
+          t.string   "type"
+          t.string   "bank"
+          t.string   "agency"
+          t.string   "number"
+        </div>
+      </div>
       <div class="landlord-edit">
         <%= link_to 'editar', edit_admin_landlord_path(@landlord), class: "btn btn-primary" %>
       </div>
