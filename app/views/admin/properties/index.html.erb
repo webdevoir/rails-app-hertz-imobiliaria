@@ -1,1 +1,20 @@
-<h1>Todas A propriedades</h1>
+<div class="row">
+  <div class="col-md-3">
+    <br>
+    <br>
+    <%= render 'shared/sidebar' %>
+  </div>
+  <div class="col-md-9">
+    <h1>Todas A propriedades</h1>
+    <% @properties.each do |property| %>
+      <div class="landlord-property-card">
+        <p>Codigo:<%= property.code %><p>
+        <p><%= property.address(property).street %>, <%= property.address(property).number  %><p>
+      </div>
+    <% end %>
+
+  </div>
+</div>
+
+
+
