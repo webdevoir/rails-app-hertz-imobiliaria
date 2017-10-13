@@ -7,10 +7,18 @@
 
  .landlord-info {
   background-color: white;
-  border: 1px solid black;
+  border-top: 3px solid  #f88004;
   margin-top: 12px ;
   padding: 0.5em;
   box-shadow: 2px 2px 5px #808080;
+  position:relative;
+
+  .landlord-edit {
+    position:absolute;
+    top:0.5em;
+    right: 0.5em;
+
+  }
  }
 
  .landlord-property-card {
@@ -18,4 +26,5 @@
   margin:0.5em 0;
   padding:0.5em;
  }
+
 

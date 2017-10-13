@@ -19,7 +19,9 @@
       <p>Telefone: <%= @landlord.phone %></p>
       <p>Email: <% @landlord.email %></p>
       <p>Quantidades de Propriedades Cadastradas: <%= @landlord.properties.count %></p>
-      <%= link_to 'editar', edit_admin_landlord_path(@landlord), class: "btn btn-primary" %>
+      <div class="landlord-edit">
+        <%= link_to 'editar', edit_admin_landlord_path(@landlord), class: "btn btn-primary" %>
+      </div>
     </div>
     <br>
     <%= link_to '+ Cadastrar Nova Propriedade', new_admin_landlord_property_path(@landlord), class: "btn btn-danger" %>
