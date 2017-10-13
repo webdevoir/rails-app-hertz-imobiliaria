@@ -1,10 +1,55 @@
 <style>
-  one more
+  .landlord-card {
+    background-color: white;
+    padding:0.5em;
+    margin:0.5em 0;
+    box-shadow: 2px 2px 5px #808080;
+    position:relative;
+    border-top: 5px solid #f88004;
+
+  }
+
+  .landlord-card p {
+    margin: 0 0 8px;
+
+  }
+
+.landlord-card .landlord-card-control {
+    position:absolute;
+    top:0.3em;
+    right:0.5em;
+  }
+
+  .landlord-card .landlord-card-link a {
+    position:absolute;
+    background-color: black;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    opacity:0;
+    z-index:100;
+    transition: all 0.2s ease
+  }
+
+   .landlord-card .landlord-card-link a:hover {
+    opacity:0.1;
+  }
+
+.landlord-search {
+  width:100%;
+}
+
+.landlord-search .input{
+  width:80%;
+}
+
+.landlord-search .button{
+  width:10%;
+}
+
+
 </style>
-
-
-
-
 
 <div class="row">
   <div class="col-md-3">
@@ -13,15 +58,28 @@
     <%= render 'shared/sidebar' %>
   </div>
   <div class="col-md-9">
+    <div class="landlord">
     <h3>Proprietarios</h3>
-    <%= link_to "Novo proprietario", new_admin_landlord_path, class: "btn btn-primary" %>
-    <br>
-    <br>
+      <%= link_to "+ Cadastrar Novo Proprietario", new_admin_landlord_path, class: "btn btn-danger" %>
+    </div>
+
+    <form action="" class="landlord-search">
+      <input type="text" name="search" placeholder="Pesquiça rapida" class="input">
+      <input type="submit" class="button">
+    </form>
+
+
     <% @landlords.each do |landlord| %>
-      <div class="landlord-car">
-        <%= landlord.name %>
-        <%= link_to "Ver", admin_landlord_path(landlord) %>
-        <%= link_to "Editar", edit_admin_landlord_path(landlord) %>
+      <div class="landlord-card">
+        <p>Nome: <%= landlord.name %><p>
+        <p>Email: <%= landlord.email %><p>
+        <p>Phone: <%= landlord.phone %><p>
+        <p>Propriedades Cadastradas: <%= landlord.properties.count %>
+
+        <div class="landlord-card-link">
+          <%= link_to "", admin_landlord_path(landlord) %>
+        </div>
+
       </div>
     <% end %>
   </div>
