@@ -38,6 +38,10 @@
     background-color: #ff8000;
     color:white;
   }
+
+  .landlord-more-info {
+    margin-top:1em;
+  }
 </style>
 
 
@@ -57,11 +61,13 @@
       <p>Proprietario</p>
     </div>
     <div class="landlord-info">
-      <p>Informações Basicas<o>
-      <p>Nome: <%= @landlord.name %> </p>
-      <p>Telefone: <%= @landlord.phone %></p>
-      <p>Email: <% @landlord.email %></p>
-      <p>Quantidades de Propriedades Cadastradas: <%= @landlord.properties.count %></p>
+      <div class="basic-info">
+        <p><b>Informações Basicas:</b><p>
+        <p>Nome: <%= @landlord.name %> </p>
+        <p>Telefone: <%= @landlord.phone %></p>
+        <p>Email: <% @landlord.email %></p>
+        <p>Quantidades de Propriedades Cadastradas: <%= @landlord.properties.count %></p>
+      </div>
       <div class="landlord-more-info collapse" id="collapseExample"">
         <div class="row">
           <div class="col-md-6">
