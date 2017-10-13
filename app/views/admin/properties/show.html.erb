@@ -1,9 +1,23 @@
 
-<h1> Propriedades </h1>
-<%= @property.code %>
-<%= @property.landlord.name %>
-<%= @address.street  %>
-<%= @value.value %>
+<div class="row">
+
+  <div class="col-md-3">
+    <br>
+    <br>
+    <%= render 'shared/sidebar' %>
+  </div>
+  <div class="col-md-9">
+    <h1> Propriedades </h1>
+    <%= @property.code %>
+    <%= @property.landlord.name %>
+    <%= @address.street  %>
+  <%= @value.value %>
+</div>
+
+
+
+
+
 
 <!--
   #   create_table "properties", force: :cascade do |t|
