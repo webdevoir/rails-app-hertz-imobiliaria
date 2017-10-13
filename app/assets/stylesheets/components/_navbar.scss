@@ -8,6 +8,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+
 }
 
 /* Logo */
@@ -24,6 +25,8 @@
 
 /* Right section */
 .navbar-wagon-right {
+  color:white;
+  font-size:1.5em;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -33,11 +36,12 @@
 .navbar-wagon-item {
   cursor: pointer;
   padding: 0 20px;
+  color:white;
 }
 
 /* Navbar link */
 .navbar-wagon-link {
-  color: #616668;
+  color: #616;
   font-size: 14px;
 }
 .navbar-wagon-link:hover {

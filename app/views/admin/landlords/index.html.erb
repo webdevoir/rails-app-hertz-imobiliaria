@@ -1,5 +1,4 @@
 <div class="row">
-
   <div class="col-md-3">
     <br>
     <br>
@@ -11,10 +10,11 @@
     <br>
     <br>
     <% @landlords.each do |landlord| %>
-    <%= landlord.name %>
-    <%= link_to "Ver", admin_landlord_path(landlord) %>
-    <%= link_to "Editar", edit_admin_landlord_path(landlord) %>
-    <br>
+      <div class="landlord-car">
+        <%= landlord.name %>
+        <%= link_to "Ver", admin_landlord_path(landlord) %>
+        <%= link_to "Editar", edit_admin_landlord_path(landlord) %>
+      </div>
     <% end %>
   </div>
 </div>
