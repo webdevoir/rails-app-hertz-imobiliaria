@@ -1,3 +1,31 @@
+<style>
+  .dados {
+    border: 1px solid #b3b3b3;
+    padding:0.5em;
+    margin: 0.2em 0;
+  }
+
+  .show-more a {
+    text-decoration: none;
+    font-size: 15px;
+    width:100%;
+    height:100%;
+    color: black;
+  }
+
+  .show-more {
+     margin:-0.5em;
+     padding-top: -0.1em;
+  }
+
+  .show-more:hover {
+    background-color: #ff8000;
+    opacity: 0.1;
+    color:black;
+  }
+</style>
+
+
 <%= link_to 'voltar', admin_landlords_path %>
 
 
@@ -16,34 +44,50 @@
     <div class="landlord-info">
       <p>Informações Basicas<o>
       <p>Nome: <%= @landlord.name %> </p>
-
       <p>Telefone: <%= @landlord.phone %></p>
       <p>Email: <% @landlord.email %></p>
       <p>Quantidades de Propriedades Cadastradas: <%= @landlord.properties.count %></p>
-      <div class="landlord-more-info">
-        <div class="dados">
-          <%= @landlord.rg %>
-          <%= @landlord.cpf %>
-          <%= @landlord.birthday %>
-          <%= @landlord.martial_status %>
-          <%= @landlord.profession %>
-        </div>
-        <div class="dados">
-          t.string   "address"
-          t.string   "cep"
-        </div>
-        <div class="dados">
-          t.boolean  "deposit"
-          t.decimal  "adm_rate"
-          t.decimal  "first_rate"
+      <div class="landlord-more-info collapse" id="collapseExample"">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="dados">
+              <p>RG: <%= @landlord.rg %></p>
+              <p>CPF: <%= @landlord.cpf %> </p>
+              <p>Data de Nacimento: <%= @landlord.birthday %> </p>
+              <p>Estado cívil: <%= @landlord.martial_status %> </p>
+              <p>Profisão: <%= @landlord.profession %> </p>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="dados">
+              <p>Endereço: <%= @landlord.address %></p>
+              <p>CEP: <%= @landlord.cep %> </p>
+            </div>
+          </div>
         </div>
 
-        <div class="dados">
-          t.string   "type"
-          t.string   "bank"
-          t.string   "agency"
-          t.string   "number"
+        <div class="row">
+          <div class="col-md-6">
+            <div class="dados">
+              <p>Deposito: <%= @landlord.deposit %></p>
+              <p>Tipo de Conta: <%= @landlord.type %> </p>
+              <p>Banco: <%= @landlord.bank %> </p>
+              <p>Agência: <%= @landlord.agency %></p>
+              <p>Numero de conta: <%= @landlord.number %></p>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="dados">
+              <p>Taxa de Adminição Mesal: <%= @landlord.adm_rate %></p>
+              <p>Taxa de Administração 1ª: <%= @landlord.first_rate %></p>
+            </div>
+          </div>
         </div>
+      </div>
+      <div class="show-more text-center">
+        <a class="text-center" data-toggle="collapse" href="#collapseExample">
+          +
+        </a>
       </div>
       <div class="landlord-edit">
         <%= link_to 'editar', edit_admin_landlord_path(@landlord), class: "btn btn-primary" %>
