@@ -1,8 +1,22 @@
 <style>
   .dados {
     border: 1px solid #b3b3b3;
-    padding:0.5em;
-    margin: 0.2em 0;
+    padding:0.7em 0.5em 0.5em 0.5em;
+    margin: 0.3em 0;
+    position: relative;
+    font-size: 16px;
+  }
+
+  .dados p {
+    margin: 2px 0;
+  }
+
+  .dados .titulo {
+    position: absolute;
+    top:-9px;
+    left:5px;
+    background-color: white;
+    font-size: 12px;
   }
 
   .show-more a {
@@ -52,6 +66,7 @@
         <div class="row">
           <div class="col-md-6">
             <div class="dados">
+              <span class="titulo">Dados Pessoais</span>
               <p>RG: <%= @landlord.rg %></p>
               <p>CPF: <%= @landlord.cpf %> </p>
               <p>Data de Nacimento: <%= @landlord.birthday %> </p>
@@ -61,6 +76,7 @@
           </div>
           <div class="col-md-6">
             <div class="dados">
+               <span class="titulo">Endereço</span>
               <p>Endereço: <%= @landlord.address %></p>
               <p>CEP: <%= @landlord.cep %> </p>
             </div>
@@ -70,6 +86,7 @@
         <div class="row">
           <div class="col-md-6">
             <div class="dados">
+               <span class="titulo">Dados Bancarios</span>
               <p>Deposito: <%= @landlord.deposit %></p>
               <p>Tipo de Conta: <%= @landlord.type %> </p>
               <p>Banco: <%= @landlord.bank %> </p>
@@ -79,6 +96,7 @@
           </div>
           <div class="col-md-6">
             <div class="dados">
+               <span class="titulo">Dados Pessoais</span>
               <p>Taxa de Adminição Mesal: <%= @landlord.adm_rate %></p>
               <p>Taxa de Administração 1ª: <%= @landlord.first_rate %></p>
             </div>
