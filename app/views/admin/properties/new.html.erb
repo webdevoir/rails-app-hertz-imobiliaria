@@ -24,6 +24,7 @@
     padding: 10px 20px;
     display: flex;
     align-items: center;
+    justify-content: center;
   }
 
  .form-menu .tab:hover {
@@ -52,14 +53,12 @@
       <p>Valor do Imovel</p>
     </a>
     <a class="tab" href="#">
-      <p>Informações basica</p>
-    </a>
-    <a class="tab" href="#">
       <p>Informações da Area</p>
     </a>
     <a class="tab" href="#">
       <p>Fotos e Videos</p>
     </a>
   </div>
+
   <%= render 'form', landlord: @landlord, property: @property %>
 </div>
