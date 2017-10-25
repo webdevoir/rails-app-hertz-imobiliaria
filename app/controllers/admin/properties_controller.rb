@@ -6,10 +6,6 @@ class Admin::PropertiesController < ApplicationController
   def new
     @landlord = Landlord.find(params[:landlord_id])
     @property = Property.new
-    @property_address = PropertyAddress.new
-    @property_value = PropertyValue.new
-    @property_area = PropertyArea.new
-
   end
 
   def create

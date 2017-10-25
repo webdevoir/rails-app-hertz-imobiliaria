@@ -1,2 +1,12 @@
-<h1>Propety Values</h1>
-<%= render 'form', landlord: @landlord, property: @property, property_value: @property_value %>
+
+
+<div class="wrapper">
+  <%= render 'shared/form_menu.html.erb', activate: "value" %>
+    <div class="form">
+      <div class="description">
+        <h1 style="font-size: 30px; ">Valores do Imovel</h1>
+        <h2 style="font-size: 20px;"> Adicione os Valores ao imovel</h2>
+      </div>
+      <%= render 'form', landlord: @landlord, property: @property, property_value: @property_value %>
+    </div>
+</div>

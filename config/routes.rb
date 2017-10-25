@@ -13,8 +13,6 @@ Rails.application.routes.draw do
         resource :property_areas, only: [:new, :create, :update]
         resource :property_values, only: [:new, :create, :update]
       end
-
     end
   end
-
 end

@@ -1,0 +1,40 @@
+.form-property {
+  padding: 20px 15px 15px 20px;
+}
+  .wrapper {
+    margin: 50px;
+    background: white;
+    box-shadow: 3px 3px 8px #999999;
+  }
+
+  .form-menu {
+    display: flex;
+  }
+
+  .form-menu a {
+    text-align: center;
+    text-decoration: none;
+    color: white;
+  }
+
+  .form-menu .tab {
+    background: #FF7C2E;
+    flex-grow: 1;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+ .form-menu .tab:hover {
+    opacity: 0.8;
+  }
+
+  .form-menu .active {
+    background: white;
+    color:black;
+  }
+
+  .form .description h1, h2{
+    margin: 10px 0 0 10px;
+  }

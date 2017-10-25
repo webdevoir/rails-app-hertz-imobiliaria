@@ -1,64 +1,12 @@
-<style>
-.form-property {
-  padding: 20px 15px 15px 20px;
-}
-  .wrapper {
-    margin: 50px;
-    background: white;
-    box-shadow: 3px 3px 8px #999999;
-  }
-
-  .form-menu {
-    display: flex;
-  }
-
-  .form-menu a {
-    text-align: center;
-    text-decoration: none;
-    color: white;
-  }
-
-  .form-menu .tab {
-    background: #FF7C2E;
-    flex-grow: 1;
-    padding: 10px 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
- .form-menu .tab:hover {
-    opacity: 0.8;
-  }
-
-  .form-menu .active {
-    background: white;
-    color:black;
-  }
-
-</style>
-
-
-<h1 style="font-size: 30px;">Novo Imóvel</h1>
-<h2 style="font-size: 20px;">Prencha as informação e cadastre o novo imovel</h2>
 <div class="wrapper">
-  <div class="form-menu">
-    <a class="tab active" href="#">
-      <p>Informações basica</p>
-    </a>
-    <a class="tab" href="#">
-      <p>Endereço</p>
-    </a>
-    <a class="tab" href="#">
-      <p>Valor do Imovel</p>
-    </a>
-    <a class="tab" href="#">
-      <p>Informações da Area</p>
-    </a>
-    <a class="tab" href="#">
-      <p>Fotos e Videos</p>
-    </a>
-  </div>
-
-  <%= render 'form', landlord: @landlord, property: @property %>
+  <%= render 'shared/form_menu.html.erb', activate: "basic" %>
+    <div class="form">
+      <div class="description">
+        <h1 style="font-size: 30px; ">Novo Imóvel</h1>
+        <h2 style="font-size: 20px;">Prencha as informação e cadastre o novo imovel</h2>
+      </div>
+      <%= render 'form', landlord: @landlord, property: @property %>
+    </div>
 </div>
+
+

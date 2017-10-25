@@ -1,6 +1,8 @@
-<%= simple_form_for([:admin, landlord, property, property_value]) do |f| %>
-<%= f.input :value %>
-<%= f.input :iptu %>
-<%= f.input :condo_amount %>
-<%= f.button :submit %>
-<% end %>
+<div class="form-property">
+  <%= simple_form_for([:admin, landlord, property, property_value]) do |f| %>
+  <%= f.input :value %>
+  <%= f.input :iptu %>
+  <%= f.input :condo_amount %>
+  <%= f.button :submit %>
+  <% end %>
+</div>
