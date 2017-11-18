@@ -9,13 +9,12 @@ Rails.application.routes.draw do
     resources :properties, only: [:index, :show]
     resources :landlords do
       resources :properties do
-        collection do
-          get :info
-        end
-
         member do
-          get :address
           get :info
+          get :address
+          get :area
+          get :value
+          get :photos
         end
 
         resource :property_addresses, only: [:new, :create, :update]
