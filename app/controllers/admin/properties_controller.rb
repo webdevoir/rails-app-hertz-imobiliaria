@@ -45,6 +45,16 @@ class Admin::PropertiesController < ApplicationController
     @property = @landlord.properties.find(params[:id])
   end
 
+  def value
+    if PropertyValue.where(property_id: params[:id]).empty?
+      @property_value = PropertyValue.new
+    else
+       @property_area = PropertyValue.where(property_id: params[:id]).first
+    end
+    @landlord = Landlord.find(params[:landlord_id])
+    @property = @landlord.properties.find(params[:id])
+  end
+
   def deshbord
   end
 
