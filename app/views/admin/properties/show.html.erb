@@ -7,11 +7,15 @@
     <%= render 'shared/sidebar' %>
   </div>
   <div class="col-md-9">
-    <h1> Propriedades </h1>
-    <%= @property.code %>
-    <%= @property.landlord.name %>
-    <%= @address.street  %>
-  <%= @value.value %>
+    <h2> Propriedade </h2>
+  <ul>
+    <br>
+    <li><%= @property.code %></li>
+    <li><%= @property.landlord.name %></li>
+    <li><%= @address.street  %></li>
+    <li><%= @value.value %></li>
+  </ul>
+
 </div>
 
 
