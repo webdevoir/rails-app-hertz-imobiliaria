@@ -1,9 +1,4 @@
 class Admin::PropertyValuesController < ApplicationController
-  def new
-    @property_value = PropertyValue.new
-    @landlord = Landlord.find(params[:landlord_id])
-    @property = @landlord.properties.find(params[:property_id])
-  end
 
   def create
     @property_value = PropertyValue.new(property_value_params)

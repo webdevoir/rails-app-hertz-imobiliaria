@@ -1,5 +1,6 @@
 class Property < ApplicationRecord
   belongs_to :landlord
+  has_attachments :photos, maximum: 2
   has_one :property_address
   has_many :private_details
   has_many :private_details_types, through: :private_details

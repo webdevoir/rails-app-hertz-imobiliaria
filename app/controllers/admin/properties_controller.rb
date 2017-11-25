@@ -55,8 +55,9 @@ class Admin::PropertiesController < ApplicationController
     @property = @landlord.properties.find(params[:id])
   end
 
-
   def photos
+    @landlord = Landlord.find(params[:landlord_id])
+    @property = Property.find(params[:id])
   end
 
   def deshbord
@@ -66,7 +67,7 @@ class Admin::PropertiesController < ApplicationController
 
   def property_params
     params.require(:property).permit(:code, :bussiness_type, :property_kind, :property_state, :position, :style,
-      :construction_year, :bathrooms, :rooms, :garages, :suites, :description, :conditions)
+      :construction_year, :bathrooms, :rooms, :garages, :suites, :description, :conditions, photos: [])
   end
 
 end
