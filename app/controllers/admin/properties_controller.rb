@@ -18,6 +18,15 @@ class Admin::PropertiesController < ApplicationController
     end
   end
 
+  def update
+    @landlord = Landlord.find(params[:landlord_id])
+    @property = Property.find(params[:id])
+    if @property.update(property_params)
+      redirect_to  admin_landlord_path(params[:landlord_id])
+    end
+
+  end
+
   def show
     @property = Property.find(params[:id])
     @address = PropertyAddress.where(property_id: @property).first
