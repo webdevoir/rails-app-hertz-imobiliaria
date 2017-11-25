@@ -6,7 +6,7 @@ class Admin::PropertyAreasController < ApplicationController
     @property = @landlord.properties.find(params[:property_id])
     @property_area.property = @property
     if @property_area.save!
-      redirect_to new_admin_landlord_property_property_values_path(@landlord, @property)
+      redirect_to value_admin_landlord_property_path(@landlord, @property)
     else
       render 'properties/area'
     end

@@ -6,7 +6,7 @@ class Admin::PropertyValuesController < ApplicationController
     @property = @landlord.properties.find(params[:property_id])
     @property_value.property = @property
     if @property_value.save!
-      redirect_to admin_property_path(@property)
+      redirect_to photos_admin_landlord_property_path(@landlord, @property)
     else
       render :new
     end
