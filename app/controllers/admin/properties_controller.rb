@@ -55,6 +55,10 @@ class Admin::PropertiesController < ApplicationController
     @property = @landlord.properties.find(params[:id])
   end
 
+
+  def photos
+  end
+
   def deshbord
   end
 
