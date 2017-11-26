@@ -1,17 +1,17 @@
 class Admin::PropertiesController < ApplicationController
-  before_action :set_landlord, only: [:new, :update, :address, :area, :value, :photos]
+  before_action :set_landlord, only: [:new, :create, :update, :address, :area, :value, :photos]
+  before_action :set_property, only: [:update, :show, :address, :area, :value, :photos]
   def index
     @properties = Property.all
   end
 
   def new
-    #@landlord = Landlord.find(params[:landlord_id])
     @property = Property.new
   end
 
   def create
     @property = Property.new(property_params)
-    @property.landlord = Landlord.find(params[:landlord_id])
+    @property.landlord = @landlord #Landlord.find(params[:landlord_id])
     if @property.save!
       redirect_to address_admin_landlord_property_path(@property.landlord, @property)
     else
@@ -20,16 +20,12 @@ class Admin::PropertiesController < ApplicationController
   end
 
   def update
-    #@landlord = Landlord.find(params[:landlord_id])
-    @property = Property.find(params[:id])
     if @property.update(property_params)
       redirect_to  admin_landlord_path(params[:landlord_id])
     end
-
   end
 
   def show
-    @property = Property.find(params[:id])
     @address = PropertyAddress.where(property_id: @property).first
     @area = PropertyArea.where(property_id: @property).first
     @value = PropertyValue.where(property_id: @property).first
@@ -41,8 +37,6 @@ class Admin::PropertiesController < ApplicationController
     else
        @property_address = PropertyAddress.where(property_id: params[:id]).first
     end
-    #@landlord = Landlord.find(params[:landlord_id])
-    @property = @landlord.properties.find(params[:id])
   end
 
   def area
@@ -51,23 +45,18 @@ class Admin::PropertiesController < ApplicationController
     else
        @property_area = PropertyArea.where(property_id: params[:id]).first
     end
-    #@landlord = Landlord.find(params[:landlord_id])
-    @property = @landlord.properties.find(params[:id])
+    #@property = @landlord.properties.find(params[:id])
   end
 
   def value
     if PropertyValue.where(property_id: params[:id]).empty?
       @property_value = PropertyValue.new
     else
-       @property_area = PropertyValue.where(property_id: params[:id]).first
+       @property_value = PropertyValue.where(property_id: params[:id]).first
     end
-    #@landlord = Landlord.find(params[:landlord_id])
-    @property = @landlord.properties.find(params[:id])
   end
 
   def photos
-    #@landlord = Landlord.find(params[:landlord_id])
-    @property = Property.find(params[:id])
   end
 
   def deshbord
@@ -77,6 +66,10 @@ class Admin::PropertiesController < ApplicationController
 
   def set_landlord
     @landlord = Landlord.find(params[:landlord_id])
+  end
+
+  def set_property
+    @property = Property.find(params[:id])
   end
 
   def property_params

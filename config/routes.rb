@@ -3,10 +3,18 @@ Rails.application.routes.draw do
   devise_for :users
   root to: 'properties#home'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  resources :properties, only: [:index, :show]
+  resources :properties, only: [:index, :show] do
+  end
+
   namespace :admin do
     get '/', to: 'properties#dashboard'
-    resources :properties, only: [:index, :show]
+
+    resources :properties, only: [:index, :show] do
+      resources :property_addresses, only: [:create, :update]
+      resources :property_areas, only: [:create, :update]
+      resources :property_values, only: [:create, :update]
+    end
+
     resources :landlords do
       resources :properties do
         member do
@@ -16,11 +24,8 @@ Rails.application.routes.draw do
           get :value
           get :photos
         end
-
-        resource :property_addresses, only: [:new, :create, :update]
-        resource :property_areas, only: [:new, :create, :update]
-        resource :property_values, only: [:new, :create, :update]
       end
     end
   end
+
 end
