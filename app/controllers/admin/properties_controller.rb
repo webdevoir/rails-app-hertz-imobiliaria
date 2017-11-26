@@ -1,6 +1,6 @@
 class Admin::PropertiesController < ApplicationController
-  before_action :set_landlord, only: [:new, :create, :update, :address, :area, :value, :photos]
-  before_action :set_property, only: [:update, :show, :address, :area, :value, :photos]
+  before_action :set_landlord, only: [:new, :create, :edit, :update, :address, :area, :value, :photos]
+  before_action :set_property, only: [:edit, :update, :show, :address, :area, :value, :photos]
   def index
     @properties = Property.all
   end
@@ -17,6 +17,9 @@ class Admin::PropertiesController < ApplicationController
     else
       render :new
     end
+  end
+
+  def edit
   end
 
   def update

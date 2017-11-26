@@ -1,17 +1,59 @@
 <div class="form-menu">
-    <a class="tab <%= 'active' if activate == 'basic' %>" id="basic" href="#">
-      <p>Informações basica</p>
-    </a>
-    <a class="tab <%= 'active' if activate == 'address' %>" href="#">
+    <% if @property.id %>
+      <%= link_to edit_admin_landlord_property_path(@landlord, @property), class: "tab" + (activate == "basic" ? " active" : "") do %>
+        <p>Informações basica</p>
+      <% end %>
+    <% else %>
+      <%= link_to new_admin_landlord_property_path(@landlord, @property), class: "tab" + (activate == "basic" ? " active" : "")  do %>
+        <p>Informações basica</p>
+      <% end %>
+    <% end %>
+
+    <% if @property.id %>
+      <%= link_to address_admin_landlord_property_path(@landlord, @property), class: "tab" + (activate == "address" ? " active" : "")  do %>
+        <p>Endereço</p>
+      <% end %>
+    <% else %>
+      <a class="tab <%= 'active' if activate == 'address' %>" href="#" onclick="alert('Cadastre as informação basicas do imovel antes de continuar');">
       <p>Endereço</p>
-    </a>
-    <a class="tab <%= 'active' if activate == 'area' %>" href="#">
+      </a>
+    <% end %>
+
+    <% if @property.id %>
+      <%= link_to area_admin_landlord_property_path(@landlord, @property), class: "tab" + (activate == "area" ? " active" : "")  do %>
+        <p>Informações da Area</p>
+      <% end %>
+    <% else %>
+      <a class="tab <%= 'active' if activate == 'area' %>" href="#" onclick="alert('Cadastre as informação basicas do imovel antes de continuar');">
       <p>Informações da Area</p>
-    </a>
-    <a class="tab <%= 'active' if activate == 'value' %>" href="#">
+      </a>
+    <% end %>
+
+<!--     <a class="tab <%= 'active' if activate == 'value' %>" href="#">
       <p>Valor do Imovel</p>
-    </a>
-    <a class="tab <%= 'active' if activate == 'photos' %>" href="#">
-      <p>Fotos e Videos</p>
-    </a>
+    </a> -->
+
+    <% if @property.id %>
+      <%= link_to value_admin_landlord_property_path(@landlord, @property), class: "tab" + (activate == "value" ? " active" : "")  do %>
+        <p>Valor do Imovel</p>
+      <% end %>
+    <% else %>
+      <a class="tab <%= 'active' if activate == 'value' %>" href="#" onclick="alert('Cadastre as informação basicas do imovel antes de continuar');">
+      <p>Valor do Imovel</p>
+      </a>
+    <% end %>
+
+<!--     <a class="tab <%= 'active' if activate == 'photos' %>" href="#">
+      <p>Fotos</p>
+    </a> -->
+
+    <% if @property.id %>
+      <%= link_to photos_admin_landlord_property_path(@landlord, @property), class: "tab" + (activate == "photos" ? " active" : "")  do %>
+        <p>Fotos</p>
+      <% end %>
+    <% else %>
+      <a class="tab <%= 'active' if activate == 'photos' %>" href="#" onclick="alert('Cadastre as informação basicas do imovel antes de continuar');">
+      <p>Fotos</p>
+      </a>
+    <% end %>
 </div>

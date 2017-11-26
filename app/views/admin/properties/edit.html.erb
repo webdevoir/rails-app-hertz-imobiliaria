@@ -1,0 +1,10 @@
+<div class="wrapper">
+  <%= render 'shared/form_menu.html.erb', activate: "basic" %>
+    <div class="form">
+      <div class="description">
+        <h1 style="font-size: 30px; ">Novo Imóvel</h1>
+        <h2 style="font-size: 20px;">Prencha as informação e cadastre o novo imovel</h2>
+      </div>
+      <%= render 'form', landlord: @landlord, property: @property %>
+    </div>
+</div>
