@@ -1,10 +1,11 @@
 class Admin::PropertiesController < ApplicationController
+  before_action :set_landlord, only: [:new, :update, :address, :area, :value, :photos]
   def index
     @properties = Property.all
   end
 
   def new
-    @landlord = Landlord.find(params[:landlord_id])
+    #@landlord = Landlord.find(params[:landlord_id])
     @property = Property.new
   end
 
@@ -19,7 +20,7 @@ class Admin::PropertiesController < ApplicationController
   end
 
   def update
-    @landlord = Landlord.find(params[:landlord_id])
+    #@landlord = Landlord.find(params[:landlord_id])
     @property = Property.find(params[:id])
     if @property.update(property_params)
       redirect_to  admin_landlord_path(params[:landlord_id])
@@ -40,7 +41,7 @@ class Admin::PropertiesController < ApplicationController
     else
        @property_address = PropertyAddress.where(property_id: params[:id]).first
     end
-    @landlord = Landlord.find(params[:landlord_id])
+    #@landlord = Landlord.find(params[:landlord_id])
     @property = @landlord.properties.find(params[:id])
   end
 
@@ -50,7 +51,7 @@ class Admin::PropertiesController < ApplicationController
     else
        @property_area = PropertyArea.where(property_id: params[:id]).first
     end
-    @landlord = Landlord.find(params[:landlord_id])
+    #@landlord = Landlord.find(params[:landlord_id])
     @property = @landlord.properties.find(params[:id])
   end
 
@@ -60,12 +61,12 @@ class Admin::PropertiesController < ApplicationController
     else
        @property_area = PropertyValue.where(property_id: params[:id]).first
     end
-    @landlord = Landlord.find(params[:landlord_id])
+    #@landlord = Landlord.find(params[:landlord_id])
     @property = @landlord.properties.find(params[:id])
   end
 
   def photos
-    @landlord = Landlord.find(params[:landlord_id])
+    #@landlord = Landlord.find(params[:landlord_id])
     @property = Property.find(params[:id])
   end
 
@@ -73,6 +74,10 @@ class Admin::PropertiesController < ApplicationController
   end
 
   private
+
+  def set_landlord
+    @landlord = Landlord.find(params[:landlord_id])
+  end
 
   def property_params
     params.require(:property).permit(:code, :bussiness_type, :property_kind, :property_state, :position, :style,
