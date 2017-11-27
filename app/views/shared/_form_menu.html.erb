@@ -29,10 +29,6 @@
       </a>
     <% end %>
 
-<!--     <a class="tab <%= 'active' if activate == 'value' %>" href="#">
-      <p>Valor do Imovel</p>
-    </a> -->
-
     <% if @property.id %>
       <%= link_to value_admin_landlord_property_path(@landlord, @property), class: "tab" + (activate == "value" ? " active" : "")  do %>
         <p>Valor do Imovel</p>
@@ -42,10 +38,6 @@
       <p>Valor do Imovel</p>
       </a>
     <% end %>
-
-<!--     <a class="tab <%= 'active' if activate == 'photos' %>" href="#">
-      <p>Fotos</p>
-    </a> -->
 
     <% if @property.id %>
       <%= link_to photos_admin_landlord_property_path(@landlord, @property), class: "tab" + (activate == "photos" ? " active" : "")  do %>
