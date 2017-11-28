@@ -10,9 +10,8 @@
     <br>
     <li><%= @property.code %></li>
     <li><%= @property.landlord.name %></li>
-    <li><%= @address.street  %></li>
-    <li><%= @value.value %></li>
   </ul>
+  <%= link_to "Deletar", admin_property_path(@property), data: {confirm: 'Tem certeza que quer deletar a propriedade?'}, class: "btn btn-danger", method: :delete  %>
 </div>
 
 

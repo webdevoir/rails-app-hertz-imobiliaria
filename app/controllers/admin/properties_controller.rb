@@ -1,6 +1,6 @@
 class Admin::PropertiesController < ApplicationController
   before_action :set_landlord, only: [:new, :create, :edit, :update, :address, :area, :value, :photos]
-  before_action :set_property, only: [:edit, :update, :show, :address, :area, :value, :photos]
+  before_action :set_property, only: [:edit, :update, :show, :address, :area, :value, :photos, :destroy]
   def index
     @properties = Property.all
   end
@@ -48,7 +48,6 @@ class Admin::PropertiesController < ApplicationController
     else
        @property_area = PropertyArea.where(property_id: params[:id]).first
     end
-    #@property = @landlord.properties.find(params[:id])
   end
 
   def value
@@ -63,6 +62,11 @@ class Admin::PropertiesController < ApplicationController
   end
 
   def deshbord
+  end
+
+  def destroy
+    @property.destroy
+    redirect_to admin_properties_path
   end
 
   private
