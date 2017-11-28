@@ -5,13 +5,18 @@
     <%= render 'shared/sidebar' %>
   </div>
   <div class="col-md-9">
-    <h1>Todas A propriedade</h1>
-    <% @properties.each do |property| %>
-      <div class="landlord-property-card">
-        <p>Codigo:<%= property.code %><p>
-        <p><%= property.address(property).street %>, <%= property.address(property).number  %><p>
-        <p><%= link_to "Mostra", admin_property_path(property) %></p>
-      </div>
+    <h1>Propriedades casdastradas</h1>
+
+    <% if @properties.empty? %>
+    <p>Não tem propriedades casdastradas</p>
+    <% else %> %>
+      <% @properties.each do |property| %>
+        <div class="landlord-property-card">
+          <p>Codigo:<%= property.code %><p>
+          <p><%= property.address(property).street %>, <%= property.address(property).number  %><p>
+          <p><%= link_to "Mostra", admin_property_path(property) %></p>
+        </div>
+      <% end %>
     <% end %>
   </div>
 </div>
