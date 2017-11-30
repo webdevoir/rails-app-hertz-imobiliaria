@@ -28,8 +28,8 @@ landlord1 = [
     profession: "Engenheiro"
     phone: "11994325759"
     email: "juan.couso@gmail.com"
-    address:
-    cep:
+    address: "Rua Gavita, 754 Apt 102"
+    cep: "04522032"
     deposit:
     adm_rate:
     cep:
