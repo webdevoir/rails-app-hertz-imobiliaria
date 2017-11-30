@@ -19,27 +19,6 @@ User.create(email:"test@test.com", password: "123123")
 landlord1 = [
   {
 
-
-    name: "Juan Manuel Couso"
-    rg: "V317245-U"
-    cpg: "231.311.748-03"
-    birthday: Date.new(1986,8,19)
-    martial_status: "Solteiro"
-    profession: "Engenheiro"
-    phone: "11994325759"
-    email: "juan.couso@gmail.com"
-    address: "Rua Gavita, 754 Apt 102"
-    cep: "04522032"
-    deposit:
-    adm_rate:
-    cep:
-    deposit:
-    first_rate:
-    type:
-    bank:
-    agency:
-    number:
-    user_id:
       t.string   "name"
     t.string   "rg"
     t.string   "cpf"
