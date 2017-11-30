@@ -16,10 +16,14 @@ gem 'jquery-rails'
 gem 'sass-rails'
 gem 'simple_form'
 gem 'uglifier'
+
 gem 'cloudinary', '1.1.7'
 gem 'attachinary', github: 'assembler/attachinary'
 gem 'jquery-fileupload-rails'
 gem 'coffee-rails'
+
+gem 'faker'
+gem 'blabla', '0.0.1'
 
 group :development, :test do
   gem 'pry-byebug'
