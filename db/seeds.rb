@@ -16,10 +16,15 @@
 
 landlords = []
 
+def rg_generator
+ "#{rand(10..99).to_s}.#{rand(100..999).to_s}.#{rand(100..999).to_s}-#{rand(10..99).to_s}"
+end
 
 100.times {
   landlords << {
-    name: BlaBla::Pessoa.nome
+    name: BlaBla::Pessoa.nome,
+    rg: rg_generator,
+    cpf: BlaBla::CPF.formatado
   }
 }
 
