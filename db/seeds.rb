@@ -20,13 +20,25 @@ def rg_generator
  "#{rand(10..99).to_s}.#{rand(100..999).to_s}.#{rand(100..999).to_s}-#{rand(10..99).to_s}"
 end
 
-100.times {
+def cep_generator
+ "#{rand(10000..99999).to_s}-#{rand(100..999).to_s}"
+end
+
+# 100.times {
   landlords << {
-    name: BlaBla::Pessoa.nome,
-    rg: rg_generator,
-    cpf: BlaBla::CPF.formatado
+    # name: BlaBla::Pessoa.nome,
+    # rg: rg_generator,
+    # cpf: BlaBla::CPF.formatado,
+    # birthday: Faker::Date.birthday(20, 65).strftime('%d, %m, %Y'),
+    # martial_status: ['solteiro', 'casado', 'separado', 'divorciado', 'viúvo'].sample
+    # profession: ['engenheiro', 'advogado', 'administrado', 'arquiteto', 'dono de empresa'].sample,
+    # phone: Faker::PhoneNumber.phone_number,
+    email: Faker::Internet.email,
+    address: Faker::Address.street_address + " " + Faker::Address.secondary_address,
+    cep: cep_generator,
+
   }
-}
+# }
 
 
 
