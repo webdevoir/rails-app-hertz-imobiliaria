@@ -121,27 +121,33 @@ gen = Generator.new
 
 puts "Criando Usuario..."
 user = User.create(email:"test@test.com", password: "123123", id: 1)
-landlord = Landlord.create(gen.landlord_genetator)
-puts "Criando Landlord com nome: #{landlord.name}..."
-landlord.user_id = user.id
-landlord.save!
-property = Property.create(gen.property_generator)
-puts "Criando Property com codigo: #{property.code}..."
-property.landlord_id = landlord.id
-property.photo_urls = [urls.sample]
-property.save!
-property_address = PropertyAddress.create(gen.property_address_generator)
-puts "Criando Property Address com codigo: #{property.code}..."
-property_address.property_id = property.id
-property_address.save!
-property_area = PropertyArea.create(gen.property_area_generator)
-puts "Criando Property Area com codigo: #{property.code}..."
-property_area.property_id = property.id
-property_area.save!
-property_value = PropertyValue.create(gen.property_value_generator)
-puts "Criando Property Value com codigo: #{property.code}..."
-property_value.property_id = property.id
-property_value.save!
+
+
+50.times {
+  landlord = Landlord.create(gen.landlord_genetator)
+  puts "Criando Landlord com nome: #{landlord.name}..."
+  landlord.user_id = user.id
+  landlord.save!
+  rand(1..15).times {
+    property = Property.create(gen.property_generator)
+    property.landlord_id = landlord.id
+    puts "Criando Property com codigo: #{property.code} do landlord #{property.landlord.name}"
+    property.photo_urls = [urls.sample]
+    property.save!
+    property_address = PropertyAddress.create(gen.property_address_generator)
+    puts "Criando Property Address com codigo: #{property.code}..."
+    property_address.property_id = property.id
+    property_address.save!
+    property_area = PropertyArea.create(gen.property_area_generator)
+    puts "Criando Property Area com codigo: #{property.code}..."
+    property_area.property_id = property.id
+    property_area.save!
+    property_value = PropertyValue.create(gen.property_value_generator)
+    puts "Criando Property Value com codigo: #{property.code}..."
+    property_value.property_id = property.id
+    property_value.save!
+  }
+}
 
 
 
