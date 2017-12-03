@@ -8,6 +8,7 @@ User.create(email:"test@test.com", password: "123123", id: 1)
 
 landlords = []
 properties = []
+property_addresses = []
 
 def rg_generator
  "#{rand(10..99).to_s}.#{rand(100..999).to_s}.#{rand(100..999).to_s}-#{rand(10..99).to_s}"
@@ -40,43 +41,42 @@ end
 #   }
 # }
 
-properties << {
-      code: rand(1000...9999),
-      bussiness_type: ['venda', 'alugel'].sample,
-      property_type: ['residencial', 'comercial'].sample,
-      property_kind: ['casa', 'apartamento'].sample,
-      property_state: ['novo', 'otimo', 'bom', 'reformado'].sample,
-      position: ['norte', 'sul', 'oeste', 'leste'].sample,
-      style: ['Barroco', 'Neoclassicismo', 'Neogótico', 'Neocolonial', 'Modernista', 'Contemporâneo'].sample,
-      construction_year: rand(1930..2017),
-      bathrooms: rand(0..5),
-      rooms: rand(1..10),
-      garages: rand(0..5),
-      suites: rand(0..10),
-      description: Faker::Lorem.paragraph,
-      published: [false, true].sample,
-      conditions: Faker::Lorem.sentence
+# properties << {
+#       code: rand(1000...9999),
+#       bussiness_type: ['venda', 'alugel'].sample,
+#       property_type: ['residencial', 'comercial'].sample,
+#       property_kind: ['casa', 'apartamento'].sample,
+#       property_state: ['novo', 'otimo', 'bom', 'reformado'].sample,
+#       position: ['norte', 'sul', 'oeste', 'leste'].sample,
+#       style: ['Barroco', 'Neoclassicismo', 'Neogótico', 'Neocolonial', 'Modernista', 'Contemporâneo'].sample,
+#       construction_year: rand(1930..2017),
+#       bathrooms: rand(0..5),
+#       rooms: rand(1..10),
+#       garages: rand(0..5),
+#       suites: rand(0..10),
+#       description: Faker::Lorem.paragraph,
+#       published: [false, true].sample,
+#       conditions: Faker::Lorem.sentence
+# }
+
+property_addresses << {
+
+    cep: cep_generator,
+    country: 'Brasil',
+    state: 'São Paulo',
+    city: ['São Paulo', 'São Caetano do Sul', 'São Bernardo do Campo', 'Santo Andre'].sample,
+    neighborhood: ['Barcelona', 'Boa Vista', 'Centro', 'Cerâmica' ,'Fundação', 'Jardim São Caetano', 'Mauá', 'Nova Gerty', 'Olímpico', 'Oswaldo Cruz', 'Prosperidade', 'Santa Maria', 'Santa Paula', 'Santo Antônio', 'São José'].sample,
+    street: 'Rua ' + ['Arnaldo', 'Veira', 'João Castanha', 'Aranha', 'Simões'].sample,
+    number: rand(1..9999).to_s,
+    complement: "#{[*('A'..'Z')].sample}#{rand(1..999)}",
+    condo_name: Faker::Lorem.word.capitalize
 }
 
-puts properties
+puts property_addresses
 
 
- # t.integer  "landlord_id"
- #    t.integer  "code"
- #    t.string   "bussiness_type"
- #    t.string   "property_type"
- #    t.string   "property_kind"
- #    t.string   "property_state"
- #    t.string   "position"
- #    t.string   "style"
- #    t.integer  "construction_year"
- #    t.integer  "bathrooms"
- #    t.integer  "rooms"
- #    t.integer  "garages"
- #    t.integer  "suites"
- #    t.text     "description"
- #    t.boolean  "published",         default: false
- #    t.text     "conditions"
+
+
 
 
 
