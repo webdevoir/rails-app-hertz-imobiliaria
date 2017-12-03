@@ -15,7 +15,7 @@ class Property < ApplicationRecord
 
 
   def address(id)
-      address = PropertyAddress.find_by(id: id)
+      address = PropertyAddress.find_by(property_id: id)
       if address.nil?
         address = PropertyAddress.new(street: "N/A", number: "N/A")
       else
