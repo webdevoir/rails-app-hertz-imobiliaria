@@ -123,15 +123,16 @@ puts "Criando Usuario..."
 user = User.create(email:"test@test.com", password: "123123", id: 1)
 
 
-50.times {
+50.times { |i|
+
   landlord = Landlord.create(gen.landlord_genetator)
-  puts "Criando Landlord com nome: #{landlord.name}..."
+  puts "#{i} - Criando Landlord com nome: #{landlord.name}..."
   landlord.user_id = user.id
   landlord.save!
-  rand(1..15).times {
+  rand(1..15).times { |t|
     property = Property.create(gen.property_generator)
     property.landlord_id = landlord.id
-    puts "Criando Property com codigo: #{property.code} do landlord #{property.landlord.name}"
+    puts "#{t} Criando Property com codigo: #{property.code} do landlord #{property.landlord.name}"
     property.photo_urls = [urls.sample]
     property.save!
     property_address = PropertyAddress.create(gen.property_address_generator)

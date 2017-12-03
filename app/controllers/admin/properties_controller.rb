@@ -61,7 +61,9 @@ class Admin::PropertiesController < ApplicationController
   def photos
   end
 
-  def deshbord
+  def dashboard
+    @properties = Property.all
+    @landlords = Landlord.all
   end
 
   def destroy

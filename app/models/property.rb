@@ -14,8 +14,8 @@ class Property < ApplicationRecord
   has_many :exterior_details_types, through: :exterior_details
 
 
-  def address(id)
-      address = PropertyAddress.find_by(property_id: id)
+  def address
+      address = PropertyAddress.find_by(property_id: self.id)
       if address.nil?
         address = PropertyAddress.new(street: "N/A", number: "N/A")
       else

@@ -6,12 +6,13 @@
   </div>
   <div class="col-md-9">
     <h2> Propriedade </h2>
-  <ul>
-    <br>
-    <li><%= @property.code %></li>
-    <li><%= @property.landlord.name %></li>
-  </ul>
-  <%= link_to "Deletar", admin_property_path(@property), data: {confirm: 'Tem certeza que quer deletar a propriedade?'}, class: "btn btn-danger", method: :delete  %>
+    <ul>
+      <br>
+      <li><%= @property.code %></li>
+      <li><%= @property.landlord.name %></li>
+    </ul>
+    <%= link_to "Deletar", admin_property_path(@property), data: {confirm: 'Tem certeza que quer deletar a propriedade?'}, class: "btn btn-danger", method: :delete  %>
+  </div>
 </div>
 
 
