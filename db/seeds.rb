@@ -1,10 +1,18 @@
-User.destroy_all
-
-Landlord.destroy_all
+PropertyValue.destroy_all
+PropertyArea.destroy_all
+PropertyAddress.destroy_all
 
 Property.destroy_all
 
-User.create(email:"test@test.com", password: "123123", id: 1)
+Landlord.destroy_all
+
+User.destroy_all
+
+
+
+
+
+
 
 urls = [
   'http://library.webster.edu/archives/buildings/images/webstervillageapartments.jpg',
@@ -51,13 +59,12 @@ class Generator
       deposit: [true, false].sample,
       adm_rate: rand(0.05..0.10).round(2),
       first_rate: rand(0.05..0.10).round(2),
-      type: ['Conta corrente', 'Conta Pupança'].sample,
+      type_of_account: ['Conta corrente', 'Conta Pupança'].sample,
       bank: ['Banco do Brasil', 'Bradesco', 'Itau', 'Satander' ]. sample,
       agency: rand(1000..9999),
-      number: rand(10000..9999).to_s + "-" + rand(10..99).to_s
+      number: rand(1000..9999).to_s + "-" + rand(10..99).to_s
     }
   end
-
 
   def property_generator
     {
@@ -118,12 +125,33 @@ end
 
 gen = Generator.new
 
+user = User.create(email:"test@test.com", password: "123123", id: 1)
+landlord = Landlord.create(gen.landlord_genetator)
+landlord.user_id = user.id
+landlord.save!
+property = Property.create(gen.property_generator)
+property.landlord_id = landlord.id
+property.photo_urls = [urls.sample]
+property.save!
+property_address = PropertyAddress.create(gen.property_address_generator)
+property_address.property_id = property.id
+property_address.save!
+property_area = PropertyArea.create(gen.property_area_generator)
+property_area.property_id = property.id
+property_area.save!
+property_value = PropertyValue.create(gen.property_value_generator)
+property_value.property_id = property.id
+property_value.save!
 
-puts gen.landlord_genetator
-puts gen.property_generator
-puts gen.property_address_generator
-puts gen.property_area_generator
-puts gen.property_value_generator
+
+
+
+#Property.create(gen.property_generator)
+
+# puts gen.property_generator
+# puts gen.property_address_generator
+# puts gen.property_area_generator
+# puts gen.property_value_generator
 
 
 

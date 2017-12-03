@@ -14,7 +14,7 @@ class CreateLandlords < ActiveRecord::Migration[5.0]
       t.boolean :deposit
       t.decimal :adm_rate
       t.decimal :first_rate
-      t.string :type
+      t.string :type_of_account
       t.string :bank
       t.string :agency
       t.string :number

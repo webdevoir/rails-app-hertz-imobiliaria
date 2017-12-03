@@ -89,13 +89,13 @@ ActiveRecord::Schema.define(version: 20171125005516) do
     t.boolean  "deposit"
     t.decimal  "adm_rate"
     t.decimal  "first_rate"
-    t.string   "type"
+    t.string   "type_of_account"
     t.string   "bank"
     t.string   "agency"
     t.string   "number"
     t.integer  "user_id"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
     t.index ["user_id"], name: "index_landlords_on_user_id", using: :btree
   end
 
