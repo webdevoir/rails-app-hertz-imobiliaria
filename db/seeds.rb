@@ -9,6 +9,7 @@ User.create(email:"test@test.com", password: "123123", id: 1)
 landlords = []
 properties = []
 property_addresses = []
+property_areas = []
 
 def rg_generator
  "#{rand(10..99).to_s}.#{rand(100..999).to_s}.#{rand(100..999).to_s}-#{rand(10..99).to_s}"
@@ -59,20 +60,29 @@ end
 #       conditions: Faker::Lorem.sentence
 # }
 
-property_addresses << {
+# property_addresses << {
 
-    cep: cep_generator,
-    country: 'Brasil',
-    state: 'São Paulo',
-    city: ['São Paulo', 'São Caetano do Sul', 'São Bernardo do Campo', 'Santo Andre'].sample,
-    neighborhood: ['Barcelona', 'Boa Vista', 'Centro', 'Cerâmica' ,'Fundação', 'Jardim São Caetano', 'Mauá', 'Nova Gerty', 'Olímpico', 'Oswaldo Cruz', 'Prosperidade', 'Santa Maria', 'Santa Paula', 'Santo Antônio', 'São José'].sample,
-    street: 'Rua ' + ['Arnaldo', 'Veira', 'João Castanha', 'Aranha', 'Simões'].sample,
-    number: rand(1..9999).to_s,
-    complement: "#{[*('A'..'Z')].sample}#{rand(1..999)}",
-    condo_name: Faker::Lorem.word.capitalize
+#     cep: cep_generator,
+#     country: 'Brasil',
+#     state: 'São Paulo',
+#     city: ['São Paulo', 'São Caetano do Sul', 'São Bernardo do Campo', 'Santo Andre'].sample,
+#     neighborhood: ['Barcelona', 'Boa Vista', 'Centro', 'Cerâmica' ,'Fundação', 'Jardim São Caetano', 'Mauá', 'Nova Gerty', 'Olímpico', 'Oswaldo Cruz', 'Prosperidade', 'Santa Maria', 'Santa Paula', 'Santo Antônio', 'São José'].sample,
+#     street: 'Rua ' + ['Arnaldo', 'Veira', 'João Castanha', 'Aranha', 'Simões'].sample,
+#     number: rand(1..9999).to_s,
+#     complement: "#{[*('A'..'Z')].sample}#{rand(1..999)}",
+#     condo_name: Faker::Lorem.word.capitalize
+# }
+
+property_areas << {
+    scale: 'm2',
+    total_area: rand(100...1500).round(2),
+    usable_area: rand(100...1500).round(2),
+    area_land:  rand(100...1500).round(2)
 }
 
-puts property_addresses
+puts property_areas
+
+
 
 
 
