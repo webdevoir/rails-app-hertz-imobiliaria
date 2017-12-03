@@ -6,10 +6,23 @@
   </div>
   <div class="col-md-9">
     <h2> Propriedade </h2>
+    <%= cl_image_tag @property.photos.first.path, width: 400, height: 400, crop: :fill %>
+    <p> Info Sobre Pripriede
     <ul>
       <br>
       <li><%= @property.code %></li>
-      <li><%= @property.landlord.name %></li>
+      <li><%= @property.bussiness_type %></li>
+      <li><%= @property.property_type  %></li>
+      <li><%= @property.property_kind  %></li>
+      <li><%= @property.property_state  %></li>
+      <li><%= @property.position  %></li>
+      <li><%= @property.style  %></li>
+      <li><%= @property.construction_year  %></li>
+      <li><%= @property.bathrooms  %></li>
+      <li><%= @property.garages  %></li>
+      <li><%= @property.description  %></li>
+      <li><%= @property.published %></li>
+      <li><%= @property.conditions %></li>
     </ul>
     <%= link_to "Deletar", admin_property_path(@property), data: {confirm: 'Tem certeza que quer deletar a propriedade?'}, class: "btn btn-danger", method: :delete  %>
   </div>
