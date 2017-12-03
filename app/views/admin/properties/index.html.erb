@@ -8,11 +8,11 @@
     <h1>Propriedades casdastradas</h1>
     <% if @properties.empty? %>
       <p>Não tem propriedades casdastradas</p>
-    <% else %> %>
+    <% else %>
       <% @properties.each do |property| %>
         <div class="landlord-property-card">
           <p>Codigo:<%= property.code %><p>
-          <p><%= property.address(property).street %>, <%= property.address(property).number  %><p>
+          <p><%= property.address.street %>, <%= property.address.number  %><p>
           <p><%= link_to "Mostra", admin_property_path(property) %></p>
         </div>
       <% end %>
