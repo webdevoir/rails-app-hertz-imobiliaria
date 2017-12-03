@@ -8,12 +8,6 @@ Landlord.destroy_all
 
 User.destroy_all
 
-
-
-
-
-
-
 urls = [
   'http://library.webster.edu/archives/buildings/images/webstervillageapartments.jpg',
   'https://res.cloudinary.com/apartmentlist/image/upload/t_fullsize/5b30c3a3b02ddebec2c24e66c51ba33c.jpg',
@@ -49,7 +43,7 @@ class Generator
       name: BlaBla::Pessoa.nome,
       rg: rg_generator,
       cpf: BlaBla::CPF.formatado,
-      birthday: Faker::Date.birthday(20, 65).strftime('%d, %m, %Y'),
+      birthday: Faker::Date.birthday(20, 65),
       martial_status: ['solteiro', 'casado', 'separado', 'divorciado', 'viúvo'].sample,
       profession: ['engenheiro', 'advogado', 'administrado', 'arquiteto', 'dono de empresa'].sample,
       phone: Faker::PhoneNumber.phone_number,
@@ -125,21 +119,27 @@ end
 
 gen = Generator.new
 
+puts "Criando Usuario..."
 user = User.create(email:"test@test.com", password: "123123", id: 1)
 landlord = Landlord.create(gen.landlord_genetator)
+puts "Criando Landlord com nome: #{landlord.name}..."
 landlord.user_id = user.id
 landlord.save!
 property = Property.create(gen.property_generator)
+puts "Criando Property com codigo: #{property.code}..."
 property.landlord_id = landlord.id
 property.photo_urls = [urls.sample]
 property.save!
 property_address = PropertyAddress.create(gen.property_address_generator)
+puts "Criando Property Address com codigo: #{property.code}..."
 property_address.property_id = property.id
 property_address.save!
 property_area = PropertyArea.create(gen.property_area_generator)
+puts "Criando Property Area com codigo: #{property.code}..."
 property_area.property_id = property.id
 property_area.save!
 property_value = PropertyValue.create(gen.property_value_generator)
+puts "Criando Property Value com codigo: #{property.code}..."
 property_value.property_id = property.id
 property_value.save!
 
