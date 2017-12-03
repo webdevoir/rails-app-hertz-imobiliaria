@@ -1,3 +1,10 @@
+<style>
+  .property-basic-info-card {
+    background: white;
+  }
+</style>
+
+
 <div class="row">
   <div class="col-md-3">
     <br>
@@ -5,25 +12,26 @@
     <%= render 'shared/sidebar' %>
   </div>
   <div class="col-md-9">
-    <h2> Propriedade </h2>
+    <h2> Propriedade Cod. <%= @property.code %></h2>
     <%= cl_image_tag @property.photos.first.path, width: 400, height: 400, crop: :fill %>
-    <p> Info Sobre Pripriede
-    <ul>
-      <br>
-      <li>Codigo: <%= @property.code %></li>
-      <li>Tipo Negocição: <%= @property.bussiness_type %></li>
-      <li>Tipo de Propriedade:<%= @property.property_type  %></li>
-      <li>Tipo: <%= @property.property_kind  %></li>
-      <li>Estado da Propriedade: <%= @property.property_state  %></li>
-      <li>Posição da Propriedade: <%= @property.position  %></li>
-      <li>Estilo de contrução<%= @property.style  %></li>
-      <li>Ano de Contrução: <%= @property.construction_year  %></li>
-      <li>Nº de Banheiros<%= @property.bathrooms  %></li>
-      <li>Nº de<%= @property.garages  %></li>
-      <li>Descrição<%= @property.description  %></li>
-      <li><%= @property.published %></li>
-      <li><%= @property.conditions %></li>
-    </ul>
+    <br>
+    <div class="property-basic-info-card">
+      <p>Informações Basicas</p>
+      <ul>
+        <li>Tipo Negocição: <%= @property.bussiness_type %></li>
+        <li>Tipo de Propriedade:<%= @property.property_type  %></li>
+        <li>Tipo: <%= @property.property_kind  %></li>
+        <li>Estado da Propriedade: <%= @property.property_state  %></li>
+        <li>Posição da Propriedade: <%= @property.position  %></li>
+        <li>Estilo de contrução<%= @property.style  %></li>
+        <li>Ano de Contr  ução: <%= @property.construction_year  %></li>
+        <li>Nº de Banheiros<%= @property.bathrooms  %></li>
+        <li>Nº de<%= @property.garages  %></li>
+        <li>Descrição<%= @property.description  %></li>
+        <li><%= @property.published %></li>
+        <li><%= @property.conditions %></li>
+      </ul>
+    </div>
     <%= link_to "Deletar", admin_property_path(@property), data: {confirm: 'Tem certeza que quer deletar a propriedade?'}, class: "btn btn-danger", method: :delete  %>
   </div>
 </div>
