@@ -12,6 +12,26 @@ property_addresses = []
 property_areas = []
 property_values = []
 
+urls = [
+  'http://library.webster.edu/archives/buildings/images/webstervillageapartments.jpg',
+  'https://res.cloudinary.com/apartmentlist/image/upload/t_fullsize/5b30c3a3b02ddebec2c24e66c51ba33c.jpg',
+  'http://media.equityapartments.com/images/c_crop,x_0,y_0,w_1586,h_1080/c_fill,w_737,h_414/q_80/2584-4/harbor-steps-apartments-exterior.jpg',
+  'http://profiles.sulekhalive.com/mstore/14041316/albums/default/thumbnailfull/3-bhk-apartments-in-asangaon-east-for-sale.jpg',
+  'https://upload.wikimedia.org/wikipedia/commons/0/0f/Jardinette_Apartments%2C_Los_Angeles.JPG',
+  'https://media-cdn.tripadvisor.com/media/photo-s/02/70/ed/40/view-of-apartments.jpg',
+  'https://needamortgageloan.files.wordpress.com/2011/11/apartments.jpg',
+  'https://images.trvl-media.com/hotels/5000000/4090000/4081100/4081097/4081097_99_z.jpg',
+  'https://i.pinimg.com/originals/40/1b/88/401b883cc545fd04e0c8fb9d5c1f937a.jpg',
+  'https://bloximages.newyork1.vip.townnews.com/stltoday.com/content/tncms/assets/v3/editorial/a/31/a318e7b8-e631-504a-b83e-0ae2b4fb4ef2/57a0cce8662bc.image.jpg',
+  'https://resources.stuff.co.nz/content/dam/images/1/l/e/b/u/w/image.related.StuffLandscapeSixteenByNine.620x349.1ldjnc.png/1505071321440.jpg',
+  'https://blog.rent.com/wp-content/uploads/2014/06/New-Apartment-Complex-the-Size-of-a-City-Block.jpg',
+  'https://images.pexels.com/photos/534233/pexels-photo-534233.jpeg?h=350&auto=compress&cs=tinysrgb',
+  'https://i.pinimg.com/originals/b1/b2/ed/b1b2ed87f97270e760eb423e3f8846e9.jpg',
+  'https://media-cdn.tripadvisor.com/media/photo-s/01/19/9a/3d/front-view-of-apartments.jpg',
+  'https://untappedcities-wpengine.netdna-ssl.com/wp-content/uploads/2013/08/Suburban-Houses-On-Top-of-Apartments-Upper-West-Side-2568-Broadway-NYC_4.jpg'
+]
+
+
 def rg_generator
  "#{rand(10..99).to_s}.#{rand(100..999).to_s}.#{rand(100..999).to_s}-#{rand(10..99).to_s}"
 end
@@ -82,19 +102,13 @@ end
 # }
 
 
-property_values << {
-  value: rand(1000...99999),
-  iptu: rand(300..999),
-  condo_amount: rand(300..2000),
-  rate: rand(0.1..0.2).round(2)
-}
+# property_values << {
+#   value: rand(1000...99999),
+#   iptu: rand(300..999),
+#   condo_amount: rand(300..2000),
+#   rate: rand(0.1..0.2).round(2)
+# }
 
-
-
-
-
-
-puts property_values
 
 
 
