@@ -57,21 +57,30 @@
       </ul>
     </div>
 
+    <div class="info-card">
+      <p>Preço</p>
+      <ul>
+        <li>Area Total: <%= "#{@area.total_area} #{@area.scale}" %></li>
+        <li>Area Util: <%= "#{@area.usable_area} #{@area.scale}" %></li>
+        <li>Area do Terreno: <%= "#{@area.total_area} #{@area.scale}" %></li>
+      </ul>
+    </div>
+
+    <div class="info-card">
+      <p>Valor</p>
+      <ul>
+        <li>Valor Total: <%= "R$#{@value.value}" %></li>
+        <li>Iptu: <%= "R$#{@value.iptu}" %></li>
+        <li>Condominio: <%= "R$#{@value.condo_amount}" %></li>
+        <li>Porcetagem: <%= "#{@value.rate*100}%" %></li>
+      </ul>
+    </div>
+
     <%= link_to "Deletar", admin_property_path(@property), data: {confirm: 'Tem certeza que quer deletar a propriedade?'}, class: "btn btn-danger", method: :delete  %>
   </div>
 </div>
 
-<!--   # create_table "property_areas", force: :cascade do |t|
-  #   t.string   "scale"
-  #   t.float    "total_area"
-  #   t.float    "usable_area"
-  #   t.float    "area_land"
-  #   t.integer  "property_id"
-  #   t.datetime "created_at",  null: false
-  #   t.datetime "updated_at",  null: false
-  #   t.index ["property_id"], name: "index_property_areas_on_property_id", using: :btree
-  # end
-
+<!--
   # create_table "property_values", force: :cascade do |t|
   #   t.decimal  "value"
   #   t.decimal  "iptu"
