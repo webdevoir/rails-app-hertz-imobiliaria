@@ -1,6 +1,6 @@
 class Property < ApplicationRecord
   belongs_to :landlord
-  has_attachments :photos, maximum: 2
+  has_attachments :photos, maximum: 20
   has_one :property_address, dependent: :destroy
   has_one :property_area, dependent: :destroy
   has_one :property_value, dependent: :destroy
