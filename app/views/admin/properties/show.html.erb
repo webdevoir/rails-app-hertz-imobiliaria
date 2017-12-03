@@ -1,7 +1,23 @@
 <style>
   .info-card {
     background: white;
+    padding: 1em;
+    margin: 1em 0;
   }
+
+  .info-card p {
+    font-weight: 900;
+  }
+
+  .slider-wrapper {
+    background: white;
+    padding: 1em;
+    margin: 1em 0;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+  }
+
 </style>
 
 
@@ -13,9 +29,9 @@
   </div>
   <div class="col-md-9">
     <h2> Propriedade Cod. <%= @property.code %></h2>
-    <%= cl_image_tag @property.photos.first.path, width: 400, height: 400, crop: :fill %>
-    <br>
-
+    <div class="slider-wrapper">
+      <%= cl_image_tag @property.photos.first.path, width: 400, height: 400, crop: :fill %>
+    </div>
     <div class="info-card">
       <p>Informações Basicas</p>
       <ul>
@@ -25,9 +41,9 @@
         <li>Estado da Propriedade: <%= @property.property_state  %></li>
         <li>Posição da Propriedade: <%= @property.position  %></li>
         <li>Estilo de contrução<%= @property.style  %></li>
-        <li>Ano de Contr  ução: <%= @property.construction_year  %></li>
-        <li>Nº de Banheiros<%= @property.bathrooms  %></li>
-        <li>Nº de<%= @property.garages  %></li>
+        <li>Ano de Contrução: <%= @property.construction_year  %></li>
+        <li>Nº de Banheiros: <%= @property.bathrooms  %></li>
+        <li>Nº de Garages<%= @property.garages  %></li>
         <li>Descrição<%= @property.description  %></li>
         <li><%= @property.published %></li>
         <li><%= @property.conditions %></li>
