@@ -10,6 +10,7 @@ landlords = []
 properties = []
 property_addresses = []
 property_areas = []
+property_values = []
 
 def rg_generator
  "#{rand(10..99).to_s}.#{rand(100..999).to_s}.#{rand(100..999).to_s}-#{rand(10..99).to_s}"
@@ -73,14 +74,27 @@ end
 #     condo_name: Faker::Lorem.word.capitalize
 # }
 
-property_areas << {
-    scale: 'm2',
-    total_area: rand(100...1500).round(2),
-    usable_area: rand(100...1500).round(2),
-    area_land:  rand(100...1500).round(2)
+# property_areas << {
+#     scale: 'm2',
+#     total_area: rand(100...1500).round(2),
+#     usable_area: rand(100...1500).round(2),
+#     area_land:  rand(100...1500).round(2)
+# }
+
+
+property_values << {
+  value: rand(1000...99999),
+  iptu: rand(300..999),
+  condo_amount: rand(300..2000),
+  rate: rand(0.1..0.2).round(2)
 }
 
-puts property_areas
+
+
+
+
+
+puts property_values
 
 
 
