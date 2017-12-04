@@ -1,63 +1,29 @@
 <style>
-  .client-property-card {
-    background: white;
-    padding: 0;
-    margin: 0.4em 0.2em;
-    border-radius: 5px;
-    /*display:flex;*/
-    /*height: 270px;*/
- }
 
-  .property-info  {
-    padding: 0.2em;
-    line-height: 80%;
-    font-size: 14px;
-  }
-
-  .property-photo {
-    position:relative;
-    background-size: cover;
-    background-repeat: no-repeat;
-    border-radius: 5px 5px 0 0;
-    margin: 0 0 10px 0;
-    height: 150px;
-
-  }
-
-  .bussiness-type {
-    font-size: 20px;
-    position: absolute;
-    color:white;
-    right: 10px;
-    top: 0;
-  }
-
-  .preço {
-    font-size: 20px;
-  }
 
 </style>
-
-<h1>Hertz Imobiliaria</h1>
-<h2>Encontre seu Imovel Aqui</h2>
-
-<h3>Imoveis Cadastrados</h3>
 <div class="container">
-
+<h3>Imoveis Cadastrados</h3>
   <div class="row">
     <% @properties.each do |property| %>
-      <div class="col-md-3">
-        <div class="client-property-card text-center">
-          <div class="property-photo" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cloudinary_url property.photos.last.path, height: 160, width: 260, crop: :fill;  %>');">
+      <div class="col-lg-3">
+        <div class="client-property-card">
+
+          <div class="property-photo" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cloudinary_url property.photos.last.path, height: 160, width: 250, crop: :fill;  %>');">
+
             <div class="bussiness-type">
               <p><%= property.bussiness_type.upcase %></p>
             </div>
+
           </div>
-          <div class="property-info text-left">
+
+          <div class="property-info">
             <p> Cod. <%= property.code %> </p>
             <p> Bairro: <%= property.address.neighborhood %></p>
-            <p class="preço" > <b>R$ <%= property.value.value %></b></p>
+            <p class="preco" > <b>R$ <%= property.value.value %></b></p>
           </div>
+
+          <%= link_to '', property_path(property), class: "link-property" %>
         </div>
       </div>
     <% end %>

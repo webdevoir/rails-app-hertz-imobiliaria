@@ -1,0 +1,64 @@
+  .client-property-card {
+    position: relative;
+    background: white;
+    margin: 0.5em 0.2em;
+    border-radius: 5px;
+    box-shadow: 1px 1px 10px #999999;
+
+    .property-photo {
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-radius: 5px 5px 0 0;
+    margin: 0 0 10px 0;
+    height: 160px;
+
+      .bussiness-type {
+      position: absolute;
+      font-size: 25px;
+      color:white;
+      right: 10px;
+      top: 3px;
+      }
+
+    }
+
+    .property-info  {
+    padding: 0.2em 0.5em;
+    line-height: 80%;
+    font-size: 14px;
+
+      .preco {
+        font-size: 20px;
+      }
+    }
+
+    .link-property {
+    position: absolute;
+    background: black;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    right: 0;
+    width: 100%;
+    z-index: 2;
+    opacity: 0;
+    transition: 1s ease opacity;
+
+      &:hover {
+      opacity: 0.15;
+      }
+    }
+
+  }
+
+
+
+
+
+
+
+
+
+
+
+
