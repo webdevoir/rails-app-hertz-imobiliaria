@@ -95,15 +95,6 @@
     </div>
 
     <div class="info-card">
-      <p>Preço</p>
-      <ul>
-        <li>Area Total: <%= "#{@area.total_area} #{@area.scale}" %></li>
-        <li>Area Util: <%= "#{@area.usable_area} #{@area.scale}" %></li>
-        <li>Area do Terreno: <%= "#{@area.total_area} #{@area.scale}" %></li>
-      </ul>
-    </div>
-
-    <div class="info-card">
       <p>Valor</p>
       <ul>
         <li>Valor Total: <%= "R$#{@value.value}" %></li>
@@ -117,6 +108,8 @@
     <%= link_to "Editar", edit_admin_landlord_property_path(@property.landlord, @property), class: "btn btn-primary" %>
   </div>
 </div>
+
+<br>
 
 <% content_for :js do %>
     <script type="text/javascript">

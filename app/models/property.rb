@@ -22,4 +22,13 @@ class Property < ApplicationRecord
         address
       end
   end
+
+  def value
+      value = PropertyValue.find_by(property_id: self.id)
+      if value.nil?
+        value = PropertyAddress.new
+      else
+        value
+      end
+  end
 end
