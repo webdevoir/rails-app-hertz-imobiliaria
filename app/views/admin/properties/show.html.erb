@@ -38,14 +38,14 @@
     <h2> Propriedade - Cod. <%= @property.code %></h2>
     <div class="slider-wrapper">
       <div class="slider-for">
-        <% @property.photos.each do |photo| %>
+        <% @property.photos.reverse.each do |photo| %>
           <div class="image">
             <%= cl_image_tag photo.path, height: 400, crop: :fill %>
           </div>
         <% end  %>
       </div>
       <div class="slider-nav">
-        <% @property.photos.each do |photo| %>
+        <% @property.photos.reverse.each do |photo| %>
           <div>
             <%= cl_image_tag photo.path, width: 220, height: 100, crop: :fill %>
           </div>

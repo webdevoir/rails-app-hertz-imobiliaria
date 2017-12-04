@@ -1,0 +1,50 @@
+
+  .property_photos {
+    label {
+      display:none;
+    }
+    ul {
+      list-style: none;
+      padding: 1em;
+      margin: 1em;
+      display: flex;
+      flex-wrap: wrap;
+
+      li {
+        list-style: none;
+        display: flex;
+        position: relative;
+        margin: 0.2em 0.2em;
+      }
+    }
+  }
+
+  .attachinary_container ul > li > img {
+    width: 150px;
+    height: 150px;
+  }
+
+  .attachinary_container ul > li > a {
+    position: absolute !important;
+    visibility: hidden;
+    width:100%;
+    display:flex;
+
+    &::after {
+      position:absolute !important;
+      visibility: visible;
+      font-size: 15px;
+      font-weight: 900;
+      content: "x";
+      text-align: center;
+      display: block;
+      color: black;
+      right: 5px;
+      top: -2px;
+    }
+
+    &:hover:after {
+      color: white;
+    }
+  }
+
