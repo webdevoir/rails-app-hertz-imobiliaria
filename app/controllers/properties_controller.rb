@@ -9,7 +9,8 @@ class PropertiesController < ApplicationController
   end
 
   def home
-    @properties = Property.all
+    @properties = Property.all.limit(20)
+    @properties_rent = Property.where(bussiness_type: 'venda').order(:created_at).limit(8)
   end
 
 end
