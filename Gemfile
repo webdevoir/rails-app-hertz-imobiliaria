@@ -23,8 +23,6 @@ gem 'jquery-fileupload-rails'
 gem 'coffee-rails'
 gem "jquery-slick-rails"
 
-gem 'dropzonejs-rails'
-
 gem 'faker'
 gem 'blabla', '0.0.1'
 

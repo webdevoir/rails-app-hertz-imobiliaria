@@ -78,8 +78,6 @@ GEM
       warden (~> 1.2.3)
     domain_name (0.5.20170404)
       unf (>= 0.0.5, < 1.0.0)
-    dropzonejs-rails (0.8.2)
-      rails (> 3.1)
     erubis (2.7.0)
     execjs (2.7.0)
     faker (1.8.4)
@@ -234,7 +232,6 @@ DEPENDENCIES
   cloudinary (= 1.1.7)
   coffee-rails
   devise
-  dropzonejs-rails
   faker
   figaro
   font-awesome-sass
