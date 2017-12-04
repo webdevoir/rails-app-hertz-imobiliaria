@@ -5,4 +5,5 @@
 //= require cloudinary/jquery.cloudinary
 //= require attachinary
 //= require jquery.slick
+//= require dropzone
 //= require_tree .
