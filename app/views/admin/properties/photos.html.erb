@@ -1,3 +1,14 @@
+<style>
+  .zone {
+    height: 100px;
+    width: 100px;
+    background: black;
+    cursor: pointer;
+  }
+
+</style>
+
+
 <div class="wrapper">
   <%= render 'shared/form_menu.html.erb', activate: "photos" %>
     <div class="form">
@@ -5,11 +16,24 @@
         <h1 style="font-size: 30px;" > Fotos do Imovel </h1>
         <h2 style="font-size: 20px; "> Adicione as fotos </h2>
       </div>
+      <div class="zone">
+
+      </div>
       <div class="form-property">
-        <%= simple_form_for([:admin, @landlord, @property]) do |f| %>
-          <%= f.input :photos, as: :attachinary %>
+        <%= simple_form_for([:admin, @landlord, @property])do |f| %>
+          <%= f.input :photos, as: :attachinary, input_html: { class: 'input-zone' } %>
           <%= f.submit %>
         <% end %>
       </div>
     </div>
 </div>
+
+<% content_for :js do %>
+<script>
+  $( '.zone' ).click( function(e) {
+      e.preventDefault(); // prevents submitting
+      $( '.input-zone' ).trigger( 'click' );
+  } );
+  </script>
+
+<% end %>
