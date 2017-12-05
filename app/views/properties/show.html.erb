@@ -87,6 +87,16 @@
     </div>
 
     <div class="info-card">
+      <p>Valor</p>
+      <ul>
+        <li>Valor Total: <%= "R$#{@value.value}" %></li>
+        <li>Iptu: <%= "R$#{@value.iptu}" %></li>
+        <li>Condominio: <%= "R$#{@value.condo_amount}" %></li>
+        <li>Porcetagem: <%= "#{@value.rate*100}%" %></li>
+      </ul>
+    </div>
+
+    <div class="info-card">
       <p>Informações Basicas</p>
       <ul>
         <li>Tipo Negocição: <%= @property.bussiness_type %></li>
@@ -121,15 +131,7 @@
       </ul>
     </div>
 
-    <div class="info-card">
-      <p>Valor</p>
-      <ul>
-        <li>Valor Total: <%= "R$#{@value.value}" %></li>
-        <li>Iptu: <%= "R$#{@value.iptu}" %></li>
-        <li>Condominio: <%= "R$#{@value.condo_amount}" %></li>
-        <li>Porcetagem: <%= "#{@value.rate*100}%" %></li>
-      </ul>
-    </div>
+
   </div>
   <div class="col-lg-4">
     <div class="contact-card text-center">
