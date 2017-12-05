@@ -1,12 +1,13 @@
 <div class="client-property-card">
   <div class="property-photo" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cloudinary_url property.photos.last.path, height: 160, width: 250, crop: :fill;  %>');">
   <div class="bussiness-type">
-    <p><%= property.bussiness_type.upcase %></p>
+    <!-- <p><%= property.bussiness_type.upcase %></p> -->
   </div>
   </div>
   <div class="property-info">
+    <p><%= property.address.neighborhood %> • <%= property.address.city %> </p>
+    <p><%= property.property_kind == "casa" ? "Casa" : "Apto" %> • <%= property.rooms %> dorms • <%=property.garages %> vagas • <%=property.garages %> </p>
     <p> Cod. <%= property.code %> </p>
-    <p> Bairro: <%= property.address.neighborhood %></p>
     <p class="preco" > <b>R$ <%= property.value.value %></b></p>
   </div>
 <%= link_to '', property_path(property), class: "link-property" %>
