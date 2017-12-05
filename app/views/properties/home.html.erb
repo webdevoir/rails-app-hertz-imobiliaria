@@ -25,17 +25,41 @@
   }
 
   .footer {
-    padding: 1em 7em;
+    padding: 2em 7em 0;
     background: black;
-    height: 50vh;
+    height: 40vh;
     color: white;
     display: flex;
     justify-content: space-between;
   }
 
+  h5 {
+    padding-bottom: 5px;
+    border-bottom: 3px solid #fe7e01;
+  }
+
+  ul {
+    list-style-type: none;
+    padding: 0;
+  }
+
+  .footer ul > li{
+    font-weight: 300;
+  }
+
   .sign-up-button {
     background: black;
     border: none;
+  }
+
+  .social {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .social i {
+    color:#fe7e01;
+    font-size: 40px;
   }
 </style>
 
@@ -72,7 +96,7 @@
 <div class="footer">
 
   <div class="menu">
-    <h5>Menu</h5>
+    <h5>MENU</h5>
     <ul>
       <li>Home</li>
       <li>Empresa</li>
@@ -101,6 +125,11 @@
       <li>São Caetano do Sul - SP</li>
       <li>Creci: J-4909</li>
     </ul>
+    <div class="social">
+      <i class="fa fa-facebook" aria-hidden="true"></i>
+      <i class="fa fa-linkedin" aria-hidden="true"></i>
+      <i class="fa fa-envelope-o" aria-hidden="true"></i>
+    </div>
   </div>
 
 </div>

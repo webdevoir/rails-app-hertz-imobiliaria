@@ -4,7 +4,12 @@
   background-size: cover;
   background-repeat: no-repeat;
   .search {
-    padding-top:40vh;
+    margin-top:20vh;
+    input {
+      left: 40px;
+      width: 417px;
+      position: relative;
+    }
     .search-icon {
       position:relative;
       right: 30px;
