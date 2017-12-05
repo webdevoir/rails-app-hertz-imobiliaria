@@ -8,6 +8,31 @@
   .slick-prev:before, .slick-next:before {
     color: #fe7e01;
   }
+
+  .sign-up {
+    padding: 1em;
+    background:#fe7e01;
+    height: 35vh;
+  }
+
+  .sign-up h3 {
+    font-size: 30px;
+    font-weight: 300;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .footer {
+    background: black;
+    height: 50vh;
+  }
+
+  .sign-up-button {
+    background: black;
+    border: none;
+  }
 </style>
 
 
@@ -32,6 +57,19 @@
       <% end %>
     </div>
   </div>
+</div>
+
+
+
+
+<div class="sign-up text-center">
+  <h3>Alugando ou Vendendo?</h3>
+  <%= link_to "Cadastre Seu Imovel", "#" , class: 'btn btn-primary btn-lg sign-up-button'  %>
+</div>
+
+
+<div class="footer">
+
 </div>
 
 
