@@ -33,14 +33,41 @@
   .contact-card {
     background: white;
     margin-top: 19px;
+    padding-top: 1em;
     height: 300px;
+  }
+
+  .form {
+  margin: 1em;
+  padding: 1em;
+  background: #999999;
+
+  }
+
+  .contato {
+    background: #fe7e01;;
+    border: none;
+  }
+
+  input {
+    width: 80%;
+    margin: 5px 0;
+  }
+
+  /*Reference to the show page*/
+  .property-title {
+    font-size: 22px;
+    font-weight: 300;
+    padding-top: 10px;
+    padding-left: 10px;
+    color: #999999;
   }
 
 </style>
 
 
 <div class="row">
-  <h2> Propriedade - Cod. <%= @property.code %></h2>
+  <h2 class="property-title"> <%= @address.neighborhood %> • <%= @address.city %> - Cod. <%= @property.code %></h2>
   <div class="col-lg-8">
     <div class="slider-wrapper">
       <div class="slider-for">
@@ -67,27 +94,21 @@
         <li>Tipo: <%= @property.property_kind  %></li>
         <li>Estado da Propriedade: <%= @property.property_state  %></li>
         <li>Posição da Propriedade: <%= @property.position  %></li>
-        <li>Estilo de contrução<%= @property.style  %></li>
+        <li>Estilo de contrução: <%= @property.style  %></li>
         <li>Ano de Contrução: <%= @property.construction_year  %></li>
         <li>Nº de Banheiros: <%= @property.bathrooms  %></li>
-        <li>Nº de Garages<%= @property.garages  %></li>
-        <li>Descrição<%= @property.description  %></li>
-        <li><%= @property.published %></li>
-        <li><%= @property.conditions %></li>
+        <li>Nº de Garages: <%= @property.garages  %></li>
+        <li>Descrição: <%= @property.description  %></li>
       </ul>
     </div>
 
     <div class="info-card">
       <p>Endereço</p>
       <ul>
-        <li>CEP: <%= @address.cep %></li>
         <li>Pais: <%= @address.country %></li>
         <li>Estado: <%= @address.state %></li>
         <li>Cidade: <%= @address.city %></li>
         <li>Bairro: <%= @address.neighborhood %></li>
-        <li>Largadouro: <%= @address.street %>, <%= @address.number  %></li>
-        <li>Complemento: <%= @address.complement %></li>
-        <li>Condominio: <%= @address.condo_name %></li>
       </ul>
     </div>
 
@@ -111,12 +132,13 @@
     </div>
   </div>
   <div class="col-lg-4">
-    <div class="contact-card">
+    <div class="contact-card text-center">
       <div class="form">
         <input type="text" placeholder="Nome">
         <input type="text" placeholder="Telefone">
         <input type="text" placeholder="email">
       </div>
+      <a href="#" class="btn btn-primary btn-lg contato">Receba Mais Informações</a>
     </div>
   </div>
 
