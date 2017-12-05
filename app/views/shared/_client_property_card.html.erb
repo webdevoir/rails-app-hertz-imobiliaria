@@ -6,9 +6,16 @@
   </div>
   <div class="property-info">
     <p><%= property.address.neighborhood %> • <%= property.address.city %> </p>
-    <p><%= property.property_kind == "casa" ? "Casa" : "Apto" %> • <%= property.rooms %> dorms • <%=property.garages %> vagas • <%=property.garages %> </p>
+    <p><%= property.property_kind == "casa" ? "Casa" : "Apto" %> • <%= property.rooms %> dorms • <%=property.garages %> vagas • <%=property.area.total_area.floor %><%=property.area.scale %> </p>
     <p> Cod. <%= property.code %> </p>
-    <p class="preco" > <b>R$ <%= property.value.value %></b></p>
+    <hr>
+    <p class="preco text-right" > <%=
+    if property.bussiness_type == 'alugel'
+      'Alugel'
+    elsif property.bussiness_type == 'venda'
+      'Venda'
+    end
+      %> <%= number_to_currency property.value.value.floor, unit: "R$", delimiter: ".", precision: 0  %></p>
   </div>
 <%= link_to '', property_path(property), class: "link-property" %>
 </div>

@@ -26,9 +26,18 @@ class Property < ApplicationRecord
   def value
       value = PropertyValue.find_by(property_id: self.id)
       if value.nil?
-        value = PropertyAddress.new
+        value = PropertyValue.new
       else
         value
+      end
+  end
+
+  def area
+      area = PropertyArea.find_by(property_id: self.id)
+      if area.nil?
+        area = PropertyArea.new
+      else
+        area
       end
   end
 end
