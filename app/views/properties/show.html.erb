@@ -1,149 +1,83 @@
-<style>
-  .info-card {
-    background: white;
-    padding: 1em;
-    margin: 1em 0;
-  }
-
-  .info-card p {
-    font-weight: 900;
-  }
-
-  .slider-wrapper {
-    background: white;
-    padding: 2em 2em 3px 2em;
-    margin: 1em 0;
-  }
-
-  .slider-wrapper .slider-for .image {
-    display: flex !important;
-    justify-content: center;
-
-  }
-
-  .slick-prev:before, .slick-next:before {
-    color:black !important;
-  }
-
-
-
-
-  /*Contact Card Style*/
-
-  .contact-card {
-    background: white;
-    margin-top: 19px;
-    padding-top: 1em;
-    height: 300px;
-  }
-
-  .form {
-  margin: 1em;
-  padding: 1em;
-  background: #999999;
-
-  }
-
-  .contato {
-    background: #fe7e01;;
-    border: none;
-  }
-
-  input {
-    width: 80%;
-    margin: 5px 0;
-  }
-
-  /*Reference to the show page*/
-  .property-title {
-    font-size: 22px;
-    font-weight: 300;
-    padding-top: 10px;
-    padding-left: 10px;
-    color: #999999;
-  }
-
-</style>
-
-
-<div class="row">
-  <h2 class="property-title"> <%= @address.neighborhood %> • <%= @address.city %> - Cod. <%= @property.code %></h2>
-  <div class="col-lg-8">
-    <div class="slider-wrapper">
-      <div class="slider-for">
-        <% @property.photos.reverse.each do |photo| %>
-          <div class="image">
-            <%= cl_image_tag photo.path, height: 400, crop: :fill %>
-          </div>
-        <% end  %>
+<div class="client-property-show">
+  <div class="row">
+    <h2 class="property-title"> <%= @address.neighborhood %> • <%= @address.city %> - Cod. <%= @property.code %></h2>
+    <div class="col-lg-8">
+      <div class="slider-wrapper">
+        <div class="slider-for">
+          <% @property.photos.reverse.each do |photo| %>
+            <div class="image">
+              <%= cl_image_tag photo.path, height: 400, crop: :fill %>
+            </div>
+          <% end  %>
+        </div>
+        <div class="slider-nav">
+          <% @property.photos.reverse.each do |photo| %>
+            <div>
+              <%= cl_image_tag photo.path, width: 220, height: 100, crop: :fill %>
+            </div>
+          <% end  %>
+        </div>
       </div>
-      <div class="slider-nav">
-        <% @property.photos.reverse.each do |photo| %>
-          <div>
-            <%= cl_image_tag photo.path, width: 220, height: 100, crop: :fill %>
-          </div>
-        <% end  %>
+
+      <div class="info-card">
+        <p>Valor</p>
+        <ul>
+          <li>Valor Total: <%= "R$#{@value.value}" %></li>
+          <li>Iptu: <%= "R$#{@value.iptu}" %></li>
+          <li>Condominio: <%= "R$#{@value.condo_amount}" %></li>
+          <li>Porcetagem: <%= "#{@value.rate*100}%" %></li>
+        </ul>
+      </div>
+
+      <div class="info-card">
+        <p>Informações Basicas</p>
+        <ul>
+          <li>Tipo Negocição: <%= @property.bussiness_type %></li>
+          <li>Tipo de Propriedade:<%= @property.property_type  %></li>
+          <li>Tipo: <%= @property.property_kind  %></li>
+          <li>Estado da Propriedade: <%= @property.property_state  %></li>
+          <li>Posição da Propriedade: <%= @property.position  %></li>
+          <li>Estilo de contrução: <%= @property.style  %></li>
+          <li>Ano de Contrução: <%= @property.construction_year  %></li>
+          <li>Nº de Banheiros: <%= @property.bathrooms  %></li>
+          <li>Nº de Garages: <%= @property.garages  %></li>
+          <li>Descrição: <%= @property.description  %></li>
+        </ul>
+      </div>
+
+      <div class="info-card">
+        <p>Endereço</p>
+        <ul>
+          <li>Pais: <%= @address.country %></li>
+          <li>Estado: <%= @address.state %></li>
+          <li>Cidade: <%= @address.city %></li>
+          <li>Bairro: <%= @address.neighborhood %></li>
+        </ul>
+      </div>
+
+      <div class="info-card">
+        <p>Area</p>
+        <ul>
+          <li>Area Total: <%= "#{@area.total_area} #{@area.scale}" %></li>
+          <li>Area Util: <%= "#{@area.usable_area} #{@area.scale}" %></li>
+          <li>Area do Terreno: <%= "#{@area.total_area} #{@area.scale}" %></li>
+        </ul>
+      </div>
+
+
+    </div>
+    <div class="col-lg-4">
+      <div class="contact-card text-center">
+        <div class="form">
+          <input type="text" placeholder="Nome">
+          <input type="text" placeholder="Telefone">
+          <input type="text" placeholder="email">
+        </div>
+        <a href="#" class="btn btn-primary btn-lg contato">Receba Mais Informações</a>
       </div>
     </div>
-
-    <div class="info-card">
-      <p>Valor</p>
-      <ul>
-        <li>Valor Total: <%= "R$#{@value.value}" %></li>
-        <li>Iptu: <%= "R$#{@value.iptu}" %></li>
-        <li>Condominio: <%= "R$#{@value.condo_amount}" %></li>
-        <li>Porcetagem: <%= "#{@value.rate*100}%" %></li>
-      </ul>
-    </div>
-
-    <div class="info-card">
-      <p>Informações Basicas</p>
-      <ul>
-        <li>Tipo Negocição: <%= @property.bussiness_type %></li>
-        <li>Tipo de Propriedade:<%= @property.property_type  %></li>
-        <li>Tipo: <%= @property.property_kind  %></li>
-        <li>Estado da Propriedade: <%= @property.property_state  %></li>
-        <li>Posição da Propriedade: <%= @property.position  %></li>
-        <li>Estilo de contrução: <%= @property.style  %></li>
-        <li>Ano de Contrução: <%= @property.construction_year  %></li>
-        <li>Nº de Banheiros: <%= @property.bathrooms  %></li>
-        <li>Nº de Garages: <%= @property.garages  %></li>
-        <li>Descrição: <%= @property.description  %></li>
-      </ul>
-    </div>
-
-    <div class="info-card">
-      <p>Endereço</p>
-      <ul>
-        <li>Pais: <%= @address.country %></li>
-        <li>Estado: <%= @address.state %></li>
-        <li>Cidade: <%= @address.city %></li>
-        <li>Bairro: <%= @address.neighborhood %></li>
-      </ul>
-    </div>
-
-    <div class="info-card">
-      <p>Area</p>
-      <ul>
-        <li>Area Total: <%= "#{@area.total_area} #{@area.scale}" %></li>
-        <li>Area Util: <%= "#{@area.usable_area} #{@area.scale}" %></li>
-        <li>Area do Terreno: <%= "#{@area.total_area} #{@area.scale}" %></li>
-      </ul>
-    </div>
-
 
   </div>
-  <div class="col-lg-4">
-    <div class="contact-card text-center">
-      <div class="form">
-        <input type="text" placeholder="Nome">
-        <input type="text" placeholder="Telefone">
-        <input type="text" placeholder="email">
-      </div>
-      <a href="#" class="btn btn-primary btn-lg contato">Receba Mais Informações</a>
-    </div>
-  </div>
-
 </div>
 
 <br>

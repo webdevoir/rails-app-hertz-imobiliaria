@@ -1,0 +1,67 @@
+  .client-property-show {
+    .info-card {
+    background: white;
+    padding: 1em;
+    margin: 1em 0;
+  }
+
+  .info-card p {
+    font-weight: 900;
+  }
+
+  .slider-wrapper {
+    background: white;
+    padding: 2em 2em 3px 2em;
+    margin: 1em 0;
+  }
+
+  .slider-wrapper .slider-for .image {
+    display: flex !important;
+    justify-content: center;
+
+  }
+
+  .slick-prev:before, .slick-next:before {
+    color:black !important;
+  }
+
+
+
+
+  /*Contact Card Style*/
+
+  .contact-card {
+    background: white;
+    margin-top: 19px;
+    padding-top: 1em;
+    height: 300px;
+  }
+
+  .form {
+  margin: 1em;
+  padding: 1em;
+  background: #999999;
+
+  }
+
+  .contato {
+    background: #fe7e01;;
+    border: none;
+  }
+
+  input {
+    width: 80%;
+    margin: 5px 0;
+  }
+
+  /*Reference to the show page*/
+  .property-title {
+    font-size: 22px;
+    font-weight: 300;
+    padding-top: 10px;
+    padding-left: 10px;
+    color: #999999;
+  }
+
+  }
+
