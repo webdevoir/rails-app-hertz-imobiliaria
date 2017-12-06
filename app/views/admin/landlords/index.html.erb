@@ -1,21 +1,3 @@
-<style>
-
-.landlord-search {
-  width:100%;
-  margin: 0 1em;
-}
-
-.landlord-search .input{
-  width:85%;
-}
-
-.landlord-search .button{
-  width:10%;
-  margin-right: 1em;
-}
-
-</style>
-
 <div class="row">
   <div class="col-md-3">
     <br>
@@ -35,25 +17,7 @@
 
 
     <% @landlords.each do |landlord| %>
-      <div class="landlord-card">
-        <%= image_tag('avatar-mini.jpg',  size: "100x100")   %>
-        <div class="info">
-          <div class="main-info">
-            <p class="landlord-name"><%= landlord.name %><p>
-            <p>Fone: <%= landlord.phone %><p>
-            <p>Email: <%= landlord.email %><p>
-          </div>
-          <div class="booked text-right">
-            <p><b>Cadastros: <%= landlord.properties.count %></b></p>
-            <p>Venda:  <%= landlord.properties.where(bussiness_type: "venda").count %></p>
-            <p>Alugel: <%= landlord.properties.where(bussiness_type: "alugel").count %></p>
-          </div>
-        </div>
-        <div class="landlord-card-link">
-          <%= link_to "", admin_landlord_path(landlord) %>
-        </div>
-
-      </div>
+      <%= render 'shared/landlord_card', landlord: landlord  %>
     <% end %>
   </div>
 </div>
