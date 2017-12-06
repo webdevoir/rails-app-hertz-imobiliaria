@@ -72,7 +72,7 @@
     <%= link_to '+ Cadastrar Nova Propriedade', new_admin_landlord_property_path(@landlord), class: "btn btn-danger" %>
 
     <% @landlord.properties.each do |property| %>
-      <div class="landlord-property-card">
+      <div class="property-card">
         <% if property.photos.first %>
           <p><%= cl_image_tag (property.photos.first).path, width: 100, height: 100, crop: :fill %></p>
         <% end %>

@@ -1,40 +1,4 @@
-.landlord {
-    display:flex;
-    align-items: center;
-    justify-content: space-between;
-    font-size: 27px;
-  }
-
- .landlord-info {
-  background-color: white;
-  border-top: 3px solid  #f88004;
-  margin-top: 12px ;
-  padding: 0.5em;
-  box-shadow: 2px 2px 5px #808080;
-  position:relative;
 
 
-  p {
-    margin: 0.3em 0;
-  }
-
-  .landlord-edit {
-    position:absolute;
-    top:0.5em;
-    right: 0.5em;
-
-  }
- }
-
- .landlord-property-card {
-  background-color: white;
-  margin:0.5em 0;
-  padding:0.5em;
-  display: flex;
-
-  .info {
-    margin-left: 10px
-  }
- }
 
 

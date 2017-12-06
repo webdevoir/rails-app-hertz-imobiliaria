@@ -7,6 +7,16 @@
     border-top: 5px solid #f88004;
     display:flex;
 
+    .info {
+    line-height: 90%;
+    margin-left: 10px;
+    font-size: 15px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding-right: 10px;
+}
+
   }
 
   .landlord-card p {
@@ -36,16 +46,7 @@
     opacity:0.1;
   }
 
-  .info {
-  line-height: 90%;
-  margin-left: 10px;
-  font-size: 15px;
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  padding-right: 10px;
 
-}
 
 .info .landlord-name {
   font-weight: 700;
