@@ -72,18 +72,7 @@
     <%= link_to '+ Cadastrar Nova Propriedade', new_admin_landlord_property_path(@landlord), class: "btn btn-danger" %>
 
     <% @landlord.properties.each do |property| %>
-      <div class="property-card">
-        <% if property.photos.first %>
-          <p><%= cl_image_tag (property.photos.first).path, width: 100, height: 100, crop: :fill %></p>
-        <% end %>
-
-        <div class="info">
-        <p>Codigo:<%= property.code %></p>
-        <p><%= property.address.street %>, <%= property.address.number  %></p>
-        <p><%= link_to "Ver propriedade", admin_property_path(property) %></p>
-        </div>
-
-      </div>
+      <%= render 'shared/property_card', property: property  %>
     <% end %>
   </div>
 </div>

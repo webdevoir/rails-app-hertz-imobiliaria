@@ -10,11 +10,7 @@
       <p>Não tem propriedades casdastradas</p>
     <% else %>
       <% @properties.each do |property| %>
-        <div class="landlord-property-card">
-          <p>Codigo:<%= property.code %><p>
-          <p><%= property.address.street %>, <%= property.address.number  %><p>
-          <p><%= link_to "Mostra", admin_property_path(property) %></p>
-        </div>
+        <%= render 'shared/property_card', property: property %>
       <% end %>
     <% end %>
   </div>
