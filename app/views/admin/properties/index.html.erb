@@ -5,7 +5,11 @@
     <%= render 'shared/sidebar' %>
   </div>
   <div class="col-md-9">
-    <h1>Propriedades casdastradas</h1>
+    <h1>Propriedades</h1>
+    <%= simple_form_for([:admin, @properties], method: :get) do |f| %>
+    <%= f.submit %>
+    <%= f.button %>
+    <% end  %>
     <% if @properties.empty? %>
       <p>Não tem propriedades casdastradas</p>
     <% else %>
