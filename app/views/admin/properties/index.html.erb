@@ -1,14 +1,23 @@
+<style>
+  .form-property-search {
+    width:75%;
+  }
+</style>
+
+
+
 <div class="row">
   <div class="col-md-3">
     <br>
     <br>
     <%= render 'shared/sidebar' %>
+
   </div>
   <div class="col-md-9">
     <h1>Propriedades</h1>
     <%= form_tag(admin_properties_path, method: :get) do  %>
-    <%= text_field_tag(:query)  %>
-    <%= submit_tag("Procurar Propriedade")  %>
+    <%= text_field_tag :query, nil, placeholder: 'Procure por código ou rua', class: 'form-property-search' %>
+    <%= submit_tag("Procurar Propriedade") %>
     <% end %>
     <% if @properties.empty? %>
       <p>Não tem propriedades casdastradas</p>
