@@ -2,7 +2,11 @@ class Admin::PropertiesController < ApplicationController
   before_action :set_landlord, only: [:new, :create, :edit, :update, :address, :area, :value, :photos]
   before_action :set_property, only: [:edit, :update, :show, :address, :area, :value, :photos, :destroy]
   def index
-    @properties = Property.all
+    if params[:query].nil?
+      @properties = Property.all
+    else
+      @properties = Property.where(code: params[:query])
+    end
   end
 
   def new
