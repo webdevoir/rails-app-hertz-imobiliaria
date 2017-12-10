@@ -6,7 +6,7 @@ class Admin::PropertiesController < ApplicationController
       @properties = Property.all
     else
       @properties = Property.where(code: params[:query])
-      address = PropertyAddress(stree: params[:query])
+      # address = PropertyAddress(street: params[:query])
       @properties << Property.where(code: params[:query])
     end
   end
