@@ -18,10 +18,10 @@
     <div class="search-filter">
       <%= form_tag(admin_properties_path, method: :get) do %>
         <h3>Filtro</h3>
-        <h5>Tipo de Negocio</h5>
         <%= label_tag("Tipo de Negociação") %>
-        <%= select_tag("Tipo de Négocião", options_for_select(["Comprar", "Alugel"])) %>
+        <%= select_tag(:type_of_negotiation, options_for_select(["Comprar", "Alugel"])) %>
         <h5>Preço</h5>
+        <%= range_field(:property, :price, in: 1..100) %>
         <h5>Cidade</h5>
         <h5>Estado</h5>
       <% end %>
