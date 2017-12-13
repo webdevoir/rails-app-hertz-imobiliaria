@@ -2,6 +2,33 @@ class Admin::PropertiesController < ApplicationController
   before_action :set_landlord, only: [:new, :create, :edit, :update, :address, :area, :value, :photos]
   before_action :set_property, only: [:edit, :update, :show, :address, :area, :value, :photos, :destroy]
   def index
+    @estados = ["AC",
+AL
+AP
+AM
+BA
+CE
+DF
+ES
+GO
+MA
+MT
+MS
+MG
+Pará  PA
+Paraíba PB
+Paraná  PR
+Pernambuco  PE
+Piauí PI
+Rio de Janeiro  RJ
+Rio Grande do Norte RN
+Rio Grande do Sul RS
+Rondônia  RO
+Roraima RR
+Santa Catarina  SC
+São Paulo SP
+Sergipe SE
+Tocantins TO"
     if params[:query].nil?
       @properties = Property.all
     else
