@@ -20,11 +20,11 @@
         <h3>Filtro</h3>
         <%= label_tag("Tipo de Negociação") %>
         <%= select_tag(:type_of_negotiation, options_for_select(["Comprar", "Alugel"])) %>
-        <h5>Preço</h5>
+        <%= label_tag("Preço") %>
         <%= range_field(:property, :price, in: 1..100) %>
-        <h5>Estado</h5>
+        <%= label_tag("Estado") %>
         <%= select_tag(:state, options_for_select(@estados)) %>
-        <h5>Cidade</h5>
+        <%= label_tag("Cidade") %>
         <%= select_tag(:city, options_for_select(["city-1", "city-2", "city-3", "city-4"])) %>
 
       <% end %>
