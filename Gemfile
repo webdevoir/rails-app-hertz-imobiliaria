@@ -27,6 +27,8 @@ gem 'faker'
 gem 'blabla', '0.0.1'
 
 gem "geocoder"
+gem 'gmaps4rails'
+gem 'underscore-rails'
 
 group :development, :test do
   gem 'pry-byebug'
