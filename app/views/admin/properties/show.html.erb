@@ -84,7 +84,7 @@
 <br>
 
 <% content_for :js do %>
-    <script type="text/javascript">
+  <%= javascript_tag do  %>
       $('.slider-for').slick({
         slidesToShow: 1,
         slidesToScroll: 1,
@@ -101,6 +101,9 @@
         centerMode: true,
         focusOnSelect: true
       });
-  </script>
+
+      const coord = <%= raw @property_coodinates.to_json %>;
+      alert('Property coordinates are ' + coord.lat + ', ' + coord.lng);
+  <% end %>
 <% end %>
 
