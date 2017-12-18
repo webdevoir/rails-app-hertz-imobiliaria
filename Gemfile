@@ -26,6 +26,8 @@ gem "jquery-slick-rails"
 gem 'faker'
 gem 'blabla', '0.0.1'
 
+gem "geocoder"
+
 group :development, :test do
   gem 'pry-byebug'
   gem 'pry-rails'
