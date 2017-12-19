@@ -10,6 +10,7 @@ class PropertiesController < ApplicationController
     @address = PropertyAddress.where(property_id: @property).first
     @area = PropertyArea.where(property_id: @property).first
     @value = PropertyValue.where(property_id: @property).first
+    @property_coodinates = {lat: @address.latitude, lng: @address.longitude}
   end
 
   def home

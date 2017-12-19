@@ -24,7 +24,7 @@
           <li>Valor Total: <%= "R$#{@value.value}" %></li>
           <li>Iptu: <%= "R$#{@value.iptu}" %></li>
           <li>Condominio: <%= "R$#{@value.condo_amount}" %></li>
-          <li>Porcetagem: <%= "#{@value.rate*100}%" %></li>
+          <li>Porcetagem: <%= "#{@value.rate*100}%"  if @value.rate != nil %></li>
         </ul>
       </div>
       <div class="info-card">
@@ -42,6 +42,11 @@
           <li>Descrição: <%= @property.description  %></li>
         </ul>
       </div>
+
+      <div class="info-card">
+        <div id="map" style="height:300px;"></div>
+      </div>
+
       <div class="info-card">
         <p>Endereço</p>
         <ul>
@@ -92,5 +97,22 @@
         centerMode: true,
         focusOnSelect: true
       });
+
+      const coord = <%= raw @property_coodinates.to_json %>;
+
+      var handler = Gmaps.build('Google', { markers: { clusterer: undefined } });
+      handler.buildMap({ internal: { id: 'map' } }, function() {
+          circles = handler.addCircles(
+          [
+            {
+              "lat": coord.lat,
+              "lng": coord.lng,
+              "radius": 1000
+            }, ]
+          );
+        handler.bounds.extendWith(circles);
+        handler.fitMapToBounds();
+        handler.getMap().setZoom(13);
+        });
   </script>
 <% end %>
