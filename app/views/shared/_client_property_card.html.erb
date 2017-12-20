@@ -1,12 +1,12 @@
 <div class="client-property-card">
-  <div class="property-photo" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cloudinary_url property.photos.last.path, height: 160, width: 250, crop: :fill;  %>');">
+  <div class="property-photo" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= (cloudinary_url property.photos.last.path, height: 160, width: 250, crop: :fill) if property.photos.last != nil %>');">
   <div class="bussiness-type">
     <!-- <p><%= property.bussiness_type.upcase %></p> -->
   </div>
   </div>
   <div class="property-info">
     <p><%= property.address.neighborhood %> • <%= property.address.city %> </p>
-    <p><%= property.property_kind == "casa" ? "Casa" : "Apto" %> • <%= property.rooms %> dorms • <%=property.garages %> vagas • <%=property.area.total_area.floor %><%=property.area.scale %> </p>
+    <p><%= property.property_kind == "casa" ? "Casa" : "Apto" %> • <%= property.rooms %> dorms • <%=property.garages %> vagas • <%= (property.area.total_area.floor) if property.area.total_area != nil %><%=property.area.scale %> </p>
     <p> Cod. <%= property.code %> </p>
     <hr>
     <p class="preco text-right" > <%=
@@ -15,7 +15,7 @@
     elsif property.bussiness_type == 'venda'
       'Venda'
     end
-      %> <%= number_to_currency property.value.value.floor, unit: "R$", delimiter: ".", precision: 0  %></p>
+      %> <%= (number_to_currency property.value.value.floor, unit: "R$", delimiter: ".", precision: 0) if property.value.value != nil %></p>
   </div>
 <%= link_to '', property_path(property), class: "link-property" %>
 </div>
