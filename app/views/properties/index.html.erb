@@ -7,7 +7,32 @@
     </div>
   <% end %>
 </div>
-  <div class="col-lg-6">
-    <div class="map"></div>
+  <div class="col-lg-6" style='position: relative;'>
+    <div class="map" style='position: sticky;'>
+      <div class="info-card" >
+        <div id="map" style="height:600px;"></div>
+      </div>
+    </div>
   </div>
 </div>
+
+
+<% content_for :js do %>
+  <%= javascript_tag do  %>
+      const coord = <%= raw @property_coodinates.to_json %>;
+
+      var handler = Gmaps.build('Google', { markers: { clusterer: undefined } });
+      handler.buildMap({ internal: { id: 'map' } }, function() {
+        markers = handler.addMarkers(
+          [
+            {
+              "lat": coord.lat,
+              "lng": coord.lng
+            }, ]
+          );
+        handler.bounds.extendWith(markers);
+        handler.fitMapToBounds();
+        handler.getMap().setZoom(13);
+        });
+  <% end %>
+<% end %>
