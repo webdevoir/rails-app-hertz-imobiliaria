@@ -3,7 +3,7 @@ class PropertiesController < ApplicationController
   layout 'landing-page', only: [:home]
 
   def index
-    @properties = Property.all
+    @properties = Property.all.limit(30)
   end
 
   def show
