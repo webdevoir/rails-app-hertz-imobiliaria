@@ -3,7 +3,12 @@ class PropertiesController < ApplicationController
   layout 'landing-page', only: [:home]
 
   def index
-      @properties = Property.all.limit(30)
+      query = params[:index][:query]
+      if query == ""
+        @properties = Property.all
+      else
+        @properties = Property.where(code: query)
+      end
   end
 
   def show
