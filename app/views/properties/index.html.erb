@@ -1,1 +1,8 @@
 <h1>All Properties</h1>
+<div class="row">
+  <% @properties.each do |property| %>
+  <div class="col-lg-3">
+    <%= render 'shared/client_property_card', property: property  %>
+  </div>
+<% end %>
+</div>

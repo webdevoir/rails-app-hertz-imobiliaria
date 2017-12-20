@@ -3,6 +3,7 @@ class PropertiesController < ApplicationController
   layout 'landing-page', only: [:home]
 
   def index
+    @properties = Properties.all
   end
 
   def show
