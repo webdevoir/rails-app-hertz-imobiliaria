@@ -1,4 +1,3 @@
-<%= link_to 'voltar', admin_landlords_path %>
 <div class="row">
   <div class="col-md-3">
     <br>
@@ -7,7 +6,7 @@
   </div>
   <div class="col-md-9">
     <div class="landlord">
-      <p>Proprietario</p>
+      <h3>Proprietario</h3>
     </div>
     <div class="landlord-info">
       <div class="basic-info">
@@ -15,7 +14,7 @@
         <p>Nome: <%= @landlord.name %> </p>
         <p>Telefone: <%= @landlord.phone %></p>
         <p>Email: <% @landlord.email %></p>
-        <p>Quantidades de Propriedades Cadastradas: <%= @landlord.properties.count %></p>
+        <p>Nro. Propriedades: <%= @landlord.properties.count %></p>
       </div>
       <div class="landlord-more-info collapse" id="collapseExample"">
         <div class="row">
