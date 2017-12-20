@@ -6,7 +6,7 @@
     <div class="info">
       <p>Cod.<%= property.code %> • <%= property.address.neighborhood %> • <%= property.address.city %></p>
       <p><%= property.address.street %>, <%= property.address.number  %></p>
-      <p><%= property.value.value %></p>
+      <p><%= (number_to_currency property.value.value.floor, unit: "R$", delimiter: ".", precision: 0) if property.value.value != nil %></p>
     </div>
   </div>
 
