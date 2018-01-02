@@ -10,9 +10,9 @@
 <div class="landlord-form">
   <%= simple_form_for ([:admin, landlord]) do |f| %>
     <%= f.input :name, label: 'Nome', placeholder: "Ex: João Garcia Rodrigues" %>
-    <%= f.input :rg, label: 'Documento' %>
+    <%= f.input :rg, label: 'Documento(RG/RNE)', placeholder: "RG" %>
     <%= f.input :cpf, label: 'CPF' %>
-    <%= f.input :birthday, label: 'Data de Nacimento' %>
+    <%= f.input :birthday, start_year: Date.today.year - 110, end_year: Date.today.year-10, label: 'Data de Nacimento' %>
     <%= f.input :martial_status, label: 'Estado Civil' %>
     <%= f.input :profession, label: 'Profissão' %>
     <%= f.input :phone, label: 'Telefone' %>
