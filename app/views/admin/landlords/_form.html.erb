@@ -17,8 +17,8 @@
     <%= f.input :profession, label: 'Profissão', placeholder: "Engenheiro" %>
     <%= f.input :phone, label: 'Telefone', placeholder: "11-9833-9182" %>
     <%= f.input :email, label: 'Email', placeholder: "joao.garcia@gmail.com" %>
-    <%= f.input :address, label: 'Endereço' %>
-    <%= f.input :cep, label: 'CEP' %>
+    <%= f.input :address, label: 'Endereço', placeholder: "Rua Canario, 874" %>
+    <%= f.input :cep, label: 'CEP', placeholder: "5521-043" %>
     <p><b>Deposito</b></p>
     <%= f.collection_radio_buttons :deposit, [[true, 'Sim'] ,[false, 'Nao']], :first, :last %>
     <%= f.input :type_of_account, label: 'tipo' %>
