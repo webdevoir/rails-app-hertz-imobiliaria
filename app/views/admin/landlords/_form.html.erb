@@ -13,7 +13,7 @@
     <%= f.input :rg, label: 'Documento(RG/RNE)', placeholder: "RG" %>
     <%= f.input :cpf, label: 'CPF', placeholder: "231.432.123-44" %>
     <%= f.input :birthday, start_year: Date.today.year - 110, end_year: Date.today.year-10, label: 'Data de Nacimento' %>
-    <%= f.input :martial_status, label: 'Estado Civil', placeholder: "casado" %>
+    <%= f.input :martial_status, label: 'Estado Civil', collection: %w(solteiro casado divorciado viuvo união\ estavel), selected:'solteiro', placeholder: "casado" %>
     <%= f.input :profession, label: 'Profissão', placeholder: "Engenheiro" %>
     <%= f.input :phone, label: 'Telefone', placeholder: "11-9833-9182" %>
     <%= f.input :email, label: 'Email', placeholder: "joao.garcia@gmail.com" %>
