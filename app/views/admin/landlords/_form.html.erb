@@ -22,11 +22,11 @@
     <p><b>Deposito</b></p>
     <%= f.collection_radio_buttons :deposit, [[true, 'Sim'] ,[false, 'Nao']], :first, :last %>
     <%= f.input :type_of_account, label: 'tipo' %>
-    <%= f.input :bank, label: 'Banco' %>
-    <%= f.input :agency, label: 'Numero de Agencia' %>
-    <%= f.input :number, label: 'Numero de Conta' %>
-    <%= f.input :adm_rate, label: 'Taxa Administração Mesal' %>
-    <%= f.input :first_rate, label: 'Taxa Administrativa 1º' %>
+    <%= f.input :bank, label: 'Banco', placeholder: "Bradesco" %>
+    <%= f.input :agency, label: 'Numero de Agencia', placeholder: "01293-32" %>
+    <%= f.input :number, label: 'Numero de Conta', placeholder: "12312" %>
+    <%= f.input :adm_rate, label: 'Taxa Administração Mesal', placeholder: "10%" %>
+    <%= f.input :first_rate, label: 'Taxa Administrativa 1º', placeholder: "10%" %>
     <%= f.button :submit, value: 'Salvar', class: 'btn btn-primary' %>
   <% end %>
 </div>
