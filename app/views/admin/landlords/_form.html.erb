@@ -21,7 +21,7 @@
     <%= f.input :cep, label: 'CEP', placeholder: "5521-043" %>
     <p><b>Deposito</b></p>
     <%= f.collection_radio_buttons :deposit, [[true, 'Sim'] ,[false, 'Nao']], :first, :last %>
-    <%= f.input :type_of_account, label: 'tipo' %>
+    <%= f.input :type_of_account, label: 'Tipo de Contato', collection: %w(Conta\ Corrente Conta\ Poupaça), selected: 'Conta Corrente' %>
     <%= f.input :bank, label: 'Banco', placeholder: "Bradesco" %>
     <%= f.input :agency, label: 'Numero de Agencia', placeholder: "01293-32" %>
     <%= f.input :number, label: 'Numero de Conta', placeholder: "12312" %>
