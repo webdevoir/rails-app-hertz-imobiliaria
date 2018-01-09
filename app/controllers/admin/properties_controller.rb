@@ -2,7 +2,6 @@ class Admin::PropertiesController < ApplicationController
   before_action :set_landlord, only: [:new, :create, :edit, :update, :address, :area, :value, :photos]
   before_action :set_property, only: [:edit, :update, :show, :address, :area, :value, :photos, :destroy]
   def index
-    @estados = ["AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS", "MG", "PA", "PB", "PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO"]
     if params[:query].nil?
       @properties = Property.all
     else
@@ -10,6 +9,7 @@ class Admin::PropertiesController < ApplicationController
       # address = PropertyAddress(street: params[:query])
       #@properties << Property.where(code: params[:query])
     end
+    @estados = PropertyAddress.states
   end
 
   def new
