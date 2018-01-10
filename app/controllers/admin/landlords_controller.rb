@@ -2,7 +2,13 @@ class Admin::LandlordsController < ApplicationController
 before_action :set_landlord, only: [:edit, :update, :destroy, :show]
   def index
     if params[:query].present?
-      @landlords = Landlord.where(name: params[:query])
+      sql_query = " \
+        name ILIKE :query OR
+        rg ILIKE :query OR
+        cpf ILIKE :query OR
+        email ILIKE :query
+      "
+      @landlords = Landlord.where(sql_query, query: "%#{params[:query]}%")
     else
       @landlords = Landlord.all
     end

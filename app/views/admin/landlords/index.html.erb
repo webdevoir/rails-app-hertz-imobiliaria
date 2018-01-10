@@ -11,7 +11,7 @@
     </div>
 
     <%= form_tag admin_landlords_path, method: :get do %>
-      <%= text_field_tag :query, params[:query], class: "form-control", placeholder: "Pesquisa rapida" %>
+      <%= text_field_tag :query, params[:query], class: "form-control", placeholder: "Pesquisa por nome, email, rg ou cpf." %>
       <%= submit_tag "pequisa", class: 'btn btn-primary' %>
     <% end %>
     <% if @landlords.empty? && params[:query].present? %>
