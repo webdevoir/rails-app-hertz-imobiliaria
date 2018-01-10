@@ -14,6 +14,18 @@ class Property < ApplicationRecord
   has_many :exterior_details_types, through: :exterior_details
 
 
+  def self.fast_search(query)
+    sql_query = " \
+        code ILIKE :query
+      "
+          # OR property_addresses.street ILIKE :query \
+      # OR property_addresses.cep ILIKE :query \
+      #joins(:property_address).
+    where(sql_query, query: "%#{query}%")
+    #where(sql_query, query: "%#{query}%")
+  end
+
+
   def address
       address = PropertyAddress.find_by(property_id: self.id)
       if address.nil?

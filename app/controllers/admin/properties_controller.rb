@@ -5,9 +5,7 @@ class Admin::PropertiesController < ApplicationController
     if params[:query].nil?
       @properties = Property.all
     else
-      @properties = Property.where(code: params[:query])
-      # address = PropertyAddress(street: params[:query])
-      #@properties << Property.where(code: params[:query])
+      @properties = Property.fast_search(params[:query])
     end
     @estados = PropertyAddress.states
   end
