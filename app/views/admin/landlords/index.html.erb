@@ -10,13 +10,18 @@
       <%= link_to "+ Cadastrar Novo Proprietario", new_admin_landlord_path, class: "btn btn-danger" %>
     </div>
 
-    <form action="" class="landlord-search">
-      <input type="text" name="search" placeholder="Pesquisa rapida" class="input">
-      <input type="submit" class="button">
-    </form>
-
-    <% @landlords.each do |landlord| %>
-      <%= render 'shared/landlord_card', landlord: landlord  %>
+    <%= form_tag admin_landlords_path, method: :get do %>
+      <%= text_field_tag :query, params[:query], class: "form-control", placeholder: "Pesquisa rapida" %>
+      <%= submit_tag "pequisa", class: 'btn btn-primary' %>
+    <% end %>
+    <% if @landlords.empty? && params[:query].present? %>
+      <p>Não foi encontrado nenhum proprietario</p>
+    <% elsif @landlords.empty? && !params[:query].present? %>
+      <p>Não exitem proprietarios cadastrados</p>
+    <% else %>
+      <% @landlords.each do |landlord| %>
+        <%= render 'shared/landlord_card', landlord: landlord  %>
+      <% end %>
     <% end %>
   </div>
 </div>

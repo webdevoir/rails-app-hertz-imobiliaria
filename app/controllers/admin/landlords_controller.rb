@@ -1,7 +1,11 @@
 class Admin::LandlordsController < ApplicationController
 before_action :set_landlord, only: [:edit, :update, :destroy, :show]
   def index
-    @landlords = Landlord.all
+    if params[:query].present?
+      @landlords = Landlord.where(name: params[:query])
+    else
+      @landlords = Landlord.all
+    end
   end
 
   def show
