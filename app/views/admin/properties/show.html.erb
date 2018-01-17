@@ -23,7 +23,6 @@
           <% end  %>
         </div>
       </div>
-
       <div class="info-card">
         <p>Informações Basicas</p>
         <ul>
@@ -37,7 +36,6 @@
           <li>Nº de Banheiros: <%= @property.bathrooms  %></li>
           <li>Nº de Garages<%= @property.garages  %></li>
           <li>Descrição<%= @property.description  %></li>
-          <li><%= @property.published %></li>
           <li><%= @property.conditions %></li>
         </ul>
       </div>
@@ -79,21 +77,16 @@
         </ul>
       </div>
 
+      <div class="info-card">
+        <p>Publicar</p>
+        <%= @property.published %>
+        <%= form_tag(admin_property_path(@property), method: "post") do %>
+          <%= check_box_tag :published, params[:published], @property.published, onchange: 'this.form.submit();' %>
+        <% end %>
+      </div>
+
       <%= link_to "Deletar", admin_property_path(@property), data: {confirm: 'Tem certeza que quer deletar a propriedade?'}, class: "btn btn-danger", method: :delete  %>
       <%= link_to "Editar", edit_admin_landlord_property_path(@property.landlord, @property), class: "btn btn-primary" %>
-
-      <label class="switch">
-        <input type="checkbox">
-        <span class="slider round"></span>
-      </label>
-
-
-      <%= form_tag("/search", method: "get") do %>
-        <%= label_tag 'q', nil, class: 'switch' do %>
-        <%= check_box_tag(:q) %>
-        <span class="slider round"></span>
-        <% end %>
-      <% end %>
 
     </div>
   </div>

@@ -14,6 +14,7 @@
       <%= text_field_tag :query, params[:query], class: "form-control", placeholder: "Pesquisa por nome, email, rg ou cpf." %>
       <%= submit_tag "pequisa", class: 'btn btn-primary' %>
     <% end %>
+
     <% if @landlords.empty? && params[:query].present? %>
       <p>Não foi encontrado nenhum proprietario</p>
     <% elsif @landlords.empty? && !params[:query].present? %>
@@ -23,6 +24,7 @@
         <%= render 'shared/landlord_card', landlord: landlord  %>
       <% end %>
     <% end %>
+
   </div>
 </div>
 
