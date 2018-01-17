@@ -28,8 +28,10 @@ class Admin::PropertiesController < ApplicationController
   end
 
   def update
-    if @property.update(property_params)
-      redirect_to  admin_landlord_path(params[:landlord_id])
+    unless params[:landlord_id].nil?
+      redirect_to  admin_landlord_path(params[:landlord_id]) if @property.update(property_params)
+    else
+      redirect_to  admin_property_path(params[:id]) if @property.update(property_params)
     end
   end
 
@@ -80,7 +82,9 @@ class Admin::PropertiesController < ApplicationController
   private
 
   def set_landlord
-    @landlord = Landlord.find(params[:landlord_id])
+    unless params[:landlord_id].nil?
+      @landlord = Landlord.find(params[:landlord_id])
+    end
   end
 
   def set_property
@@ -88,8 +92,8 @@ class Admin::PropertiesController < ApplicationController
   end
 
   def property_params
-    params.require(:property).permit(:code, :bussiness_type, :property_kind, :property_state, :position, :style,
-      :construction_year, :bathrooms, :rooms, :garages, :suites, :description, :conditions, photos: [])
+    params.require(:property).permit(:id, :code, :bussiness_type, :property_kind, :property_state, :position, :style,
+      :construction_year, :bathrooms, :rooms, :garages, :suites, :description, :published, :conditions, photos: [])
   end
 
 end

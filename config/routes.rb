@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   namespace :admin do
     get '/', to: 'properties#dashboard'
 
-    resources :properties, only: [:index, :show, :destroy] do
+    resources :properties, only: [:index, :show, :update, :destroy] do
       resources :property_addresses, only: [:create, :update]
       resources :property_areas, only: [:create, :update]
       resources :property_values, only: [:create, :update]
