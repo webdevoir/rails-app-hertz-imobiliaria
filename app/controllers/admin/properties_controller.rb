@@ -75,7 +75,9 @@ class Admin::PropertiesController < ApplicationController
   end
 
   def details
-
+    @property_details = Detail.all
+    @property_detail_types = DetailsType.all
+    #binding.pry
   end
 
   def destroy

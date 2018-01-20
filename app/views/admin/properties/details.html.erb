@@ -8,8 +8,9 @@
         <h2 style="font-size: 20px;"></h2>
       </div ">
       <h2>Detalhes</h2>
-
-
+        <% @property_detail_types.each do |detail|  %>
+          <p><%= detail.name %></p>
+        <% end  %>
     </div>
 </div>
 

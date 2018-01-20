@@ -1,16 +1,19 @@
 PropertyValue.destroy_all
+puts 'Destroying all  PropertyValues'
 PropertyArea.destroy_all
+puts 'Destroying all PropertyArea'
 PropertyAddress.destroy_all
-
+puts 'Destroying all PropertyAddresses'
 Property.destroy_all
-
+puts 'Destroying all Properties'
 Landlord.destroy_all
-
+puts 'Destroying all Landlords '
 User.destroy_all
+puts 'Destroying all Users'
+DetailsType.destroy_all
+puts 'Destroying all DetailsType'
 
 urls = [
-  'http://library.webster.edu/archives/buildings/images/webstervillageapartments.jpg',
-  'https://res.cloudinary.com/apartmentlist/image/upload/t_fullsize/5b30c3a3b02ddebec2c24e66c51ba33c.jpg',
   'http://media.equityapartments.com/images/c_crop,x_0,y_0,w_1586,h_1080/c_fill,w_737,h_414/q_80/2584-4/harbor-steps-apartments-exterior.jpg',
   'http://profiles.sulekhalive.com/mstore/14041316/albums/default/thumbnailfull/3-bhk-apartments-in-asangaon-east-for-sale.jpg',
   'https://upload.wikimedia.org/wikipedia/commons/0/0f/Jardinette_Apartments%2C_Los_Angeles.JPG',
@@ -105,7 +108,6 @@ class Generator
     }
   end
 
-
   def property_value_generator
     {
     value: rand(1000...99999),
@@ -123,7 +125,7 @@ puts "Criando Usuario..."
 user = User.create(email:"test@test.com", password: "123123", id: 1)
 
 
-50.times { |i|
+2.times { |i|
 
   landlord = Landlord.create(gen.landlord_genetator)
   puts "#{i} - Criando Landlord com nome: #{landlord.name}..."
@@ -150,15 +152,21 @@ user = User.create(email:"test@test.com", password: "123123", id: 1)
   }
 }
 
+details = %w(pisica sauna academia salão\ de\ festas salão\ de\ festas videoteca quadra\ de\ futbol)
+
+details.each do |tipo|
+  DetailsType.new(name: tipo)
+end
 
 
 
-#Property.create(gen.property_generator)
 
-# puts gen.property_generator
-# puts gen.property_address_generator
-# puts gen.property_area_generator
-# puts gen.property_value_generator
+Property.create(gen.property_generator)
+
+puts gen.property_generator
+puts gen.property_address_generator
+puts gen.property_area_generator
+puts gen.property_value_generator
 
 
 
