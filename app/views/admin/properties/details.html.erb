@@ -11,6 +11,13 @@
         <% @property_detail_types.each do |detail|  %>
           <p><%= detail.name %></p>
         <% end  %>
+
+        <%= form_tag( '/path', method: 'post', remote: true) do %>
+          <% @property_detail_types.each do |detail| %>
+            <%= label_tag detail.name  %>
+            <%= check_box_tag detail.name  %>
+          <% end  %>
+        <% end %>
     </div>
 </div>
 
