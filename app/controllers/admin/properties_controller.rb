@@ -1,6 +1,6 @@
 class Admin::PropertiesController < ApplicationController
-  before_action :set_landlord, only: [:new, :create, :edit, :update, :address, :area, :value, :photos]
-  before_action :set_property, only: [:edit, :update, :show, :address, :area, :value, :photos, :destroy]
+  before_action :set_landlord, only: [:new, :create, :edit, :update, :address, :area, :value, :photos, :details]
+  before_action :set_property, only: [:edit, :update, :show, :address, :area, :value, :photos, :destroy, :details]
   def index
     if params[:query].nil?
       @properties = Property.all
@@ -72,6 +72,10 @@ class Admin::PropertiesController < ApplicationController
   def dashboard
     @properties = Property.all
     @landlords = Landlord.all
+  end
+
+  def details
+
   end
 
   def destroy

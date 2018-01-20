@@ -23,6 +23,7 @@ Rails.application.routes.draw do
           get :area
           get :value
           get :photos
+          get :details
         end
       end
     end
