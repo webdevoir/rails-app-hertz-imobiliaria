@@ -1,5 +1,12 @@
-<!-- lets have all the details show up in one page!
-      Maybe is should be before the pictures, but we can fix that later-->
+
+<style>
+  .inside-form {
+    padding: 4px 20px;
+  }
+</style>
+
+
+
 <div class="wrapper">
   <%= render 'shared/form_menu.html.erb', activate: "area" %>
     <div class="form" style="height:600px;"">
@@ -10,10 +17,12 @@
       <div class="inside-form">
         <h3>Detalhes</h3>
           <%= form_tag( '/path', method: 'post', remote: true) do %>
+          <div class="col-md-9">
             <% @property_detail_types.each do |detail| %>
               <p><%= label_tag detail.name %>
               <%= check_box_tag detail.name.to_sym, nil, (@property_details.include? detail.name)  %></p>
             <% end  %>
+          </div>
             <%= submit_tag "Salvar" %>
           <% end %>
       </div>
