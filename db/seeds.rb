@@ -155,7 +155,7 @@ user = User.create(email:"test@test.com", password: "123123", id: 1)
 details = %w(pisica sauna academia salão\ de\ festas salão\ de\ festas videoteca quadra\ de\ futbol)
 
 details.each do |tipo|
-  DetailsType.new(name: tipo)
+  DetailsType.create(name: tipo)
 end
 
 
