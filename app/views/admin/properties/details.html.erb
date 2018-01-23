@@ -6,15 +6,17 @@
       <div class="description">
         <h1 style="font-size: 30px;">Detalhes do imovel</h1>
         <h2 style="font-size: 20px;"></h2>
-      </div ">
-      <h2>Detalhes</h2>
-        <%= form_tag( '/path', method: 'post', remote: true) do %>
-          <% @property_detail_types.each do |detail| %>
-            <p><%= label_tag detail.name %>
-            <%= check_box_tag detail.name.to_sym, nil, (@property_details.include? detail.name)  %></p>
-          <% end  %>
-          <%= submit_tag "Salvar" %>
-        <% end %>
+      </div>
+      <div class="inside-form">
+        <h3>Detalhes</h3>
+          <%= form_tag( '/path', method: 'post', remote: true) do %>
+            <% @property_detail_types.each do |detail| %>
+              <p><%= label_tag detail.name %>
+              <%= check_box_tag detail.name.to_sym, nil, (@property_details.include? detail.name)  %></p>
+            <% end  %>
+            <%= submit_tag "Salvar" %>
+          <% end %>
+      </div>
     </div>
 </div>
 
