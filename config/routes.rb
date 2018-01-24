@@ -15,6 +15,8 @@ Rails.application.routes.draw do
       resources :property_values, only: [:create, :update]
     end
 
+    resources :details, only: [:create, :update, :destroy]
+
     resources :landlords do
       resources :properties do
         member do

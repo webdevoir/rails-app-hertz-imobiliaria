@@ -20,7 +20,6 @@ class PropertiesController < ApplicationController
   end
 
   def home
-    #@properties = Property.all.limit(20)
     @properties_rent = Property.where(bussiness_type: 'alugel').order(:created_at).limit(10)
     @properties_sale = Property.where(bussiness_type: 'venda').order(:created_at).limit(10)
   end
