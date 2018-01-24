@@ -5,12 +5,10 @@
         <h1 style="font-size: 30px;">Detalhes do imovel</h1>
         <h2 style="font-size: 20px;"></h2>
       </div>
-
       <form action="" id="my-form">
         <input type="text" id="detail">
         <input type="submit">
       </form>
-
       <div id="test-target">
 
       </div>
@@ -28,16 +26,9 @@
       </div>
     </div>
 </div>
-
 <% content_for :js do %>
   <%= javascript_tag do  %>
-  $(document).on('submit', '#my-form', function() {
-    var detail = $('#detail').val();
-    var target = $('#test-target');
-    target.append('<p>' + detail + '</p>');
-    $('#detail').val('');
-    return false;
-    });
+    <%= render 'details', format: j  %>
   <% end %>
 <% end %>
 

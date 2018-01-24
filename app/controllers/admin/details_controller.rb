@@ -18,7 +18,6 @@ class Admin::DetailsController < ApplicationController
         Detail.create(property: @property, details_type: detail_type)
       end
     end
-
     redirect_to details_admin_landlord_property_path(@landlord, @property)
   end
 
