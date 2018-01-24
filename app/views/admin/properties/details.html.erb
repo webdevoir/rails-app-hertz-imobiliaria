@@ -5,9 +5,18 @@
         <h1 style="font-size: 30px;">Detalhes do imovel</h1>
         <h2 style="font-size: 20px;"></h2>
       </div>
+
+      <form action="" id="my-form">
+        <input type="text" id="detail">
+        <input type="submit">
+      </form>
+
+      <div id="test-target">
+
+      </div>
       <div class="inside-form">
         <h3>Detalhes</h3>
-          <%= form_tag( admin_details_path , method: 'post') do %>
+          <%= form_tag( admin_details_path , method: 'post', id: 'detail-form') do %>
             <%= hidden_field_tag "property[id]", params[:id] %>
             <% @property_detail_types.each do |detail| %>
               <p><%= label_tag detail.name %>
@@ -19,4 +28,19 @@
       </div>
     </div>
 </div>
+
+<% content_for :js do %>
+  <%= javascript_tag do  %>
+  $(document).on('submit', '#my-form', function() {
+    var detail = $('#detail').val();
+    var target = $('#test-target');
+    target.append('<p>' + detail + '</p>');
+    $('#detail').val('');
+    return false;
+    });
+  <% end %>
+<% end %>
+
+
+
 
