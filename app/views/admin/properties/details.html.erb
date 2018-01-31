@@ -28,7 +28,13 @@
 </div>
 <% content_for :js do %>
   <%= javascript_tag do  %>
-    <%= render 'details', format: j  %>
+    $(document).on('submit', '#my-form', function() {
+      var detail = $('#detail').val();
+      var target = $('#test-target');
+      target.append('<p class="id">' + detail + '</p>');
+      $('#detail').val('');
+      return false;
+    });
   <% end %>
 <% end %>
 
