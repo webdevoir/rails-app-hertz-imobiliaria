@@ -1,3 +1,27 @@
+
+<style>
+  .detail {
+    background: blue;
+    color: white;
+    padding: 3px 10px;
+    border-radius: 30px;
+    display: inline-flex;
+    flex-wrap: wrap;
+    margin: 5px;
+  }
+
+  .x-detail {
+    cursor: pointer;
+    font-size: 12px;
+    padding: 3px 6px 3px 0px;
+    margin: 1px;
+    align-items: center;
+  }
+
+
+</style>
+
+
 <div class="wrapper">
   <%= render 'shared/form_menu.html.erb', activate: "area" %>
     <div class="form" style="height:600px;"">
@@ -5,36 +29,47 @@
         <h1 style="font-size: 30px;">Detalhes do imovel</h1>
         <h2 style="font-size: 20px;"></h2>
       </div>
-      <form action="" id="my-form">
+      <form action="" id="add-new-detail">
         <input type="text" id="detail">
         <input type="submit">
       </form>
-      <div id="test-target">
-
-      </div>
+      <div class="delete-detail detail"><span class='x-detail'>x</span>Hello</div>
       <div class="inside-form">
         <h3>Detalhes</h3>
           <%= form_tag( admin_details_path , method: 'post', id: 'detail-form') do %>
             <%= hidden_field_tag "property[id]", params[:id] %>
             <% @property_detail_types.each do |detail| %>
-              <p><%= label_tag detail.name %>
-              <%= hidden_field_tag "details[#{detail.name}]", false  %>
-              <%= check_box_tag "details[#{detail.name}]" , nil, (@property_details.include? detail.name)  %></p>
+              <div class="col-md-3">
+                <div class="delete-detail detail">
+                  <span class='x-detail'>x</span>
+                  <%= label_tag detail.name %>
+                  <%= hidden_field_tag "details[#{detail.name}]", false  %>
+                  <%= check_box_tag "details[#{detail.name}]" , nil, (@property_details.include? detail.name)  %>
+                </div>
+              </div>
             <% end  %>
-            <%= submit_tag "Salvar" %>
+            <div class="col-md-12">
+              <%= submit_tag "Salvar", id: 'submit-detail'%>
+            </div>
           <% end %>
       </div>
     </div>
 </div>
 <% content_for :js do %>
   <%= javascript_tag do  %>
-    $(document).on('submit', '#my-form', function() {
-      var detail = $('#detail').val();
-      var target = $('#test-target');
-      target.append('<p class="id">' + detail + '</p>');
+    $('#add-new-detail').on('submit', function() {
+      const detail = $('#detail').val();
+      const target = $('#detail-form .col-md-3:eq(0)');
+      target.before('<div class="col-md-3"><div class="delete-detail detail"><span class='x-detail'>x</span><label for="' + detail.toLowerCase() +'">'+ detail +'</label> <input type="hidden" name="details['+ detail.toLowerCase() + ']" id="details_'+ detail.toLowerCase() + '" value="false"> <input type="checkbox" name="details['+ detail.toLowerCase() +']" id="details_'+ detail.toLowerCase() +'" checked="checked"></div></div>');
       $('#detail').val('');
       return false;
     });
+
+    $('.delete-detail').on('click', function() {
+      this.closest('.col-md-3').remove();
+    })
+
+
   <% end %>
 <% end %>
 
