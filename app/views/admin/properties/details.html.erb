@@ -11,6 +11,11 @@
     font-weight: 300;
   }
 
+  #detail {
+    width: 30%;
+    margin: 10px 10px 0 41px;
+  }
+
   .x-detail {
     cursor: pointer;
     font-size: 12px;
@@ -18,6 +23,14 @@
     margin: 1px;
     align-items: center;
     font-weight: 300;
+  }
+
+  #submit-detail {
+    float: right;
+  }
+
+  .ui-helper-hidden-accessible {
+    display:none;
   }
 
 </style>
@@ -30,12 +43,14 @@
         <h1 style="font-size: 30px;">Detalhes do imovel</h1>
         <h2 style="font-size: 20px;"></h2>
       </div>
-      <form action="" id="add-new-detail">
-        <input type="text" id="detail">
+
+      <form id="add-new-detail" onsubmit="return addDetail();">
+          <input type="text" name="detail_type" id="detail" value="" size="75" data-autocomplete="<%= autocomplete_details_type_name_admin_landlord_properties_path %>" data-noMatchesLabel= 'no brands found'>
+<!--           <input type="text" id="detail"> -->
         <input type="submit">
       </form>
+      <br>
       <div class="inside-form">
-        <h3>Detalhes</h3>
           <%= form_tag( admin_details_path , method: 'post', id: 'detail-form') do %>
             <%= hidden_field_tag "property[id]", params[:id] %>
             <% @property_detail_types.each do |detail| %>
@@ -48,6 +63,7 @@
               </div>
             <% end  %>
             <div class="col-md-12">
+              <br>
               <%= submit_tag "Salvar", id: 'submit-detail'%>
             </div>
           <% end %>
@@ -56,13 +72,15 @@
 </div>
 <% content_for :js do %>
   <%= javascript_tag do  %>
-    $('#add-new-detail').on('submit', function() {
+    jQuery.railsAutocomplete.options.showNoMatches
+    jQuery.railsAutocomplete.options.noMatchesLabel
+    function addDetail() {
       const detail = $('#detail').val();
       const target = $('#detail-form #property_id');
       target.after('<div class="col-md-3 center"><div class="delete-detail detail"><span class="x-detail">x</span><label for="' + detail.toLowerCase() +'">'+ detail +'</label> <input type="hidden" name="details['+ detail.toLowerCase() + ']" id="details_'+ detail.toLowerCase() + '" value="true"></div></div>');
       $('#detail').val('');
       return false;
-    });
+    };
 
     $(document).on('click', '.x-detail', function() {
       $(this).parent().parent().remove();
@@ -70,7 +88,3 @@
     });
   <% end %>
 <% end %>
-
-
-
-

@@ -1,6 +1,8 @@
 class Admin::PropertiesController < ApplicationController
   before_action :set_landlord, only: [:new, :create, :edit, :update, :address, :area, :value, :photos, :details]
   before_action :set_property, only: [:edit, :update, :show, :address, :area, :value, :photos, :destroy, :details]
+  autocomplete :details_type, :name
+
   def index
     if params[:query].nil?
       @properties = Property.all

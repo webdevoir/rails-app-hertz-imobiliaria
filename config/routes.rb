@@ -19,6 +19,7 @@ Rails.application.routes.draw do
 
     resources :landlords do
       resources :properties do
+        get :autocomplete_details_type_name, :on => :collection
         member do
           get :info
           get :address
