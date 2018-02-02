@@ -13,6 +13,7 @@
 
   #detail {
     width: 30%;
+    height: 35px;
     margin: 10px 10px 0 41px;
   }
 
@@ -33,6 +34,23 @@
     display:none;
   }
 
+  #detail-submit {
+    background: rgb(0,100,191);
+    color:white;
+    border-radius: 50%;
+    font-size: 15px;
+
+  }
+
+  #detail-submit:hover {
+    opacity: 0.7;
+  }
+
+  .fa-input {
+    font-family: FontAwesome, ‘Helvetica Neue’, Helvetica, Arial, sans-serif;
+    font-weight: 100;
+
+  }
 </style>
 
 
@@ -47,7 +65,7 @@
       <form id="add-new-detail" onsubmit="return addDetail();">
           <input type="text" name="detail_type" id="detail" value="" size="75" data-autocomplete="<%= autocomplete_details_type_name_admin_landlord_properties_path %>" data-noMatchesLabel= 'no brands found'>
 <!--           <input type="text" id="detail"> -->
-        <input type="submit">
+        <input type='submit' class='btn fa-input' id="detail-submit" value="&#xf067">
       </form>
       <br>
       <div class="inside-form">
@@ -70,21 +88,3 @@
       </div>
     </div>
 </div>
-<% content_for :js do %>
-  <%= javascript_tag do  %>
-    jQuery.railsAutocomplete.options.showNoMatches
-    jQuery.railsAutocomplete.options.noMatchesLabel
-    function addDetail() {
-      const detail = $('#detail').val();
-      const target = $('#detail-form #property_id');
-      target.after('<div class="col-md-3 center"><div class="delete-detail detail"><span class="x-detail">x</span><label for="' + detail.toLowerCase() +'">'+ detail +'</label> <input type="hidden" name="details['+ detail.toLowerCase() + ']" id="details_'+ detail.toLowerCase() + '" value="true"></div></div>');
-      $('#detail').val('');
-      return false;
-    };
-
-    $(document).on('click', '.x-detail', function() {
-      $(this).parent().parent().remove();
-      return false;
-    });
-  <% end %>
-<% end %>
