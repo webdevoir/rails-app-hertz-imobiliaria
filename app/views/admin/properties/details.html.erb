@@ -51,6 +51,18 @@
     font-weight: 100;
 
   }
+
+  .form-detail-wrapper {
+    position: relative;
+
+  }
+
+  .detail-alert {
+    position: absolute;
+    left: 40px;
+    font-size: 12px;
+    color: red;
+  }
 </style>
 
 
@@ -61,12 +73,13 @@
         <h1 style="font-size: 30px;">Detalhes do imovel</h1>
         <h2 style="font-size: 20px;"></h2>
       </div>
+      <div class="form-detail-wrapper">
+        <form id="add-new-detail" onsubmit="return addDetail();">
+            <input type="text" name="detail_type" id="detail" value="" size="75" data-autocomplete="<%= autocomplete_details_type_name_admin_landlord_properties_path %>" data-noMatchesLabel= 'no brands found'>
+          <input type='submit' class='btn fa-input' id="detail-submit" value="&#xf067">
+        </form>
+      </div>
 
-      <form id="add-new-detail" onsubmit="return addDetail();">
-          <input type="text" name="detail_type" id="detail" value="" size="75" data-autocomplete="<%= autocomplete_details_type_name_admin_landlord_properties_path %>" data-noMatchesLabel= 'no brands found'>
-<!--           <input type="text" id="detail"> -->
-        <input type='submit' class='btn fa-input' id="detail-submit" value="&#xf067">
-      </form>
       <br>
       <div class="inside-form">
           <%= form_tag( admin_details_path , method: 'post', id: 'detail-form') do %>
