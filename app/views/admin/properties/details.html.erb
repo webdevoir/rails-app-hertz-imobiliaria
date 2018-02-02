@@ -1,13 +1,14 @@
 
 <style>
   .detail {
-    background: blue;
+    background: #FF7C2E;
     color: white;
     padding: 3px 10px;
     border-radius: 30px;
     display: inline-flex;
     flex-wrap: wrap;
     margin: 5px;
+    font-weight: 300;
   }
 
   .x-detail {
@@ -16,6 +17,7 @@
     padding: 3px 6px 3px 0px;
     margin: 1px;
     align-items: center;
+    font-weight: 300;
   }
 
 
@@ -33,7 +35,9 @@
         <input type="text" id="detail">
         <input type="submit">
       </form>
-      <div class="delete-detail detail"><span class='x-detail'>x</span>Hello</div>
+      <div class="col-md-3">
+        <div class="delete-detail detail"><span class='x-detail'>x</span>Hello</div>
+      </div>
       <div class="inside-form">
         <h3>Detalhes</h3>
           <%= form_tag( admin_details_path , method: 'post', id: 'detail-form') do %>
@@ -43,8 +47,8 @@
                 <div class="delete-detail detail">
                   <span class='x-detail'>x</span>
                   <%= label_tag detail.name %>
-                  <%= hidden_field_tag "details[#{detail.name}]", false  %>
-                  <%= check_box_tag "details[#{detail.name}]" , nil, (@property_details.include? detail.name)  %>
+                  <%= hidden_field_tag "details[#{detail.name}]", true  %>
+                  <!-- #check_box_tag "details[#{detail.name}]" , nil, (@property_details.include? detail.name)   -->
                 </div>
               </div>
             <% end  %>
@@ -59,17 +63,16 @@
   <%= javascript_tag do  %>
     $('#add-new-detail').on('submit', function() {
       const detail = $('#detail').val();
-      const target = $('#detail-form .col-md-3:eq(0)');
-      target.before('<div class="col-md-3"><div class="delete-detail detail"><span class='x-detail'>x</span><label for="' + detail.toLowerCase() +'">'+ detail +'</label> <input type="hidden" name="details['+ detail.toLowerCase() + ']" id="details_'+ detail.toLowerCase() + '" value="false"> <input type="checkbox" name="details['+ detail.toLowerCase() +']" id="details_'+ detail.toLowerCase() +'" checked="checked"></div></div>');
+      const target = $('#detail-form #property_id');
+      target.after('<div class="col-md-3"><div class="delete-detail detail"><span class="x-detail">x</span><label for="' + detail.toLowerCase() +'">'+ detail +'</label> <input type="hidden" name="details['+ detail.toLowerCase() + ']" id="details_'+ detail.toLowerCase() + '" value="false"> <input type="checkbox" name="details['+ detail.toLowerCase() +']" id="details_'+ detail.toLowerCase() +'" checked="checked"></div></div>');
       $('#detail').val('');
       return false;
     });
 
-    $('.delete-detail').on('click', function() {
-      this.closest('.col-md-3').remove();
-    })
-
-
+    $(document).on('click', '.x-detail', function() {
+      $(this).parent().parent().remove();
+      return false;
+    });
   <% end %>
 <% end %>
 
