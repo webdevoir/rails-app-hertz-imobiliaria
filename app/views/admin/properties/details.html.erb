@@ -53,7 +53,7 @@
       <div class="inside-form">
           <%= form_tag( admin_details_path , method: 'post', id: 'detail-form') do %>
             <%= hidden_field_tag "property[id]", params[:id] %>
-            <% @property_detail_types.each do |detail| %>
+            <% @property_details.each do |detail| %>
               <div class="col-md-3 center">
                 <div class="delete-detail detail">
                   <span class='x-detail'>x</span>
