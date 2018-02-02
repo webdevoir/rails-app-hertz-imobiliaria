@@ -1,7 +1,7 @@
 class Admin::DetailsController < ApplicationController
-#before_action :set_landlord, only: [:edit, :update, :destroy, :show]
   def create
-    @property = Property.find_by(id: params[:property][:id])
+    binding.pry
+    @property = Property.find_by(id: property_param[:id])
     @landlord = Landlord.find_by(id: @property.landlord_id)
     details_actual = Detail.where(property_id: @property).map{ |detail| detail.details_type.name }
     details_updated = params[:details].select { |key, value| value == "on" }.keys
@@ -21,5 +21,13 @@ class Admin::DetailsController < ApplicationController
     redirect_to details_admin_landlord_property_path(@landlord, @property)
   end
 
+  private
+
+  def property_param
+    params.require(:property).permit(:id)
+  end
+  def details_params
+    params.require(:details).permit!
+  end
 end
 
