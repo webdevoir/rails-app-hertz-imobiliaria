@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   mount Attachinary::Engine => "/attachinary"
-  devise_for :users
+  devise_for :users, skip: [:registrations]
   root to: 'properties#home'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources :properties, only: [:index, :show] do
@@ -30,5 +30,4 @@ Rails.application.routes.draw do
     resources :details, only: [:create, :update]
 
   end
-
 end
