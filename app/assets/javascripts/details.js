@@ -1,6 +1,6 @@
 function addDetail() {
   const detail = capitalizeFirstLetter($('#detail').val().toLowerCase());
-  const target = $('#detail-form #property_id');
+  const target = defineTarger();
   const template = interpolateTamplate(detail);
   const allDetails = getAddedDetails();
   $('.detail-alert').remove();
@@ -20,6 +20,14 @@ function addDetail() {
 function interpolateTamplate(detail) {
   var template = `<div class="col-md-3 center"><div class="delete-detail detail"><span class="x-detail">x</span><label for="${detail.toLowerCase()}">${detail}</label> <input type="hidden" name="details[${detail.toLowerCase()}" id="details_${detail.toLowerCase()}" value="true"></div></div>`;
   return template;
+}
+
+function defineTarger() {
+  if ($('.col-md-3').last().length === 0) {
+    return $('#detail-form #property_id');
+  } else {
+    return $('.col-md-3').last();
+  }
 }
 
 function displayAlert(message) {
