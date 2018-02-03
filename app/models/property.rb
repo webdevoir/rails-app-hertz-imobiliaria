@@ -4,14 +4,8 @@ class Property < ApplicationRecord
   has_one :property_address, dependent: :destroy
   has_one :property_area, dependent: :destroy
   has_one :property_value, dependent: :destroy
-  has_many :private_details
-  has_many :private_details_types, through: :private_details
-  has_many :details
-  has_many :details_types, through: :details
-  has_many :interior_details
-  has_many :interior_details_types, through: :interior_details
-  has_many :exterior_details
-  has_many :exterior_details_types, through: :exterior_details
+  has_many :property_details
+  has_many :details_types, through: :property_details
 
 
   def self.fast_search(query)

@@ -4,10 +4,8 @@ class CreatePropertyAreas < ActiveRecord::Migration[5.0]
       t.string :scale
       t.float :total_area
       t.float :usable_area
-      t.float :area_land
+      t.float :land_area
       t.references :property, foreign_key: true
-
-
       t.timestamps
     end
   end

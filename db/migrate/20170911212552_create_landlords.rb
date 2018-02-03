@@ -7,7 +7,7 @@ class CreateLandlords < ActiveRecord::Migration[5.0]
       t.date :birthday
       t.string :martial_status
       t.string :profession
-      t.string :phone
+      t.string :phones
       t.string :email
       t.string :address
       t.string :cep
@@ -19,7 +19,6 @@ class CreateLandlords < ActiveRecord::Migration[5.0]
       t.string :agency
       t.string :number
       t.references :user, foreign_key: true
-
       t.timestamps
     end
   end
