@@ -7,29 +7,28 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
+
     get '/', to: 'properties#dashboard'
 
-    resources :properties, only: [:index, :show, :update, :destroy] do
-      resources :property_addresses, only: [:create, :update]
-      resources :property_areas, only: [:create, :update]
-      resources :property_values, only: [:create, :update]
-    end
+    resources :landlords
 
-    resources :details, only: [:create, :update, :destroy]
-
-    resources :landlords do
-      resources :properties do
-        get :autocomplete_details_type_name, :on => :collection
-        member do
-          get :info
-          get :address
-          get :area
-          get :value
-          get :photos
-          get :details
-        end
+    resources :properties do
+      get :autocomplete_details_type_name, :on => :collection
+      member do
+        get :info
+        get :address
+        get :area
+        get :value
+        get :photos
+        get :details
       end
     end
+
+    resources :property_addresses, only: [:create, :update]
+    resources :property_areas, only: [:create, :update]
+    resources :property_values, only: [:create, :update]
+    resources :details, only: [:create, :update]
+
   end
 
 end

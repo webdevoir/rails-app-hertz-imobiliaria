@@ -65,7 +65,7 @@
       </div>
     </div>
     <br>
-    <%= link_to '+ Cadastrar Nova Propriedade', new_admin_landlord_property_path(@landlord), class: "btn btn-danger" %>
+    <%= link_to '+ Cadastrar Nova Propriedade', new_admin_property_path(landlord: @landlord.id), class: "btn btn-danger" %>
 
     <% @landlord.properties.each do |property| %>
       <%= render 'shared/property_card', property: property  %>

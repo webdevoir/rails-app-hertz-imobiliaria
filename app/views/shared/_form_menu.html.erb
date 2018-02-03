@@ -1,16 +1,16 @@
 <div class="form-menu">
     <% if @property.id %>
-      <%= link_to edit_admin_landlord_property_path(@landlord, @property), class: "tab" + (activate == "basic" ? " active" : "") do %>
+      <%= link_to edit_admin_property_path(@property), class: "tab" + (activate == "basic" ? " active" : "") do %>
         <p>Informações basica</p>
       <% end %>
     <% else %>
-      <%= link_to new_admin_landlord_property_path(@landlord, @property), class: "tab" + (activate == "basic" ? " active" : "")  do %>
+      <%= link_to new_admin_property_path(@property), class: "tab" + (activate == "basic" ? " active" : "")  do %>
         <p>Informações basica</p>
       <% end %>
     <% end %>
 
     <% if @property.id %>
-      <%= link_to address_admin_landlord_property_path(@landlord, @property), class: "tab" + (activate == "address" ? " active" : "")  do %>
+      <%= link_to address_admin_property_path(@property), class: "tab" + (activate == "address" ? " active" : "")  do %>
         <p>Endereço</p>
       <% end %>
     <% else %>
@@ -20,7 +20,7 @@
     <% end %>
 
     <% if @property.id %>
-      <%= link_to details_admin_landlord_property_path(@landlord, @property), class: "tab" + (activate == "details" ? " active" : "")  do %>
+      <%= link_to details_admin_property_path(@property), class: "tab" + (activate == "details" ? " active" : "")  do %>
         <p>Detalhes do Imovel</p>
       <% end %>
     <% else %>
@@ -30,7 +30,7 @@
     <% end %>
 
     <% if @property.id %>
-      <%= link_to area_admin_landlord_property_path(@landlord, @property), class: "tab" + (activate == "area" ? " active" : "")  do %>
+      <%= link_to area_admin_property_path(@property), class: "tab" + (activate == "area" ? " active" : "")  do %>
         <p>Informações da Area</p>
       <% end %>
     <% else %>
@@ -40,7 +40,7 @@
     <% end %>
 
     <% if @property.id %>
-      <%= link_to value_admin_landlord_property_path(@landlord, @property), class: "tab" + (activate == "value" ? " active" : "")  do %>
+      <%= link_to value_admin_property_path(@property), class: "tab" + (activate == "value" ? " active" : "")  do %>
         <p>Valor do Imovel</p>
       <% end %>
     <% else %>
@@ -50,7 +50,7 @@
     <% end %>
 
     <% if @property.id %>
-      <%= link_to photos_admin_landlord_property_path(@landlord, @property), class: "tab" + (activate == "photos" ? " active" : "")  do %>
+      <%= link_to photos_admim_property_path(@property), class: "tab" + (activate == "photos" ? " active" : "")  do %>
         <p>Fotos</p>
       <% end %>
     <% else %>

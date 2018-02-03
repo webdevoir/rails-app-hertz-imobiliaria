@@ -13,6 +13,7 @@ class Admin::PropertiesController < ApplicationController
   end
 
   def new
+    binding.pry
     @property = Property.new
   end
 
@@ -88,13 +89,17 @@ class Admin::PropertiesController < ApplicationController
   private
 
   def set_landlord
-    unless params[:landlord_id].nil?
-      @landlord = Landlord.find(params[:landlord_id])
+    unless landlord_params.nil?
+      @landlord = Landlord.find(landlord_params)
     end
   end
 
   def set_property
     @property = Property.find(params[:id])
+  end
+
+  def landlord_params
+    params[:landlord]
   end
 
   def property_params
