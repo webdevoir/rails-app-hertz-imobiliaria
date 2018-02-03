@@ -20,8 +20,8 @@ class PropertiesController < ApplicationController
   end
 
   def home
-    @properties_rent = Property.where(bussiness_type: 'alugel').order(:created_at).limit(10)
-    @properties_sale = Property.where(bussiness_type: 'venda').order(:created_at).limit(10)
+    @properties_rent = Property.where(rent: true, published:true).order(:created_at).limit(10)
+    @properties_sale = Property.where(sale: true, published:true).order(:created_at).limit(10)
   end
 
 end
