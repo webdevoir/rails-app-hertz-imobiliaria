@@ -50,7 +50,7 @@
     <% end %>
 
     <% if @property.id %>
-      <%= link_to photos_admim_property_path(@property), class: "tab" + (activate == "photos" ? " active" : "")  do %>
+      <%= link_to photos_admin_property_path(@property), class: "tab" + (activate == "photos" ? " active" : "")  do %>
         <p>Fotos</p>
       <% end %>
     <% else %>

@@ -1,5 +1,6 @@
 <div class="form-property">
   <%= simple_form_for([:admin, property]) do |f| %>
+    <%= f.input :landlord_id, :as => :hidden, input_html: { value: @landlord.id } %>
     <%= f.input :code %>
     <%= f.input :bussiness_type %>
     <%= f.input :property_kind %>

@@ -1,6 +1,6 @@
 class Admin::PropertiesController < ApplicationController
-  before_action :set_landlord, only: [:new, :create, :edit, :update, :address, :area, :value, :photos, :details]
   before_action :set_property, only: [:edit, :update, :show, :address, :area, :value, :photos, :destroy, :details]
+  before_action :set_landlord, only: [:new]
   autocomplete :details_type, :name
 
   def index
@@ -13,15 +13,13 @@ class Admin::PropertiesController < ApplicationController
   end
 
   def new
-    binding.pry
     @property = Property.new
   end
 
   def create
     @property = Property.new(property_params)
-    @property.landlord = @landlord #Landlord.find(params[:landlord_id])
     if @property.save!
-      redirect_to address_admin_landlord_property_path(@property.landlord, @property)
+      redirect_to address_admin_property_path(@property)
     else
       render :new
     end
@@ -89,8 +87,10 @@ class Admin::PropertiesController < ApplicationController
   private
 
   def set_landlord
-    unless landlord_params.nil?
-      @landlord = Landlord.find(landlord_params)
+    if params[:landlord]
+      @landlord = Landlord.find(params[:landlord])
+    else
+      @landlord = Landlord.new
     end
   end
 
@@ -98,12 +98,9 @@ class Admin::PropertiesController < ApplicationController
     @property = Property.find(params[:id])
   end
 
-  def landlord_params
-    params[:landlord]
-  end
 
   def property_params
-    params.require(:property).permit(:id, :code, :bussiness_type, :property_kind, :property_state, :position, :style,
+    params.require(:property).permit(:id, :landlord_id, :code, :bussiness_type, :property_kind, :property_state, :position, :style,
       :construction_year, :bathrooms, :rooms, :garages, :suites, :description, :published, :conditions, photos: [])
   end
 
