@@ -9,7 +9,7 @@
 
       </div>
       <div class="form-property">
-        <%= simple_form_for([:admin, @landlord, @property])do |f| %>
+        <%= simple_form_for([:admin, @property])do |f| %>
           <%= f.input :photos, as: :attachinary, input_html: { class: 'input-zone' } %>
           <%= f.submit %>
         <% end %>

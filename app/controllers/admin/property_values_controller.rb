@@ -2,9 +2,8 @@ class Admin::PropertyValuesController < ApplicationController
 
   def create
     @property_value = PropertyValue.new(property_value_params)
-    @property_value.property = Property.find(params[:property_id])
     if @property_value.save!
-      redirect_to photos_admin_landlord_property_path(@property_value.property.landlord, @property_value.property)
+      redirect_to photos_admin_property_path(@property_value.property)
     else
       render :new
     end
@@ -12,12 +11,18 @@ class Admin::PropertyValuesController < ApplicationController
   end
 
   def update
+    @property_value = PropertyValue.find(params[:id])
+    if PropertyValue.update(property_value_params)
+      redirect_to photos_admin_property_path(@property_value.property)
+    else
+      render value_admin_property(@property_are.property)
+    end
   end
 
   private
 
   def property_value_params
-  params.require(:property_value).permit(:value, :iptu, :condo_amout)
+  params.require(:property_value).permit(:property_id, :value, :iptu, :condo_amout)
   end
 
 end

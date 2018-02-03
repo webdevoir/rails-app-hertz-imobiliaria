@@ -1,5 +1,6 @@
 <div class="form-property">
-  <%= simple_form_for([:admin, property, property_area]) do |f| %>
+  <%= simple_form_for([:admin, property_area]) do |f| %>
+    <%= f.input :property_id, :as => :hidden, input_html: { value: @property.id } %>
     <%= f.input :scale %>
     <%= f.input :total_area %>
     <%= f.input :usable_area %>

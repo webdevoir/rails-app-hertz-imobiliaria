@@ -1,6 +1,6 @@
 class Admin::PropertiesController < ApplicationController
   before_action :set_property, only: [:edit, :update, :show, :address, :area, :value, :photos, :destroy, :details]
-  before_action :set_landlord, only: [:new]
+  before_action :set_landlord, only: [:new, :edit]
   autocomplete :details_type, :name
 
   def index
@@ -37,9 +37,9 @@ class Admin::PropertiesController < ApplicationController
   end
 
   def show
-    @address = PropertyAddress.where(property_id: @property).first
-    @area = PropertyArea.where(property_id: @property).first
-    @value = PropertyValue.where(property_id: @property).first
+    @address = PropertyAddress.find_by(property_id: @property)
+    @area = PropertyArea.find_by(property_id: @property)
+    @value = PropertyValue.find_by(property_id: @property)
     @property_coodinates = {lat: @address.latitude, lng: @address.longitude}
   end
 
@@ -47,7 +47,7 @@ class Admin::PropertiesController < ApplicationController
     if PropertyAddress.where(property_id: params[:id]).empty?
       @property_address = PropertyAddress.new
     else
-       @property_address = PropertyAddress.where(property_id: params[:id]).first
+       @property_address = PropertyAddress.find_by(property_id: params[:id])
     end
   end
 
@@ -55,7 +55,7 @@ class Admin::PropertiesController < ApplicationController
     if PropertyArea.where(property_id: params[:id]).empty?
       @property_area = PropertyArea.new
     else
-       @property_area = PropertyArea.where(property_id: params[:id]).first
+       @property_area = PropertyArea.find_by(property_id: params[:id])
     end
   end
 
@@ -63,7 +63,7 @@ class Admin::PropertiesController < ApplicationController
     if PropertyValue.where(property_id: params[:id]).empty?
       @property_value = PropertyValue.new
     else
-       @property_value = PropertyValue.where(property_id: params[:id]).first
+       @property_value = PropertyValue.find_by(property_id: params[:id])
     end
   end
 
@@ -89,6 +89,8 @@ class Admin::PropertiesController < ApplicationController
   def set_landlord
     if params[:landlord]
       @landlord = Landlord.find(params[:landlord])
+    elsif @property.landlord.present?
+      @landlord = @property.landlord
     else
       @landlord = Landlord.new
     end

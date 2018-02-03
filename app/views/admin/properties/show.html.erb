@@ -87,7 +87,7 @@
       </div>
 
       <%= link_to "Deletar", admin_property_path(@property), data: {confirm: 'Tem certeza que quer deletar a propriedade?'}, class: "btn btn-danger", method: :delete  %>
-      <%= link_to "Editar", edit_admin_landlord_property_path(@property.landlord, @property), class: "btn btn-primary" %>
+      <%= link_to "Editar", edit_admin_property_path(@property), class: "btn btn-primary" %>
 
     </div>
   </div>

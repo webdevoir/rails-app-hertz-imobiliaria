@@ -1,7 +1,6 @@
 class Admin::DetailsController < ApplicationController
   def create
     @property = Property.find_by(id: property_param[:id])
-    @landlord = Landlord.find_by(id: @property.landlord_id)
     @new_property_details = details_params.keys
     @all_details = DetailsType.all
     @actual_property_details = Detail.where(property_id: @property).map{ |detail| detail.details_type.name }
@@ -19,7 +18,7 @@ class Admin::DetailsController < ApplicationController
       Detail.where(details_type_id: detail_to_delete).delete_all
     end
 
-    redirect_to details_admin_landlord_property_path(@landlord, @property)
+    redirect_to area_admin_property_path(@property)
   end
 
   private
