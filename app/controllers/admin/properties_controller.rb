@@ -78,7 +78,6 @@ class Admin::PropertiesController < ApplicationController
 
   def details
     @property_details = Detail.where(property_id: params[:id]).map{ |detail| detail.details_type.name }
-    #@property_detail_types = DetailsType.all
   end
 
   def destroy
