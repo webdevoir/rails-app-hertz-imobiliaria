@@ -5,7 +5,6 @@ class Admin::DetailsController < ApplicationController
     @new_property_details = details_params.keys
     @all_details = DetailsType.all
     @actual_property_details = Detail.where(property_id: @property).map{ |detail| detail.details_type.name }
-    #binding.pry
     @new_property_details.each do |detail|
       detail_in_db = @all_details.find_by(name: detail)
       if detail_in_db.nil?
@@ -21,22 +20,6 @@ class Admin::DetailsController < ApplicationController
     end
 
     redirect_to details_admin_landlord_property_path(@landlord, @property)
-
-  #   details_updated = params[:details].select { |key, value| value == "on" }.keys
-  #   details_actual.each do |detail|
-  #     unless (details_updated.include? detail)
-  #       detail_type = DetailsType.find_by(name: detail)
-  #       Detail.where(property_id: @property, details_type_id: detail_type).destroy_all
-  #     end
-  #   end
-
-  #   details_updated.each do |detail|
-  #     unless (details_actual.include? detail)
-  #       detail_type = DetailsType.find_by(name: detail)
-  #       Detail.create(property: @property, details_type: detail_type)
-  #     end
-  #   end
-  #   redirect_to details_admin_landlord_property_path(@landlord, @property)
   end
 
   private

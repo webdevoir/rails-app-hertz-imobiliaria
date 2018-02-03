@@ -20,6 +20,16 @@
     <% end %>
 
     <% if @property.id %>
+      <%= link_to details_admin_landlord_property_path(@landlord, @property), class: "tab" + (activate == "details" ? " active" : "")  do %>
+        <p>Detalhes do Imovel</p>
+      <% end %>
+    <% else %>
+      <a class="tab <%= 'active' if activate == 'detail' %>" href="#" onclick="alert('Cadastre as informação basicas do imovel antes de continuar');">
+      <p>Detalhes do Imovel</p>
+      </a>
+    <% end %>
+
+    <% if @property.id %>
       <%= link_to area_admin_landlord_property_path(@landlord, @property), class: "tab" + (activate == "area" ? " active" : "")  do %>
         <p>Informações da Area</p>
       <% end %>
@@ -28,6 +38,7 @@
       <p>Informações da Area</p>
       </a>
     <% end %>
+
     <% if @property.id %>
       <%= link_to value_admin_landlord_property_path(@landlord, @property), class: "tab" + (activate == "value" ? " active" : "")  do %>
         <p>Valor do Imovel</p>
