@@ -14,7 +14,7 @@
 
       <br>
       <div class="inside-form">
-          <%= form_tag( admin_details_path , method: 'post', id: 'detail-form') do %>
+          <%= form_tag( admin_property_details_path , method: 'post', id: 'detail-form') do %>
             <%= hidden_field_tag "property[id]", params[:id] %>
             <% @property_details.each do |detail| %>
               <div class="col-md-3 center">

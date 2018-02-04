@@ -27,7 +27,7 @@ Rails.application.routes.draw do
     resources :property_addresses, only: [:create, :update]
     resources :property_areas, only: [:create, :update]
     resources :property_values, only: [:create, :update]
-    resources :details, only: [:create, :update]
+    resources :property_details, only: [:create, :update]
 
   end
 end
