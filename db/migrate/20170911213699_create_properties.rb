@@ -4,9 +4,9 @@ class CreateProperties < ActiveRecord::Migration[5.0]
       t.references :landlord, foreign_key: true
       t.boolean :sale, default: false
       t.boolean :rent, default: false
-      t.string :property_genre
-      t.string :property_type
-      t.string :property_condition
+      t.string :genre
+      t.string :type
+      t.string :condition
       t.string :position
       t.string :style
       t.datetime :construction_year

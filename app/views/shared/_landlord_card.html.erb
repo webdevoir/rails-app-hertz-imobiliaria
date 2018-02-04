@@ -3,13 +3,13 @@
   <div class="info">
     <div class="main-info">
       <p class="landlord-name"><%= landlord.name %><p>
-      <p>Fone: <%= landlord.phone %><p>
+      <p>Telefone: <%= landlord.phone1 %>/Cel: <%= landlord.phone2 %><p>
       <p>Email: <%= landlord.email %><p>
     </div>
     <div class="booked text-right">
       <p><b>Cadastros: <%= landlord.properties.count %></b></p>
-      <p>Venda:  <%= landlord.properties.where(bussiness_type: "venda").count %></p>
-      <p>Alugel: <%= landlord.properties.where(bussiness_type: "alugel").count %></p>
+      <p>Venda:  <%= landlord.properties.count %></p>
+      <p>Alugel: <%= landlord.properties.count %></p>
     </div>
   </div>
   <div class="landlord-card-link">

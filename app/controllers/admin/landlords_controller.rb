@@ -43,7 +43,12 @@ before_action :set_landlord, only: [:edit, :update, :destroy, :show]
   private
 
   def  landlord_params
-    params.require(:landlord).permit(:name, :rg, :cpf, :birthday, :martial_status, :profession, :phone, :email, :address, :cep, :deposit, :adm_rate, :first_rate)
+    params.require(:landlord).permit(:name, :rg, :cpf, :birthday, :martial_status,
+                                    :profession, :phone1, :phone2, :email,
+                                    :cep, :country, :state, :city, :neighborhood,
+                                    :street, :number, :complement, :condo_name,
+                                    :type_of_account, :bank, :deposit, :agency,
+                                    :adm_rate, :first_rate)
   end
 
   def set_landlord
