@@ -1,39 +1,7 @@
-<style>
-
-  #login-wrapper {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 10vh;
-  }
-  #login {
-    background: white;
-    width: 450px;
-    padding: 30px 50px;
-    box-shadow: 2px 2px 5px #999999;
-  }
-
-  #login-image {
-    width: 100px;
-    height: 100px;
-    background: #fe7e01;
-    padding: 15px 20px;
-    border-radius: 10%;
-  }
-
-  #login-top {
-    display: flex;
-    flex-direction: column;
-    align-items: center
-  }
-
-</style>
-
-
-<div id="login-wrapper">
-  <div id="login">
-    <div id="login-top">
-      <%= image_tag "logo.png", id: 'login-image'  %>
+<div class="login-wrapper">
+  <div class="login">
+    <div class="login-top">
+      <%= image_tag "logo.png", class: 'login-image'  %>
       <h3>Faça seu login</h3>
     </div>
     <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
@@ -44,7 +12,7 @@
       </div>
 
       <div class="form-actions">
-        <%= f.button :submit, "Entrar" %>
+        <%= f.button :submit, "Entrar", class: 'btn btn-primary' %>
       </div>
     <% end %>
 

@@ -12,6 +12,7 @@ before_action :set_landlord, only: [:edit, :update, :destroy, :show]
   end
 
   def new
+    @estados = PropertyAddress.states
     @landlord = Landlord.new
   end
 

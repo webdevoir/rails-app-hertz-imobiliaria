@@ -31,6 +31,7 @@ ActiveRecord::Schema.define(version: 20171218220803) do
   end
 
   create_table "details_types", id: :serial, force: :cascade do |t|
+    t.string "type"
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -43,17 +44,24 @@ ActiveRecord::Schema.define(version: 20171218220803) do
     t.date "birthday"
     t.string "martial_status"
     t.string "profession"
-    t.string "phones"
+    t.string "phone1"
+    t.string "phone2"
     t.string "email"
-    t.string "address"
     t.string "cep"
+    t.string "country"
+    t.string "state"
+    t.string "city"
+    t.string "neighborhood"
+    t.string "street"
+    t.string "number"
+    t.string "complement"
+    t.string "condo_name"
     t.boolean "deposit"
     t.decimal "adm_rate"
     t.decimal "first_rate"
     t.string "type_of_account"
     t.string "bank"
     t.string "agency"
-    t.string "number"
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -134,6 +142,7 @@ ActiveRecord::Schema.define(version: 20171218220803) do
   create_table "users", id: :serial, force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
+    t.string "name", default: "", null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"

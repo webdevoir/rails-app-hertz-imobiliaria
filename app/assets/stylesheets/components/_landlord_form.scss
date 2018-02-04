@@ -1,0 +1,20 @@
+.landlord-form {
+  background: white;
+  padding: 20px;
+  margin: 20px 0 20px 0;
+  box-shadow: 2px 2px 5px #999999;
+  h2 {
+    margin: 10px 0 10px 0;
+  }
+
+  overflow: hidden;
+
+  .subtitle { margin-top: 30px; }
+
+  .line { margin-top:0; }
+
+  #landlord_cep { max-width: 300px; }
+  #landlord_type_of_account { max-width: 300px; }
+  .collection_radio_buttons { margin: 2px 10px;}
+
+}

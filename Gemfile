@@ -16,6 +16,7 @@ gem 'jquery-rails'
 gem 'jquery-ui-rails'
 gem 'sass-rails'
 gem 'simple_form'
+gem 'country_select'
 gem 'uglifier'
 
 #photo upload gems
@@ -37,6 +38,11 @@ gem 'underscore-rails'
 
 # Autocomplete
 gem 'rails-jquery-autocomplete'
+
+#datepicker
+gem 'bootstrap-datepicker-rails'
+
+
 
 group :development, :test do
   gem 'pry-byebug'

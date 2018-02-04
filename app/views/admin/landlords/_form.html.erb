@@ -1,32 +1,128 @@
-<style>
-  .landlord-form {
-    background: white;
-    padding: 20px;
-    margin-bottom: 20px;
-    box-shadow: 2px 2px 5px #999999;
-  }
-</style>
-
 <div class="landlord-form">
+  <h2>Novo Proprietario</h2>
   <%= simple_form_for ([:admin, landlord]) do |f| %>
-    <%= f.input :name, label: 'Nome', placeholder: "Ex: João Garcia Rodrigues" %>
-    <%= f.input :rg, label: 'Documento(RG/RNE)', placeholder: "RG" %>
-    <%= f.input :cpf, label: 'CPF', placeholder: "231.432.123-44" %>
-    <%= f.input :birthday, start_year: Date.today.year - 110, end_year: Date.today.year-10, label: 'Data de Nacimento' %>
+    <h4 class="subtitle">Informação Pessoais</h4>
+    <hr class="line">
+    <div class="col-md-4">
+      <%= f.input :name, label: 'Nome', placeholder: "Ex: João Garcia Rodrigues" %>
+    </div>
+    <div class="col-md-4">
+      <%= f.input :rg, label: 'Documento(RG/RNE)', placeholder: "RG" %>
+    </div>
+    <div class="col-md-4">
+      <%= f.input :cpf, label: 'CPF', placeholder: "231.432.123-44" %>
+    </div>
+    <div class="col-md-4">
     <%= f.input :martial_status, label: 'Estado Civil', collection: %w(solteiro casado divorciado viuvo união\ estavel), selected:'solteiro', placeholder: "casado" %>
-    <%= f.input :profession, label: 'Profissão', placeholder: "Engenheiro" %>
-    <%= f.input :phone, label: 'Telefone', placeholder: "11-9833-9182" %>
-    <%= f.input :email, label: 'Email', placeholder: "joao.garcia@gmail.com" %>
-    <%= f.input :address, label: 'Endereço', placeholder: "Rua Canario, 874" %>
-    <%= f.input :cep, label: 'CEP', placeholder: "5521-043" %>
-    <p><b>Deposito</b></p>
-    <%= f.collection_radio_buttons :deposit, [[true, 'Sim'] ,[false, 'Nao']], :first, :last %>
-    <%= f.input :type_of_account, label: 'Tipo de Contato', collection: %w(Conta\ Corrente Conta\ Poupaça), selected: 'Conta Corrente' %>
-    <%= f.input :bank, label: 'Banco', placeholder: "Bradesco" %>
-    <%= f.input :agency, label: 'Numero de Agencia', placeholder: "01293-32" %>
-    <%= f.input :number, label: 'Numero de Conta', placeholder: "12312" %>
-    <%= f.input :adm_rate, label: 'Taxa Administração Mesal', placeholder: "10%" %>
-    <%= f.input :first_rate, label: 'Taxa Administrativa 1º', placeholder: "10%" %>
-    <%= f.button :submit, value: 'Salvar', class: 'btn btn-primary' %>
+    </div>
+    <div class="col-md-4">
+      <%= f.input :profession, label: 'Profissão', placeholder: "Engenheiro" %>
+    </div>
+    <div class="col-md-3">
+    <%= f.input :birthday, as: :string, input_html: { data: {behaviour: "datepicker"}}, label: "Data de Nacimento" %>
+    </div>
+
+    <div class="col-md-12">
+      <h4 class="subtitle">Contato</h4>
+      <hr class="line">
+    </div>
+
+    <div class="col-md-6">
+      <%= f.input :phone1, label: 'Telefone Fixo', placeholder: "11-9833-9182" %>
+    </div>
+    <div class="col-md-6">
+      <%= f.input :phone2, label: 'Celular', placeholder: "11-9833-9182" %>
+    </div>
+
+    <div class="col-md-6">
+      <%= f.input :email, label: 'Email', placeholder: "joao.garcia@gmail.com" %>
+    </div>
+
+    <div class="col-md-12">
+      <%= f.input :cep, label: 'CEP', placeholder: "5521-043", id: 'cep' %>
+    </div>
+
+    <div class="col-md-4">
+      <%= f.label :country, "Pais" %>
+      <%= f.country_select :country, {selected: "BR"}, {class: "form-control" } %>
+    </div>
+
+    <div class="col-md-1">
+      <%= f.input :state, collection: @estados, label: 'Estado', selected: "SP" %>
+    </div>
+
+    <div class="col-md-4">
+      <%= f.input :city, label: 'Cidade', placeholder: "São Paulo" %>
+    </div>
+
+    <div class="col-md-4">
+      <%= f.input :neighborhood, label: 'Bairro', placeholder: "Moema" %>
+    </div>
+
+    <div class="col-md-5">
+      <%= f.input :street, label: 'Logradouro', placeholder: "Rua Canario" %>
+    </div>
+
+    <div class="col-md-2">
+      <%= f.input :number, label: 'Nr.', placeholder: "321" %>
+    </div>
+
+    <div class="col-md-2">
+      <%= f.input :complement, label: 'Complemento', placeholder: "A51" %>
+    </div>
+
+    <div class="col-md-4">
+      <%= f.input :condo_name, label: 'Condominio', placeholder: "Cond. Novo Mundo" %>
+    </div>
+
+    <div class="col-md-12">
+      <h4 class="subtitle">Informaçõs de Pagamento</h4>
+      <hr class="line">
+    </div>
+
+    <div class="col-md-12">
+      <p><b>Deposito</b></p>
+      <%= f.collection_radio_buttons :deposit, [[true, 'Sim'] ,[false, 'Nao']], :first, :last, id: 'deposit' %>
+    </div>
+
+    <div class="col-md-12">
+      <%= f.input :type_of_account, label: 'Tipo de Conta', collection: %w(Conta\ Corrente Conta\ Poupaça), selected: 'Conta Corrente', id: 'conta' %>
+    </div>
+
+    <div class="col-md-4">
+      <%= f.input :bank, label: 'Banco', placeholder: "Bradesco" %>
+    </div>
+
+    <div class="col-md-4">
+      <%= f.input :agency, label: 'Numero de Agencia', placeholder: "01293-32" %>
+    </div>
+
+    <div class="col-md-4">
+      <%= f.input :number, label: 'Numero de Conta', placeholder: "12312" %>
+    </div>
+
+    <div class="col-md-12">
+      <h4 class="subtitle">Taxas</h4>
+      <hr class="line">
+    </div>
+
+    <div class="col-md-4">
+      <%= f.input :adm_rate, label: 'Taxa Administração Mesal', placeholder: "10%" %>
+    </div>
+
+    <div class="col-md-4">
+      <%= f.input :first_rate, label: 'Taxa Administrativa 1º', placeholder: "10%" %>
+    </div>
+
+    <br>
+
+    <div class="col-md-12">
+      <%= f.button :submit, value: 'Salvar', class: 'btn btn-primary' %>
   <% end %>
 </div>
+
+<% content_for :js do %>
+  <%= javascript_tag do  %>
+     $('[data-behaviour~=datepicker]').datepicker({"format": "yyyy-mm-dd", "weekStart": 1, "startDate": "-100y", "endDate": "-15y", "startView": "decades", autoclose: true});
+  <% end %>
+<% end %>

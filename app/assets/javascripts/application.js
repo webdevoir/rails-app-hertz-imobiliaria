@@ -8,6 +8,6 @@
 //= require jquery.slick
 //= require underscore
 //= require gmaps/google
-
 //= require autocomplete-rails
+//= require bootstrap-datepicker
 //= require_tree .
