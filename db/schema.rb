@@ -62,10 +62,8 @@ ActiveRecord::Schema.define(version: 20171218220803) do
     t.string "type_of_account"
     t.string "bank"
     t.string "agency"
-    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_landlords_on_user_id"
   end
 
   create_table "properties", id: :serial, force: :cascade do |t|
@@ -86,6 +84,7 @@ ActiveRecord::Schema.define(version: 20171218220803) do
     t.text "conditions_business"
     t.text "observations"
     t.boolean "published", default: true
+    t.boolean "featured", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["landlord_id"], name: "index_properties_on_landlord_id"
@@ -158,7 +157,6 @@ ActiveRecord::Schema.define(version: 20171218220803) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "landlords", "users"
   add_foreign_key "properties", "landlords"
   add_foreign_key "property_addresses", "properties"
   add_foreign_key "property_areas", "properties"
