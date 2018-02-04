@@ -6,7 +6,7 @@
   </div>
   <div class="col-md-9">
     <div class="property-show">
-      <h2> Propriedade - Cod. <%= @property.code %></h2>
+      <h2> Propriedade - Cod. <%= @property.id %></h2>
       <div class="slider-wrapper">
         <div class="slider-for">
           <% @property.photos.reverse.each do |photo| %>
@@ -26,17 +26,17 @@
       <div class="info-card">
         <p>Informações Basicas</p>
         <ul>
-          <li>Tipo Negocição: <%= @property.bussiness_type %></li>
-          <li>Tipo de Propriedade:<%= @property.property_type  %></li>
-          <li>Tipo: <%= @property.property_kind  %></li>
-          <li>Estado da Propriedade: <%= @property.property_state  %></li>
+          <li>Tipo Negocição: <%=  %></li>
+          <li>Tipo de Propriedade:<%=   %></li>
+          <li>Tipo: <%=   %></li>
+          <li>Estado da Propriedade: <%=   %></li>
           <li>Posição da Propriedade: <%= @property.position  %></li>
           <li>Estilo de contrução<%= @property.style  %></li>
           <li>Ano de Contrução: <%= @property.construction_year  %></li>
           <li>Nº de Banheiros: <%= @property.bathrooms  %></li>
           <li>Nº de Garages<%= @property.garages  %></li>
           <li>Descrição<%= @property.description  %></li>
-          <li><%= @property.conditions %></li>
+          <li><%= %></li>
         </ul>
       </div>
 
@@ -73,7 +73,7 @@
           <li>Valor Total: <%= "R$#{@value.value}" %></li>
           <li>Iptu: <%= "R$#{@value.iptu}" %></li>
           <li>Condominio: <%= "R$#{@value.condo_amount}" %></li>
-          <li>Porcetagem: <%= "#{@value.rate*100 if @value.rate != nil }%" %></li>
+          <li>Porcetagem: <%=  %></li>
         </ul>
       </div>
 
