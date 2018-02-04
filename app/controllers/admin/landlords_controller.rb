@@ -17,7 +17,7 @@ before_action :set_landlord, only: [:edit, :update, :destroy, :show]
   end
 
   def create
-    @landlord = current_user.landlords.new(landlord_params)
+    @landlord = Landlords.new(landlord_params)
     if @landlord.save
       redirect_to admin_landlords_path
     else

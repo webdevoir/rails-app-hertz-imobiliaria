@@ -26,7 +26,6 @@ class CreateLandlords < ActiveRecord::Migration[5.0]
       t.string :bank
       t.string :agency
       t.string :number
-      t.references :user, foreign_key: true
       t.timestamps
     end
   end

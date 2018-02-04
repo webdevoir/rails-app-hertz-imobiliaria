@@ -18,6 +18,7 @@ class CreateProperties < ActiveRecord::Migration[5.0]
       t.text :conditions_business
       t.text :observations
       t.boolean :published, default: true
+      t.boolean :featured, default: false
       t.timestamps
     end
   end
