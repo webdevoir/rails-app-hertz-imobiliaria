@@ -30,6 +30,10 @@
     width: 225px;
   }
 
+  .active {
+      background-color: #32353e;
+    }
+
   .sidebar-button {
     display:block;
     font-weight: 300;
@@ -37,6 +41,8 @@
     padding: 0.5em;
     text-decoration: none;
     color: #b3b3b3;
+
+
 
     a {
       font-weight: 300;

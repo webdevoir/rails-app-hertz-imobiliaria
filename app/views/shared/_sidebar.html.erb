@@ -1,9 +1,9 @@
 <div class="sidebar">
     <span class="header"><%= current_user.name %></span>
     <hr id="line">
-    <span class="sidebar-button"><i class="fa fa-tachometer"></i><%= link_to "Visão Geral", admin_path %></span>
-    <span class="sidebar-button"><i class="fa fa-address-card"></i><%= link_to "Proprietarios", admin_landlords_path %></span>
-    <span class="sidebar-button"><i class="fa fa-home"></i><%= link_to "Imoveis", admin_properties_path %></span>
-    <span class="sidebar-button"><i class="fa fa-building"></i></i><%= link_to "Emprendimentos", "#" %></span>
+    <span class='sidebar-button <%= current_class?('dashboard') %>'><i class="fa fa-tachometer"></i><%= link_to "Visão Geral", admin_dashboard_path %></span>
+    <span class='sidebar-button <%= current_class?('landlord') %>'><i class="fa fa-address-card"></i><%= link_to "Proprietarios", admin_landlords_path %></span>
+    <span class='sidebar-button <%= current_class?('propert') %>'><i class="fa fa-home"></i><%= link_to "Imoveis", admin_properties_path %></span>
+    <span class='sidebar-button'><i class="fa fa-building"></i></i><%= link_to "Emprendimentos", "#" %></span>
     <span class="sidebar-button"><i class="fa fa-envelope"></i></i><%= link_to "Messagens", "#" %></span>
 </div>

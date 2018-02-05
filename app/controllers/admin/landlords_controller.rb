@@ -17,12 +17,14 @@ before_action :set_landlord, only: [:edit, :update, :destroy, :show]
   end
 
   def create
+    # binding.pry
     @landlord = Landlord.new(landlord_params)
-    if @landlord.save
+    if @landlord.save!
       redirect_to admin_landlord_path(@landlord)
     else
       render :new
     end
+
   end
 
 

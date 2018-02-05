@@ -16,7 +16,7 @@ class CreateProperties < ActiveRecord::Migration[5.0]
       t.integer :suites, default: 0
       t.text :description, default: ""
       t.text :sell_conditions, default: ""
-      t.rent :rent_guarantee, default: ""
+      t.text :rent_guarantee, default: ""
       t.text :observations, default: ""
       t.boolean :published, default: true
       t.boolean :featured, default: false
