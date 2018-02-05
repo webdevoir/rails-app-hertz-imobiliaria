@@ -9,7 +9,7 @@ class CreateProperties < ActiveRecord::Migration[5.0]
       t.string :condition
       t.string :position
       t.string :style
-      t.datetime :construction_year
+      t.integer :construction_year
       t.integer :bathrooms
       t.integer :rooms
       t.integer :garages

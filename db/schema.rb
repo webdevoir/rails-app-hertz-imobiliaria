@@ -75,7 +75,7 @@ ActiveRecord::Schema.define(version: 20171218220803) do
     t.string "condition"
     t.string "position"
     t.string "style"
-    t.datetime "construction_year"
+    t.integer "construction_year"
     t.integer "bathrooms"
     t.integer "rooms"
     t.integer "garages"
@@ -110,9 +110,9 @@ ActiveRecord::Schema.define(version: 20171218220803) do
 
   create_table "property_areas", id: :serial, force: :cascade do |t|
     t.string "scale"
-    t.float "total_area"
-    t.float "usable_area"
-    t.float "land_area"
+    t.float "total"
+    t.float "usable"
+    t.float "land"
     t.integer "property_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -129,9 +129,10 @@ ActiveRecord::Schema.define(version: 20171218220803) do
   end
 
   create_table "property_values", id: :serial, force: :cascade do |t|
-    t.decimal "value"
+    t.decimal "rent"
+    t.decimal "sell"
     t.decimal "iptu"
-    t.decimal "condo_amount"
+    t.decimal "condominium"
     t.integer "property_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

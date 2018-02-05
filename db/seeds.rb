@@ -1,3 +1,13 @@
+User.destroy_all
+admin = {
+  name: "Juan Couso",
+  email: 'admin@admin.com',
+  password: 123123,
+  admin: true,
+}
+
+User.create(admin)
+
 # PropertyValue.destroy_all
 # puts 'Destroying all  PropertyValues'
 # PropertyArea.destroy_all
