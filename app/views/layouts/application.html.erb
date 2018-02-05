@@ -14,8 +14,11 @@
   <body style="position:relative;">
     <%= render 'shared/navbar' %>
     <%= render 'shared/flashes' %>
-    <div class="container">
-    <%= yield %>
+    <div class="main-wrapper">
+      <%= render 'shared/sidebar' %>
+      <div class="container">
+      <%= yield %>
+      </div>
     </div>
     <%= javascript_include_tag 'application' %>
     <%= cloudinary_js_config %>

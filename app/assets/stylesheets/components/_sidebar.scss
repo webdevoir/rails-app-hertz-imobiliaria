@@ -1,18 +1,52 @@
+.main-wrapper {
+  padding-left: 250px;
+  padding-top: 70px;
+  display: flex;
+  align-items: stretch;
+  min-height: calc(100vh - 70px);
+}
+
 .sidebar {
-  background-color: white;
-  margin: 1em 0;
-  border: 1px solid black;
-  box-shadow: 2px 2px 5px #808080;
+  background-color: #272930;
+  position: fixed;
+  padding: 15px 0 0 10px;
+  top: 70px;
+  left: 0px;
+  bottom: 0;
+  height: 100%;
+  width: 250px;
+  overflow-y: hidden;
+
+  .header {
+    color: white;
+    padding: 15px 0 0 10px;
+  }
+
+  #line {
+    margin: 0;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding: 0;
+    width: 225px;
+  }
 
   .sidebar-button {
     display:block;
+    font-weight: 300;
     width:100%;
     padding: 0.5em;
     text-decoration: none;
-    color: black;
+    color: #b3b3b3;
+
+    a {
+      font-weight: 300;
+      padding: 0.5em;
+      text-decoration: none;
+      color: #b3b3b3;
+    }
 
     &:hover{
-      background-color: $orangehertz;
+      background-color: #32353e;
       color:white;
    }
   }

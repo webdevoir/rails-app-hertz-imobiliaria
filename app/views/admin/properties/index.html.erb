@@ -11,10 +11,6 @@
 </style>
 
 <div class="row">
-  <div class="col-md-3">
-    <br>
-    <br>
-    <%= render 'shared/sidebar' %>
     <div class="search-filter">
       <%= form_tag(admin_properties_path, method: :get) do %>
         <h3>Filtro</h3>
@@ -27,9 +23,8 @@
         <%= label_tag("Cidade") %> <br>
         <%= select_tag(:city, options_for_select(["city-1", "city-2", "city-3", "city-4"])) %>
       <% end %>
-    </div>
   </div>
-  <div class="col-md-9">
+  <div class="col-md-12">
     <h1>Propriedades</h1>
       <%= form_tag(admin_properties_path, method: :get) do  %>
       <%= text_field_tag :query, nil, placeholder: 'Procure por código ou rua', class: 'form-property-search' %>

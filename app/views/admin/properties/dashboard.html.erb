@@ -2,18 +2,10 @@
   .dashboard {
     background: white;
     padding: 1em;
-
   }
 </style>
-
-
 <div class="row">
-  <div class="col-md-3">
-    <br>
-    <br>
-    <%= render 'shared/sidebar' %>
-  </div>
-  <div class="col-md-9">
+  <div class="col-md-12">
     <h1>Visão Geral</h1>
     <div class="dashboard">
       <h5><b>Propriedades Cadastradas:</b> <%= @properties.count %></h5>
