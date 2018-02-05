@@ -4,20 +4,20 @@ class CreateProperties < ActiveRecord::Migration[5.0]
       t.references :landlord, foreign_key: true
       t.boolean :sale, default: false
       t.boolean :rent, default: false
-      t.string :bussiness_type
-      t.string :property_type
-      t.string :condition
-      t.string :position
-      t.string :style
-      t.integer :construction_year
-      t.integer :bathrooms
-      t.integer :rooms
-      t.integer :garages
-      t.integer :suites
-      t.text :description
-      t.text :sell_conditions
-      t.rent :rent_guarantee
-      t.text :observations
+      t.string :bussiness_type, default: ""
+      t.string :property_type, default: ""
+      t.string :condition, default: ""
+      t.string :position, default: ""
+      t.string :style, default: ""
+      t.integer :construction_year, default: ""
+      t.integer :bathrooms, default: 0
+      t.integer :rooms, default: 0
+      t.integer :garages, default: 0
+      t.integer :suites, default: 0
+      t.text :description, default: ""
+      t.text :sell_conditions, default: ""
+      t.rent :rent_guarantee, default: ""
+      t.text :observations, default: ""
       t.boolean :published, default: true
       t.boolean :featured, default: false
       t.timestamps
