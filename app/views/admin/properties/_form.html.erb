@@ -1,19 +1,20 @@
+
 <div class="form-property">
   <%= simple_form_for([:admin, property]) do |f| %>
     <%= f.input :landlord_id, :as => :hidden, input_html: { value: @landlord.id } %>
-
-    <%= f.input :bussiness_type%>
-    <%= f.input :property_type %>
-    <%= f.input :position %>
-    <%= f.input :style %>
-    <%= f.input :construction_year %>
-    <%= f.input :bathrooms %>
-    <%= f.input :rooms %>
-    <%= f.input :garages %>
-    <%= f.input :suites %>
-    <%= f.input :description %>
-    <%= f.input :conditions_business %>
-
-    <%= f.button :submit, value: "Salvar" %>
+    <%= f.input :bussiness_type, label: 'Tipo de Negocio', collection: ['Residencial', 'Comercial'], wrapper_html: {class: 'col-md-6'} %>
+    <%= f.input :property_type, label: 'Tipo de Propriedade', collection: ['Casa', 'Apartamento'], wrapper_html: {class: 'col-md-6'}  %>
+    <%= f.input :construction_year, label: 'Ano de Contrução', wrapper_html: {class: 'col-md-3'} %>
+        <%= f.input :position, label: 'Posição', wrapper_html: {class: 'col-md-3'}  %>
+    <%= f.input :style, wrapper_html: {class: 'col-md-6'}  %>
+    <%= f.input :rooms, label: 'Nr. de Quartos', wrapper_html: {class: 'col-md-3'}  %>
+    <%= f.input :bathrooms, label: 'Nr. de Banheiros', wrapper_html: {class: 'col-md-3 '}  %>
+    <%= f.input :suites, label: 'Nr. de Suites', wrapper_html: {class: 'col-md-3'}  %>
+    <%= f.input :garages, label: 'Nr. Vagas', wrapper_html: {class: 'col-md-3'}  %>
+    <%= f.input :description, wrapper_html: {class: 'col-md-12'}  %>
+    <%= f.input :conditions_business, wrapper_html: {class: 'col-md-12'}  %>
+    <div class="col-md-12">
+      <%= f.button :submit, 'Salvar', class: 'btn btn-primary' %>
+    </div>
   <% end %>
 </div>

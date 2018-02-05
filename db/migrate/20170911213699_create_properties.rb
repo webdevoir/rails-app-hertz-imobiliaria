@@ -15,7 +15,8 @@ class CreateProperties < ActiveRecord::Migration[5.0]
       t.integer :garages
       t.integer :suites
       t.text :description
-      t.text :conditions_business
+      t.text :sell_conditions
+      t.rent :rent_guarantee
       t.text :observations
       t.boolean :published, default: true
       t.boolean :featured, default: false
