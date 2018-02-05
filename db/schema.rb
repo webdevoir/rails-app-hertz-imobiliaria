@@ -70,8 +70,8 @@ ActiveRecord::Schema.define(version: 20171218220803) do
     t.integer "landlord_id"
     t.boolean "sale", default: false
     t.boolean "rent", default: false
-    t.string "genre"
-    t.string "type"
+    t.string "bussiness_type"
+    t.string "property_type"
     t.string "condition"
     t.string "position"
     t.string "style"
