@@ -4,7 +4,7 @@ ruby '2.3.3'
 gem 'devise'
 gem 'figaro'
 gem 'jbuilder', '~> 2.0'
-gem 'pg'
+gem 'pg', '~> 0.21'
 gem 'puma'
 gem 'rails', '5.1'
 gem 'redis'
@@ -45,6 +45,7 @@ gem 'bootstrap-datepicker-rails'
 
 
 group :development, :test do
+  gem "minitest", '5.10.1'
   gem 'pry-byebug'
   gem 'pry-rails'
   gem 'web-console', '>= 3.3.0'
