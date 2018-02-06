@@ -73,6 +73,17 @@ class Admin::PropertiesController < ApplicationController
   def dashboard
     @properties = Property.all
     @landlords = Landlord.all
+    @data = []
+    ((Date.today-30)...(Date.today+1)).map{ |date|
+      #binding.pry
+      [date.strftime("%F"), (date + 1).strftime("%F")] }.each do |date|
+      total_of_day = 0
+      @properties.each do |property|
+        total_of_day += property.impressionist_count(filter: :ip_address, start_date: date[0], end_date: date[1] )
+      end
+      @data << [date[0], total_of_day]
+    end
+    @data
   end
 
   def details

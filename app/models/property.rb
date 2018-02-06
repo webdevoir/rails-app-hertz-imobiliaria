@@ -1,4 +1,6 @@
 class Property < ApplicationRecord
+  is_impressionable
+
   belongs_to :landlord
   has_attachments :photos, maximum: 20
   has_one :property_address, dependent: :destroy

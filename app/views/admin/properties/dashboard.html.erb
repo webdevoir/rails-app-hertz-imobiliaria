@@ -1,3 +1,15 @@
+<style>
+  #dashboard-graph {
+    background: white;
+    padding: 10px 40px;
+    margin: 10px 10px 30px 10px;
+    display: flex;
+    flex-direction:column;
+    align-items: center;
+  }
+</style>
+
+
 <div class="row">
   <div class="col-md-4">
     <%= render 'shared/dashboard_simple_card', title: 'Proprietarios', subtitle: 'Casdastros Ativos', data: @landlords.count  %>
@@ -9,6 +21,14 @@
 
   <div class="col-md-4">
     <%= render 'shared/dashboard_simple_card', title: 'Emprendimentos', subtitle: 'Casdastros Ativos', data: 0  %>
+  </div>
+
+  <div class="col-md-12">
+    <div id="dashboard-graph">
+      <h3>Visitas por dias</h3>
+      <br>
+      <%= line_chart @data, ytitle: "Visitas"  %>
+    </div>
   </div>
 </div>
 

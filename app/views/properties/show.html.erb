@@ -1,6 +1,6 @@
 <div class="client-property-show">
   <div class="row">
-    <h2 class="property-title"> <%= @address.neighborhood %> • <%= @address.city %> - Cod. <%= @property.code %></h2>
+    <h2 class="property-title"> <%= @address.neighborhood %> • <%= @address.city %> - Cod. <%= @property.id %></h2>
     <div class="col-lg-8">
       <div class="slider-wrapper">
         <div class="slider-for">
@@ -21,10 +21,9 @@
       <div class="info-card">
         <p>Valor</p>
         <ul>
-          <li>Valor Total: <%= "R$#{@value.value}" %></li>
+          <li>Valor Total: <%= "R$#{@value.rent}" %></li>
           <li>Iptu: <%= "R$#{@value.iptu}" %></li>
-          <li>Condominio: <%= "R$#{@value.condo_amount}" %></li>
-          <li>Porcetagem: <%= "#{@value.rate*100}%"  if @value.rate != nil %></li>
+          <li>Condominio: <%= "R$#{@value.condominium}" %></li>
         </ul>
       </div>
       <div class="info-card">
@@ -32,8 +31,8 @@
         <ul>
           <li>Tipo Negocição: <%= @property.bussiness_type %></li>
           <li>Tipo de Propriedade:<%= @property.property_type  %></li>
-          <li>Tipo: <%= @property.property_kind  %></li>
-          <li>Estado da Propriedade: <%= @property.property_state  %></li>
+          <li>Tipo: <%= @property.bussiness_type  %></li>
+          <li>Estado da Propriedade: <%= @property.condition  %></li>
           <li>Posição da Propriedade: <%= @property.position  %></li>
           <li>Estilo de contrução: <%= @property.style  %></li>
           <li>Ano de Contrução: <%= @property.construction_year  %></li>
@@ -59,9 +58,9 @@
       <div class="info-card">
         <p>Area</p>
         <ul>
-          <li>Area Total: <%= "#{@area.total_area} #{@area.scale}" %></li>
-          <li>Area Util: <%= "#{@area.usable_area} #{@area.scale}" %></li>
-          <li>Area do Terreno: <%= "#{@area.total_area} #{@area.scale}" %></li>
+          <li>Area Total: <%= "#{@area.total} #{@area.scale}" %></li>
+          <li>Area Util: <%= "#{@area.usable} #{@area.scale}" %></li>
+          <li>Area do Terreno: <%= "#{@area.total} #{@area.scale}" %></li>
         </ul>
       </div>
     </div>

@@ -2,9 +2,9 @@
   <%= simple_form_for([:admin, property_area]) do |f| %>
     <%= f.input :property_id, :as => :hidden, input_html: { value: @property.id } %>
     <%= f.input :scale %>
-    <%= f.input :total_area %>
-    <%= f.input :usable_area %>
-    <%= f.input :land_area %>
+    <%= f.input :total %>
+    <%= f.input :usable %>
+    <%= f.input :land %>
     <%= f.button :submit %>
   <% end %>
 </div>

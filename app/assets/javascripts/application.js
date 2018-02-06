@@ -10,4 +10,6 @@
 //= require gmaps/google
 //= require autocomplete-rails
 //= require bootstrap-datepicker
+//= require Chart.bundle
+//= require chartkick
 //= require_tree .

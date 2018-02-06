@@ -1,9 +1,10 @@
 <div class="form-property">
   <%= simple_form_for([:admin, property_value]) do |f| %>
   <%= f.input :property_id, :as => :hidden, input_html: { value: @property.id } %>
-  <%= f.input :value %>
+  <%= f.input :rent %>
+  <%= f.input :sell %>
   <%= f.input :iptu %>
-  <%= f.input :condo_amount %>
+  <%= f.input :condominium %>
   <%= f.button :submit %>
   <% end %>
 </div>

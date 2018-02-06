@@ -9,21 +9,24 @@ gem 'puma'
 gem 'rails', '5.1'
 gem 'redis'
 
+#basic gems
 gem 'autoprefixer-rails'
+gem 'coffee-rails'
 gem 'bootstrap-sass'
 gem 'font-awesome-sass'
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
 gem 'sass-rails'
+gem 'uglifier'
+
+#simple form and country_select
 gem 'simple_form'
 gem 'country_select'
-gem 'uglifier'
 
 #photo upload gems
 gem 'cloudinary', '1.1.7'
 gem 'attachinary', github: 'assembler/attachinary'
 gem 'jquery-fileupload-rails'
-gem 'coffee-rails'
 #photo slider
 gem "jquery-slick-rails"
 
@@ -42,6 +45,12 @@ gem 'rails-jquery-autocomplete'
 #datepicker
 gem 'bootstrap-datepicker-rails'
 
+#kickcharts
+gem 'chartkick'
+gem 'groupdate'
+
+#count visit
+gem 'impressionist'
 
 
 group :development, :test do
