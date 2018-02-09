@@ -56,18 +56,18 @@
       <div class="info-card">
         <p>Area</p>
         <ul>
-          <li>Area Total: <%= "#{@area.total_area} #{@area.scale}" %></li>
-          <li>Area Util: <%= "#{@area.usable_area} #{@area.scale}" %></li>
-          <li>Area do Terreno: <%= "#{@area.total_area} #{@area.scale}" %></li>
+          <li>Area Total: <%= "#{@area.total} #{@area.scale}" %></li>
+          <li>Area Util: <%= "#{@area.usable} #{@area.scale}" %></li>
+          <li>Area do Terreno: <%= "#{@area.total} #{@area.scale}" %></li>
         </ul>
       </div>
 
       <div class="info-card">
         <p>Valor</p>
         <ul>
-          <li>Valor Total: <%= "R$#{@value.value}" %></li>
+          <li>Valor Total: <%= "R$#{@value.sell}" %></li>
           <li>Iptu: <%= "R$#{@value.iptu}" %></li>
-          <li>Condominio: <%= "R$#{@value.condo_amount}" %></li>
+          <li>Condominio: <%= "R$#{@value.condominium}" %></li>
           <li>Porcetagem: <%=  %></li>
         </ul>
       </div>

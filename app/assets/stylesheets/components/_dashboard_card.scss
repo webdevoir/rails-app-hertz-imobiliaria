@@ -1,12 +1,13 @@
   .dashboard-card {
     background: white;
     margin: 10px;
+    padding: 3px 10px;
     max-width: 300px;
     height: 160px;
+    box-shadow: 1px 1px 4px #999999;
     display: flex;
     flex-direction:column;
     justify-content:space-between;
-
 
     .title {
       h3 {
@@ -21,8 +22,6 @@
         color: #999999;
       }
     }
-
-
     .data {
       display: flex;
       justify-content: center;
@@ -32,3 +31,13 @@
       font-weight: 300;
     }
   }
+
+#dashboard-graph {
+  background: white;
+  padding: 10px 40px;
+  margin: 10px 10px 30px 10px;
+  box-shadow: 1px 1px 4px #999999;
+  display: flex;
+  flex-direction:column;
+  align-items: center;
+}
