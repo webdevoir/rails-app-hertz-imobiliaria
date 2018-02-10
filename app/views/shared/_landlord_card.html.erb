@@ -1,22 +1,24 @@
+<div class="col-md-6">
 <div class="landlord-card">
   <%= image_tag('avatar-mini.jpg',  size: "100x100")   %>
   <div class="info">
     <div class="main-info">
       <p class="landlord-name"><%= landlord.name %></p>
-      <p><b>Telefone:</b> <%= landlord.phone1 %></p>
-      <p><b>Cel:</b> <%= landlord.phone2 %></p>
-      <p><b>Email:</b> <%= landlord.email %></p>
+      <div class="tel-info">
+        <p><b><i class="fa fa-phone"></i></b> <%= landlord.phone1 %></p>
+        <p><b><i class="fa fa-mobile"></i></b> <%= landlord.phone2 %></p>
+        <p><b><i class="fa fa-envelope"></i></b> <%= landlord.email %></p>
+      </div>
     </div>
     <div class="booked text-right">
       <p><b>Cadastros: <%= landlord.properties.count %></b></p>
+      <p>Aluguel/Venda: <%= landlord.properties.where(sale: true, rent: true).count %></p>
       <p>Venda:  <%= landlord.properties.where(sale: true, rent: false).count %></p>
-      <p>Alugel: <%= landlord.properties.where(sale: false, rent: true).count %></p>
-      <p>Alugel/Venda: <%= landlord.properties.where(sale: true, rent: true).count %></p>
+      <p>Aluguel: <%= landlord.properties.where(sale: false, rent: true).count %></p>
     </div>
   </div>
   <div class="landlord-card-link">
     <%= link_to "", admin_landlord_path(landlord) %>
   </div>
 </div>
-
-
+</div>

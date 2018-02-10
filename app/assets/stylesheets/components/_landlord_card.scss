@@ -15,7 +15,13 @@
     display: flex;
     justify-content: space-between;
     padding-right: 10px;
-}
+    }
+
+    .tel-info {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
 
   }
 
@@ -23,6 +29,7 @@
     margin: 0 0 8px;
 
   }
+
 
 .landlord-card .landlord-card-control {
     position:absolute;

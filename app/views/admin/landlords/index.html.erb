@@ -2,7 +2,7 @@
   <div class="col-md-12">
     <div class="landlord-index">
       <div class="header">
-        <h3>Proprietarios Cadastrados</h3>
+        <h3>Cadastrados Proprietarios</h3>
         <%= link_to "+ Cadastrar Novo Proprietario", new_admin_landlord_path, class: "btn btn-danger" %>
       </div>
       <%= form_tag admin_landlords_path, method: :get, class: "landlord-search" do %>
@@ -18,9 +18,11 @@
       <% elsif @landlords.empty? && !params[:query].present? %>
         <p class="serach-response">Não exitem proprietarios cadastrados</p>
       <% else %>
-        <% @landlords.each do |landlord| %>
-          <%= render 'shared/landlord_card', landlord: landlord  %>
-        <% end %>
+        <div class="row">
+          <% @landlords.each do |landlord| %>
+            <%= render 'shared/landlord_card', landlord: landlord  %>
+          <% end %>
+        </div>
       <% end %>
     </div>
   </div>
