@@ -1,3 +1,12 @@
+.title {
+  font-size: 35px;
+  color: #4c4c4c;
+}
+
+
+.landlord-show-wrapper {
+  margin: 0 1em;
+
 .landlord {
     display:flex;
     align-items: center;
@@ -10,9 +19,20 @@
   border-top: 3px solid  $orangehertz;
   margin-top: 12px ;
   padding: 0.5em;
-  box-shadow: 2px 2px 5px $shadow;
+  box-shadow: 0px 0px 4px $shadow;
   position:relative;
 
+  #property-count{
+    margin-top: 10px
+  }
+
+  h3 {
+    margin-top: 5px;
+  }
+
+  .small-info {
+    margin: 0 15px;
+  }
 
   p {
     margin: 0.3em 0;
@@ -25,3 +45,4 @@
 
   }
  }
+}
