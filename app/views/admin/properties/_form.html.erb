@@ -2,34 +2,24 @@
   <div class="form-property">
     <%= simple_form_for([:admin, property]) do |f| %>
       <%= f.input :landlord_id, :as => :hidden, input_html: { value: @landlord.id } %>
-      <div class="col-md-12">
-        <div class="kind">
-          <div class="sale">
-          <%= f.label :sale, 'Venda'  %>
-          <%= f.input :sale %>
-          </div>
-          <div class="rent">
-          <%= f.label :sale, 'Aluguel'  %>
-          <%= f.input :rent %>
-          </div>
-        </div>
-      </div>
+      <%= f.input :sale, label: 'Venda', wrapper_html: {class: 'col-md-2'}, onchange: "showAddInfo();"  %>
+      <%= f.input :rent, label: 'Locação', wrapper_html: {class: 'col-md-8'} %>
       <%= f.input :bussiness_type, label: 'Tipo de Negocio', collection: ['Residencial', 'Comercial'], wrapper_html: {class: 'col-md-6'} %>
       <%= f.input :property_type, label: 'Tipo de Propriedade', collection: ['Casa', 'Apartamento'], wrapper_html: {class: 'col-md-6'}  %>
       <%= f.input :construction_year, label: 'Ano de Contrução', wrapper_html: {class: 'col-md-3'} %>
-      <%= f.input :condition %>
+      <%= f.input :condition, label: 'Condição do Imovel', collection: ['Novo', 'Otimo', 'Bom', 'Reformado'], wrapper_html: {class: 'col-md-3'} %>
       <%= f.input :position, label: 'Posição', wrapper_html: {class: 'col-md-3'}  %>
-      <%= f.input :style, wrapper_html: {class: 'col-md-6'}  %>
+      <%= f.input :style, label: 'Estilo', wrapper_html: {class: 'col-md-3'}  %>
       <%= f.input :rooms, label: 'Nr. de Quartos', wrapper_html: {class: 'col-md-3'}  %>
       <%= f.input :bathrooms, label: 'Nr. de Banheiros', wrapper_html: {class: 'col-md-3 '}  %>
       <%= f.input :suites, label: 'Nr. de Suites', wrapper_html: {class: 'col-md-3'}  %>
       <%= f.input :garages, label: 'Nr. Vagas', wrapper_html: {class: 'col-md-3'}  %>
-      <%= f.input :description, wrapper_html: {class: 'col-md-12'}  %>
-      <%= f.input :sell_conditions  %>
-      <%= f.input :rent_guarantee  %>
-      <%= f.input :observations  %>
-      <%= f.input :published  %>
-      <%= f.input :featured  %>
+      <%= f.input :description, label: 'Descripções', wrapper_html: {class: 'col-md-12'}  %>
+      <%= f.input :sell_conditions, label: 'Condições de Venda', wrapper_html: {class: 'col-md-12 hidden'}  %>
+      <%= f.input :rent_guarantee, label: 'Garantias do Locação' , wrapper_html: {class: 'col-md-12 hidden'}  %>
+      <%= f.input :observations, label: 'Observações', wrapper_html: {class: 'col-md-12'}  %>
+      <%= f.input :published, label: 'Publicar', wrapper_html: {class: 'col-md-2'}  %>
+      <%= f.input :featured, label: 'Destaque',  wrapper_html: {class: 'col-md-2'}  %>
 
       <div class="col-md-12">
         <%= f.button :submit, 'Salvar', class: 'btn btn-primary' %>
