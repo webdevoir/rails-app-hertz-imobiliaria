@@ -1,13 +1,31 @@
-.landlord-search {
-  width:100%;
-  margin: 0 1em;
+.landlord-index .header {
+  display:flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 27px;
+  margin: 0 0.7em;
+  color: #4c4c4c;
 }
 
-.landlord-search .input{
-  width:85%;
+
+.landlord-index .landlord-search {
+  margin: 0 auto;
+  padding: 0 1em;
+  display: flex;
 }
 
-.landlord-search .button{
-  width:10%;
+.landlord-index .landlord-search .input{
   margin-right: 1em;
+}
+
+.landlord-index .landlord-search .button {
+  padding: 0 1em;
+}
+
+.landlord-index {
+  .serach-response {
+    margin: 1em;
+    font-size: 25px;
+    color: #4c4c4c;
+  }
 }

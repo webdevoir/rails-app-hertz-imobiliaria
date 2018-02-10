@@ -2,17 +2,21 @@
   <%= image_tag('avatar-mini.jpg',  size: "100x100")   %>
   <div class="info">
     <div class="main-info">
-      <p class="landlord-name"><%= landlord.name %><p>
-      <p>Telefone: <%= landlord.phone1 %>/Cel: <%= landlord.phone2 %><p>
-      <p>Email: <%= landlord.email %><p>
+      <p class="landlord-name"><%= landlord.name %></p>
+      <p><b>Telefone:</b> <%= landlord.phone1 %></p>
+      <p><b>Cel:</b> <%= landlord.phone2 %></p>
+      <p><b>Email:</b> <%= landlord.email %></p>
     </div>
     <div class="booked text-right">
       <p><b>Cadastros: <%= landlord.properties.count %></b></p>
-      <p>Venda:  <%= landlord.properties.count %></p>
-      <p>Alugel: <%= landlord.properties.count %></p>
+      <p>Venda:  <%= landlord.properties.where(sale: true, rent: false).count %></p>
+      <p>Alugel: <%= landlord.properties.where(sale: false, rent: true).count %></p>
+      <p>Alugel/Venda: <%= landlord.properties.where(sale: true, rent: true).count %></p>
     </div>
   </div>
   <div class="landlord-card-link">
     <%= link_to "", admin_landlord_path(landlord) %>
   </div>
 </div>
+
+

@@ -1,25 +1,28 @@
 <div class="row">
   <div class="col-md-12">
-    <div class="landlord">
-    <h3>Proprietarios</h3>
-      <%= link_to "+ Cadastrar Novo Proprietario", new_admin_landlord_path, class: "btn btn-danger" %>
-    </div>
+    <div class="landlord-index">
+      <div class="header">
+        <h3>Proprietarios Cadastrados</h3>
+        <%= link_to "+ Cadastrar Novo Proprietario", new_admin_landlord_path, class: "btn btn-danger" %>
+      </div>
+      <%= form_tag admin_landlords_path, method: :get, class: "landlord-search" do %>
+        <%= text_field_tag :query, params[:query], class: "form-control input", placeholder: "Pesquisa por nome, email, rg ou cpf." %>
+        <%= button_tag type: 'submit', class: 'btn btn-primary button' do %>
+          <i class="fa fa-search"></i>
+        <% end %>
 
-    <%= form_tag admin_landlords_path, method: :get do %>
-      <%= text_field_tag :query, params[:query], class: "form-control", placeholder: "Pesquisa por nome, email, rg ou cpf." %>
-      <%= submit_tag "pequisa", class: 'btn btn-primary' %>
-    <% end %>
-
-    <% if @landlords.empty? && params[:query].present? %>
-      <p>Não foi encontrado nenhum proprietario</p>
-    <% elsif @landlords.empty? && !params[:query].present? %>
-      <p>Não exitem proprietarios cadastrados</p>
-    <% else %>
-      <% @landlords.each do |landlord| %>
-        <%= render 'shared/landlord_card', landlord: landlord  %>
       <% end %>
-    <% end %>
 
+      <% if @landlords.empty? && params[:query].present? %>
+        <p class="serach-response">Não foi encontrado nenhum proprietario</p>
+      <% elsif @landlords.empty? && !params[:query].present? %>
+        <p class="serach-response">Não exitem proprietarios cadastrados</p>
+      <% else %>
+        <% @landlords.each do |landlord| %>
+          <%= render 'shared/landlord_card', landlord: landlord  %>
+        <% end %>
+      <% end %>
+    </div>
   </div>
 </div>
 

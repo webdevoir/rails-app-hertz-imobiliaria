@@ -2,9 +2,9 @@
     background-color: white;
     padding:0.5em;
     margin:0.5em 1em;
-    box-shadow: 2px 2px 5px #808080;
+    box-shadow: 1px 1px 3px $shadow;
     position:relative;
-    border-top: 5px solid #f88004;
+    border-top: 5px solid $orangehertz;
     display:flex;
 
     .info {
@@ -46,12 +46,11 @@
     opacity:0.1;
   }
 
-
-
 .info .landlord-name {
   font-weight: 700;
   margin-bottom: 27px;
   text-decoration: underline;
+  font-size: 18px;
 }
 
 .booked {
