@@ -1,7 +1,7 @@
 <div class="row">
   <div class="form-property">
     <%= simple_form_for([:admin, property]) do |f| %>
-      <%= f.input :landlord_id, :as => :hidden, input_html: { value: @landlord.id } %>
+      <%= f.input :landlord_id, as: :hidden, input_html: { value: check_landlord_id(params)}%>
       <%= f.input :sale, label: 'Venda', wrapper_html: {class: 'col-md-2'}, onchange: "showAddInfo();"  %>
       <%= f.input :rent, label: 'Locação', wrapper_html: {class: 'col-md-8'} %>
       <%= f.input :bussiness_type, label: 'Tipo de Negocio', collection: ['Residencial', 'Comercial'], wrapper_html: {class: 'col-md-6'} %>
@@ -10,6 +10,7 @@
       <%= f.input :condition, label: 'Condição do Imovel', collection: ['Novo', 'Otimo', 'Bom', 'Reformado'], wrapper_html: {class: 'col-md-3'} %>
       <%= f.input :position, label: 'Posição', wrapper_html: {class: 'col-md-3'}  %>
       <%= f.input :style, label: 'Estilo', wrapper_html: {class: 'col-md-3'}  %>
+      <div class="space col-md-12"></div>
       <%= f.input :rooms, label: 'Nr. de Quartos', wrapper_html: {class: 'col-md-3'}  %>
       <%= f.input :bathrooms, label: 'Nr. de Banheiros', wrapper_html: {class: 'col-md-3 '}  %>
       <%= f.input :suites, label: 'Nr. de Suites', wrapper_html: {class: 'col-md-3'}  %>

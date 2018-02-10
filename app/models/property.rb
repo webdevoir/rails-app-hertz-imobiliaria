@@ -9,6 +9,12 @@ class Property < ApplicationRecord
   has_many :property_details
   has_many :details_types, through: :property_details
 
+  validates :construction_year, presence: true, numericality: { greater_than: 1900}
+  validates :property_type, presence: true
+  validates :bathrooms, numericality: { greater_than: -1}
+  validates :garages, numericality: { greater_than: -1}
+  validates :suites, numericality: { greater_than: -1}
+
 
   def self.fast_search(query)
     sql_query = " \

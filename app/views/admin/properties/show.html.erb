@@ -74,10 +74,9 @@
 
       <div class="info-card">
         <p>Publicar</p>
-        <%= @property.published %>
         <%= form_tag(admin_property_path(@property), method: "patch") do %>
           <%= hidden_field_tag 'property[published]', false  %>
-          <%= check_box_tag 'property[published]', nil, @property.published , onchange: 'this.form.submit();' %>
+          <%= check_box_tag 'property[published]', @property.published , onchange: 'this.form.submit();' %>
         <% end %>
       </div>
 

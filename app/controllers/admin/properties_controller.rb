@@ -18,10 +18,11 @@ class Admin::PropertiesController < ApplicationController
 
   def create
     @property = Property.new(property_params)
-    if @property.save!
+    if @property.save
       redirect_to address_admin_property_path(@property)
     else
-      render :new
+
+      render :new, landlord_id: property_params[:landlord_id]
     end
   end
 
@@ -29,6 +30,7 @@ class Admin::PropertiesController < ApplicationController
   end
 
   def update
+    binding.pry
     unless params[:landlord_id].nil?
       redirect_to  admin_landlord_path(params[:landlord_id]) if @property.update(property_params)
     else
@@ -113,8 +115,11 @@ class Admin::PropertiesController < ApplicationController
 
 
   def property_params
-    params.require(:property).permit(:id, :landlord_id, :code, :bussiness_type, :property_kind, :property_state, :position, :style,
-      :construction_year, :bathrooms, :rooms, :garages, :suites, :description, :published, :conditions, photos: [])
+    params.require(:property).permit(:id, :landlord_id, :sale, :rent,
+      :bussiness_type, :property_type, :condition, :position, :style,
+      :construction_year, :bathrooms, :rooms, :garages, :suites,
+      :sell_conditions, :rent_guarantee, :description, :observations,
+      :published, :featured, photos: [])
   end
 
 end

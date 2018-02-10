@@ -1,7 +1,8 @@
-$('[data-behaviour~=datepicker]').datepicker({"format": "yyyy-mm-dd", "weekStart": 1, "startDate": "-100y", "endDate": "-15y", "startView": "decades", autoclose: true});
+
 
 
 $(document).ready(function() {
+  $('[data-behaviour~=datepicker]').datepicker({"format": "yyyy-mm-dd", "weekStart": 1, "startDate": "-100y", "endDate": "-15y", "startView": "decades", autoclose: true});
 
   function limpa_formulário_cep() {
       // Limpa valores do formulário de cep.

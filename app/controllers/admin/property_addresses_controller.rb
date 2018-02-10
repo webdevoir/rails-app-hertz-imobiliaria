@@ -20,7 +20,8 @@ class Admin::PropertyAddressesController < ApplicationController
   private
 
   def property_address_params
-    params.require(:property_address).permit(:id, :property_id, :cep, :country, :city, :neighborhood, :street, :number, :complement, :condo_name)
+    params.require(:property_address).permit(:id, :property_id, :cep, :country,
+      :city, :state, :neighborhood, :street, :number, :complement, :condo_name)
   end
 
 end
