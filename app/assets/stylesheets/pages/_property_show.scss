@@ -4,6 +4,13 @@
     background: white;
     padding: 1em;
     margin: 1em 0;
+    position: relative;
+
+    .edit {
+      position: absolute;
+      right: 20px;
+      top: 15px;
+    }
   }
 
   .info-card p {
@@ -31,6 +38,7 @@
   display: inline-block;
   width: 60px;
   height: 34px;
+
 }
 
 /* Hide default HTML checkbox */

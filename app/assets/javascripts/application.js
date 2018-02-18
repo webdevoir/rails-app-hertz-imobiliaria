@@ -12,4 +12,5 @@
 //= require bootstrap-datepicker
 //= require Chart.bundle
 //= require chartkick
+//= require bootstrap-toggle
 //= require_tree .

@@ -52,6 +52,8 @@ gem 'groupdate'
 #count visit
 gem 'impressionist'
 
+gem 'bootstrap-toggle-rails'
+
 
 group :development, :test do
   gem "minitest", '5.10.1'

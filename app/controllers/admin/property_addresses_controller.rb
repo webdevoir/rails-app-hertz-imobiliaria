@@ -11,7 +11,7 @@ class Admin::PropertyAddressesController < ApplicationController
   def update
     @property_address = PropertyAddress.find(params[:id])
     if @property_address.update(property_address_params)
-      redirect_to details_admin_property_path(@property_address.property)
+      redirect_to admin_property_path(@property_address.property)
     else
       render address_admin_property(@property_address.property)
     end

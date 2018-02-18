@@ -12,7 +12,7 @@ class Admin::PropertyAreasController < ApplicationController
   def update
     @property_area = PropertyArea.find(params[:id])
     if @property_area.update(property_area_params)
-      redirect_to value_admin_property_path(@property_area.property)
+      redirect_to admin_property_path(@property_area.property)
     else
       render area_admin_property(@property_are.property)
     end

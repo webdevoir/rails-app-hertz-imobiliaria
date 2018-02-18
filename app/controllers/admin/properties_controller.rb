@@ -32,13 +32,13 @@ class Admin::PropertiesController < ApplicationController
   def update
     unless params[:landlord_id].nil?
       if @property.update(property_params)
-        redirect_to  admin_landlord_path(params[:landlord_id])
+        redirect_to admin_landlord_path(params[:landlord_id])
       else
         render :edit
       end
     else
       if @property.update(property_params)
-        redirect_to  admin_property_path(params[:id])
+        redirect_to admin_property_path(params[:id])
       else
         render :edit
       end

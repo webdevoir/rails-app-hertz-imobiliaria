@@ -20,6 +20,7 @@
       </div>
       <div class="info-card">
         <p>Informações Basicas</p>
+        <%= link_to "Editar", edit_admin_property_path(@property), class: 'edit' %>
         <ul>
           <li>Tipo de Propriedade:<%= @property.bussiness_type  %></li>
           <li>Tipo: <%= @property.property_type %></li>
@@ -44,6 +45,7 @@
 
       <div class="info-card">
         <p>Endereço</p>
+        <%= link_to "Editar", address_admin_property_path(@property), class: 'edit' %>
         <ul>
           <li>CEP: <%= @address.cep %></li>
           <li>Pais: <%= @address.country %></li>
@@ -58,6 +60,7 @@
 
       <div class="info-card">
         <p>Area</p>
+        <%= link_to "Editar", area_admin_property_path(@property), class: 'edit' %>
         <ul>
           <li>Area Total: <%= "#{@area.total} #{@area.scale}" %></li>
           <li>Area Util: <%= "#{@area.usable} #{@area.scale}" %></li>
@@ -67,25 +70,30 @@
 
       <div class="info-card">
         <p>Valor</p>
+        <%= link_to "Editar", value_admin_property_path(@property), class: 'edit' %>
         <ul>
           <li>Valor Total: <%= "R$#{@value.sell}" %></li>
           <li>Iptu: <%= "R$#{@value.iptu}" %></li>
           <li>Condominio: <%= "R$#{@value.condominium}" %></li>
-          <li>Porcetagem: <%=  %></li>
         </ul>
       </div>
 
       <div class="info-card">
         <p>Publicar</p>
         <%= form_tag(admin_property_path(@property), method: "patch") do %>
+          <%= label_tag 'property[published]', 'Publicar' %>
           <%= hidden_field_tag 'property[published]', false  %>
-          <%= check_box_tag 'property[published]', @property.published , onchange: 'this.form.submit();' %>
+          <%= check_box_tag 'property[published]', {}, @property.published, onchange: 'this.form.submit();' %>
+        <% end %>
+
+        <p>Destaque</p>
+        <%= form_tag(admin_property_path(@property), method: "patch") do %>
+          <%= hidden_field_tag 'property[featured]', false  %>
+          <%= check_box_tag 'property[featured]', {}, @property.featured, onchange: 'this.form.submit();' %>
         <% end %>
       </div>
-
+  <%  %>
       <%= link_to "Deletar", admin_property_path(@property), data: {confirm: 'Tem certeza que quer deletar a propriedade?'}, class: "btn btn-danger", method: :delete  %>
-      <%= link_to "Editar", edit_admin_property_path(@property), class: "btn btn-primary" %>
-
     </div>
   </div>
 </div>
