@@ -1,16 +1,17 @@
 
 .banner {
-  height:90vh;
+  height: 20vw;
   background-size: cover;
+  background-position: center;
   background-repeat: no-repeat;
 
   .header {
     color: white;
-    margin-top: 30vh;
+    margin-top: 40px;
   }
 
   .search {
-    margin-top:20vh;
+    margin-top:25px;
     input {
       left: 40px;
       width: 417px;

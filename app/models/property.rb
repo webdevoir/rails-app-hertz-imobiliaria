@@ -17,30 +17,34 @@ class Property < ApplicationRecord
 
 
   def self.fast_search(query)
-    sql_query = " \
-        code ILIKE :query
-      "
-          # OR property_addresses.street ILIKE :query \
-      # OR property_addresses.cep ILIKE :query \
-      #joins(:property_address).
-    where(sql_query, query: "%#{query}%")
-    #where(sql_query, query: "%#{query}%")
+    # sql_query = " \
+    #     id ~ :query
+    #   "
+    #   # OR property_addresses.street ILIKE :query \
+    #   # OR property_addresses.cep ILIKE :query \
+    # where(sql_query, query: "%#{query}%")
+    []
   end
 
 
   def address
       address = PropertyAddress.find_by(property_id: self.id)
       if address.nil?
-        address = PropertyAddress.new(street: "N/A", number: "N/A")
+        address = PropertyAddress.new(cep: 0, country: "BR",
+                                      city: "", neighborhood: "",
+                                      street: "", number: "",
+                                      complement: "", condo_name: "",
+                                      condo_name: "", latitude: 0, longitude:0)
       else
         address
       end
   end
 
+
   def value
       value = PropertyValue.find_by(property_id: self.id)
       if value.nil?
-        value = PropertyValue.new
+        value = PropertyValue.new(rent: 0, sell: 0, iptu: 0, condominium: 0)
       else
         value
       end
@@ -49,7 +53,7 @@ class Property < ApplicationRecord
   def area
       area = PropertyArea.find_by(property_id: self.id)
       if area.nil?
-        area = PropertyArea.new
+        area = PropertyArea.new(scale: "", total: 0, usable: 0, land: 0)
       else
         area
       end

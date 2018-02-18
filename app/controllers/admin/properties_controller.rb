@@ -30,18 +30,25 @@ class Admin::PropertiesController < ApplicationController
   end
 
   def update
-    binding.pry
     unless params[:landlord_id].nil?
-      redirect_to  admin_landlord_path(params[:landlord_id]) if @property.update(property_params)
+      if @property.update(property_params)
+        redirect_to  admin_landlord_path(params[:landlord_id])
+      else
+        render :edit
+      end
     else
-      redirect_to  admin_property_path(params[:id]) if @property.update(property_params)
+      if @property.update(property_params)
+        redirect_to  admin_property_path(params[:id])
+      else
+        render :edit
+      end
     end
   end
 
   def show
-    @address = PropertyAddress.find_by(property_id: @property)
-    @area = PropertyArea.find_by(property_id: @property)
-    @value = PropertyValue.find_by(property_id: @property)
+    @address = @property.address
+    @area = @property.area
+    @value = @property.value
     @property_coodinates = {lat: @address.latitude, lng: @address.longitude}
   end
 
@@ -73,15 +80,15 @@ class Admin::PropertiesController < ApplicationController
   end
 
   def dashboard
+    # binding.pry
     @properties = Property.all
     @landlords = Landlord.all
     @data = []
     ((Date.today-30)...(Date.today+1)).map{ |date|
-      #binding.pry
       [date.strftime("%F"), (date + 1).strftime("%F")] }.each do |date|
       total_of_day = 0
       @properties.each do |property|
-        total_of_day += property.impressionist_count(filter: :ip_address, start_date: date[0], end_date: date[1] )
+        total_of_day += property.impressionist_count(start_date: date[0], end_date: date[1] )
       end
       @data << [date[0], total_of_day]
     end

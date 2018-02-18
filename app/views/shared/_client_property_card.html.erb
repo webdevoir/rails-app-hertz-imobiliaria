@@ -5,13 +5,15 @@
   </div>
   <div class="property-info">
     <p><%= property.address.neighborhood %> • <%= property.address.city %> </p>
-    <p><%= property.property_type == "casa" ? "Casa" : "Apto" %> • <%= property.rooms %> dorms • <%=property.garages %> vagas • <%= (property.area.total_area.floor) if property.area.total != nil %><%=property.area.scale %> </p>
+    <p><%= property.property_type == "casa" ? "Casa" : "Apto" %> • <%= property.rooms %> dorms • <%=property.garages %> vagas • <%= (property.area.total.floor) if property.area.total != nil %><%=property.area.scale %> </p>
     <p> Cod. <%= property.id %> </p>
     <hr>
     <% if property.rent %>
-      <p class="preco text-right"> 'Aluguel' <%= (number_to_currency property.value.rent.floor, unit: "R$", delimiter: ".", precision: 0)%> </p>
+      <p class="preco text-right"> Aluguel <%= (number_to_currency property.value.rent.floor, unit: "R$", delimiter: ".", precision: 0)%> </p>
     <% elsif property.sale %>
-      <p class="preco text-right"> 'Venda' <%= (number_to_currency property.value.sell.floor, unit: "R$", delimiter: ".", precision: 0) %></p>
+      <p class="preco text-right"> Venda <%= (number_to_currency property.value.sell.floor, unit: "R$", delimiter: ".", precision: 0) %></p>
+    <% else %>
+      <p class="preco text-right"> Venda <%= (number_to_currency 301000, unit: "R$", delimiter: ".", precision: 0) %></p>
     <% end %>
   </div>
 <%= link_to '', property_path(property), class: "link-property" %>

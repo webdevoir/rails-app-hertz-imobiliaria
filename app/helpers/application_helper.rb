@@ -8,6 +8,8 @@ module ApplicationHelper
         params[:property][:landlord_id]
       elsif params[:landlord]
         params[:landlord]
+      elsif @landlord
+        @landlord.id
       else
         return 0
       end
