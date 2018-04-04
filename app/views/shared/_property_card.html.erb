@@ -4,9 +4,13 @@
       <p><%= cl_image_tag (property.photos.first).path, width: 100, height: 100, crop: :fill %></p>
     <% end %>
     <div class="info">
-      <p>Cod.<%= property.id %> • <%= property.property_address.neighborhood %> • <%= property.property_address.city %></p>
-      <p><%= property.property_address.street %>, <%= property.property_address.number  %></p>
+      <% if !property.property_address.nil? %>
+        <p>Cod.<%= property.id %> • <%= property.property_address.neighborhood %> • <%= property.property_address.city %></p>
+        <p><%= property.property_address.street %>, <%= property.property_address.number  %></p>
+      <% end %>
+      <% if !property.property_value.nil? %>
       <p><%= (number_to_currency property.property_value.sell.floor, unit: "R$", delimiter: ".", precision: 0) if property.property_value.sell != nil %></p>
+      <% end %>
     </div>
   </div>
 
