@@ -4,14 +4,18 @@
   </div>
   </div>
   <div class="property-info">
-    <p><%= property.address.neighborhood %> • <%= property.address.city %> </p>
-    <p><%= property.property_type == "casa" ? "Casa" : "Apto" %> • <%= property.rooms %> dorms • <%=property.garages %> vagas • <%= (property.area.total.floor) if property.area.total != nil %><%=property.area.scale %> </p>
+    <p><%= !property.property_address.nil? ? property.property_address.neighborhood : "" %> • <%= !property.property_address.nil? ? property.property_address.city : "" %> </p>
+    <p><%= property.property_type == "casa" ? "Casa" : "Apto" %> • <%= property.rooms %> dorms • <%=property.garages %> vagas •
+
+      <% if !property.property_area.nil? %>
+      <%= !property.property_area.total.nil? ? property.property_area.total.floor : 0 %><%= property.property_area ? property.property_area.scale : "" %> </p>
+      <% end %>
     <p> Cod. <%= property.id %> </p>
     <hr>
-    <% if property.rent %>
-      <p class="preco text-right"> Aluguel <%= (number_to_currency property.value.rent.floor, unit: "R$", delimiter: ".", precision: 0)%> </p>
-    <% elsif property.sale %>
-      <p class="preco text-right"> Venda <%= (number_to_currency property.value.sell.floor, unit: "R$", delimiter: ".", precision: 0) %></p>
+    <% if property.rent && !property.property_value.nil? && !property.property_value.rent.nil? %>
+      <p class="preco text-right"> Aluguel <%= (number_to_currency property.property_value.rent.floor, unit: "R$", delimiter: ".", precision: 0)%> </p>
+    <% elsif property.sale && !property.property_value.nil? && !property.property_value.sell.nil? %>
+      <p class="preco text-right"> Venda <%= (number_to_currency property.property_value.sell.floor, unit: "R$", delimiter: ".", precision: 0) %></p>
     <% else %>
       <p class="preco text-right"> Venda <%= (number_to_currency 301000, unit: "R$", delimiter: ".", precision: 0) %></p>
     <% end %>

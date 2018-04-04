@@ -7,21 +7,21 @@
   <%= simple_form_for ([:admin, landlord]) do |f| %>
     <h4 class="subtitle">Informação Pessoais</h4>
     <hr class="line">
-    <%= f.input :name, label: 'Nome Completo', wrapper_html: {class: 'col-md-4'} %>
-    <%= f.input :rg, label: 'Documento', wrapper_html: {class: 'col-md-4'} %>
-    <%= f.input :cpf, label: 'CPF', wrapper_html: {class: 'col-md-4'} %>
-    <%= f.input :martial_status, label: 'Estado Civil', collection: %w(Solteiro Casado Divorciado Viuvo União\ Estavel), selected:'Solteiro', wrapper_html: {class: 'col-md-4'} %>
-    <%= f.input :profession, label: 'Profissão', wrapper_html: {class: 'col-md-4'} %>
 
-    <%= f.input :birthday, as: :string, input_html: { data: {behaviour: "datepicker"}}, label: "Data de Nacimento", wrapper_html: {class: 'col-md-4'} %>
+    <%= f.input :name, label: 'Nome Completo', wrapper_html: {class: 'col-md-12'} %>
+      <%= f.input :rg, label: 'Documento', wrapper_html: {class: 'col-md-4'} %>
+      <%= f.input :cpf, label: 'CPF', wrapper_html: {class: 'col-md-4'} %>
+      <%= f.input :martial_status, label: 'Estado Civil', collection: %w(Solteiro Casado Divorciado Viuvo União\ Estavel), selected:'Solteiro', wrapper_html: {class: 'col-md-4'} %>
+      <%= f.input :profession, label: 'Profissão', wrapper_html: {class: 'col-md-4'} %>
 
+      <%= f.input :birthday, as: :string, input_html: { data: {behaviour: "datepicker"}}, label: "Data de Nacimento", wrapper_html: {class: 'col-md-4'} %>
     <div class="col-md-12">
       <h4 class="subtitle">Contato</h4>
       <hr class="line">
     </div>
 
-    <%= f.input :phone1, label: 'Telefone Fixo', wrapper_html: {class: 'col-md-3'} %>
-    <%= f.input :phone2, label: 'Celular', wrapper_html: {class: 'col-md-3'} %>
+    <%= f.input :phone1, label: 'Telefone', wrapper_html: {class: 'col-md-3'} %>
+    <%= f.input :phone2, label: 'Outro Telefone', wrapper_html: {class: 'col-md-3'} %>
     <%= f.input :email, label: 'Email', wrapper_html: {class: 'col-md-6'} %>
     <%= f.input :cep, label: 'CEP', id: 'cep', wrapper_html: {class: 'col-md-12'} %>
     <%= f.country_select :country, {selected: "BR"}, {class: "form-control hidden" }  %>

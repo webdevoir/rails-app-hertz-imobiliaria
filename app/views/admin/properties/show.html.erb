@@ -48,11 +48,10 @@
         <%= link_to "Editar", address_admin_property_path(@property), class: 'edit' %>
         <ul>
           <li>CEP: <%= @address.cep %></li>
-          <li>Pais: <%= @address.country %></li>
           <li>Estado: <%= @address.state %></li>
           <li>Cidade: <%= @address.city %></li>
           <li>Bairro: <%= @address.neighborhood %></li>
-          <li>Largadouro: <%= @address.street %>, <%= @address.number  %></li>
+          <li>Largadouro: <%= @address.street %>, <%= @property.property_address.number  %></li>
           <li>Complemento: <%= @address.complement %></li>
           <li>Condominio: <%= @address.condo_name %></li>
         </ul>
@@ -62,9 +61,9 @@
         <p>Area</p>
         <%= link_to "Editar", area_admin_property_path(@property), class: 'edit' %>
         <ul>
-          <li>Area Total: <%= "#{@area.total} #{@area.scale}" %></li>
-          <li>Area Util: <%= "#{@area.usable} #{@area.scale}" %></li>
-          <li>Area do Terreno: <%= "#{@area.total} #{@area.scale}" %></li>
+          <li>Area Total: <%= @area.total %><%= @area.scale %></li>
+          <li>Area Util: <%= @area.usable %><%= @area.scale %></li>
+          <li>Area do Terreno: <%= @area.land %><%= @area.scale %></li>
         </ul>
       </div>
 
@@ -72,22 +71,20 @@
         <p>Valor</p>
         <%= link_to "Editar", value_admin_property_path(@property), class: 'edit' %>
         <ul>
-          <li>Valor Total: <%= "R$#{@value.sell}" %></li>
-          <li>Iptu: <%= "R$#{@value.iptu}" %></li>
-          <li>Condominio: <%= "R$#{@value.condominium}" %></li>
+          <li>Valor Total: R$<%= @value.sell %></li>
+          <li>Iptu: R$ <%= @value.iptu %></li>
+          <li>Condominio: R$ <%= @value.condominium %></li>
         </ul>
       </div>
 
       <div class="info-card">
-        <p>Publicar</p>
         <%= form_tag(admin_property_path(@property), method: "patch") do %>
           <%= label_tag 'property[published]', 'Publicar' %>
           <%= hidden_field_tag 'property[published]', false  %>
           <%= check_box_tag 'property[published]', {}, @property.published, onchange: 'this.form.submit();' %>
         <% end %>
-
-        <p>Destaque</p>
         <%= form_tag(admin_property_path(@property), method: "patch") do %>
+          <%= label_tag 'property[featured]', 'Destaque' %>
           <%= hidden_field_tag 'property[featured]', false  %>
           <%= check_box_tag 'property[featured]', {}, @property.featured, onchange: 'this.form.submit();' %>
         <% end %>

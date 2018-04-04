@@ -1,7 +1,7 @@
-<div class="client-property-show">
-  <div class="row">
-    <h2 class="property-title"> <%= @address.neighborhood %> • <%= @address.city %> - Cod. <%= @property.id %></h2>
-    <div class="col-lg-8">
+<div class="row">
+  <div class="col-md-12">
+    <div class="property-show">
+      <h2 class="title"> <i class="fa fa-home"></i> Cod. <%= @property.id %> - <%= 'Venda' if @property.sale %> <%= '/' if  @property.sale && @property.rent %> <%= 'Aluguel' if @property.rent %></h2>
       <div class="slider-wrapper">
         <div class="slider-for">
           <% @property.photos.reverse.each do |photo| %>
@@ -19,26 +19,23 @@
         </div>
       </div>
       <div class="info-card">
-        <p>Valor</p>
-        <ul>
-          <li>Valor Total: <%= "R$#{@value.rent}" %></li>
-          <li>Iptu: <%= "R$#{@value.iptu}" %></li>
-          <li>Condominio: <%= "R$#{@value.condominium}" %></li>
-        </ul>
-      </div>
-      <div class="info-card">
         <p>Informações Basicas</p>
+        <%= link_to "Editar", edit_admin_property_path(@property), class: 'edit' %>
         <ul>
-          <li>Tipo Negocição: <%= @property.bussiness_type %></li>
-          <li>Tipo de Propriedade:<%= @property.property_type  %></li>
-          <li>Tipo: <%= @property.bussiness_type  %></li>
+          <li>Tipo de Propriedade:<%= @property.bussiness_type  %></li>
+          <li>Tipo: <%= @property.property_type %></li>
           <li>Estado da Propriedade: <%= @property.condition  %></li>
           <li>Posição da Propriedade: <%= @property.position  %></li>
-          <li>Estilo de contrução: <%= @property.style  %></li>
+          <li>Estilo de contrução<%= @property.style  %></li>
           <li>Ano de Contrução: <%= @property.construction_year  %></li>
+          <li>Nº de Quartos: <%= @property.rooms  %></li>
           <li>Nº de Banheiros: <%= @property.bathrooms  %></li>
-          <li>Nº de Garages: <%= @property.garages  %></li>
-          <li>Descrição: <%= @property.description  %></li>
+          <li>Nº de Suites: <%= @property.suites  %></li>
+          <li>Nº de Garages<%= @property.garages  %></li>
+          <li>Descrição<%= @property.description  %></li>
+          <li>Condições de Venda<%= @property.sell_conditions %></li>
+          <li>Garantias de Aluguel<%= @property.rent_guarantee %></li>
+          <li>Observações<%= @property.observations %></li>
         </ul>
       </div>
 
@@ -48,38 +45,60 @@
 
       <div class="info-card">
         <p>Endereço</p>
+        <%= link_to "Editar", address_admin_property_path(@property), class: 'edit' %>
         <ul>
-          <li>Pais: <%= @address.country %></li>
+          <li>CEP: <%= @address.cep %></li>
           <li>Estado: <%= @address.state %></li>
           <li>Cidade: <%= @address.city %></li>
           <li>Bairro: <%= @address.neighborhood %></li>
+          <li>Largadouro: <%= @address.street %>, <%= @property.property_address.number  %></li>
+          <li>Complemento: <%= @address.complement %></li>
+          <li>Condominio: <%= @address.condo_name %></li>
         </ul>
       </div>
+
       <div class="info-card">
         <p>Area</p>
+        <%= link_to "Editar", area_admin_property_path(@property), class: 'edit' %>
         <ul>
-          <li>Area Total: <%= "#{@area.total} #{@area.scale}" %></li>
-          <li>Area Util: <%= "#{@area.usable} #{@area.scale}" %></li>
-          <li>Area do Terreno: <%= "#{@area.total} #{@area.scale}" %></li>
+          <li>Area Total: <%= @area.total %><%= @area.scale %></li>
+          <li>Area Util: <%= @area.usable %><%= @area.scale %></li>
+          <li>Area do Terreno: <%= @area.land %><%= @area.scale %></li>
         </ul>
       </div>
-    </div>
-    <div class="col-lg-4">
-      <div class="contact-card text-center">
-        <div class="form">
-          <input type="text" placeholder="Nome">
-          <input type="text" placeholder="Telefone">
-          <input type="text" placeholder="email">
-        </div>
-        <a href="#" class="btn btn-primary btn-lg contato">Receba Mais Informações</a>
+
+      <div class="info-card">
+        <p>Valor</p>
+        <%= link_to "Editar", value_admin_property_path(@property), class: 'edit' %>
+        <ul>
+          <li>Valor Total: R$<%= @value.sell %></li>
+          <li>Iptu: R$ <%= @value.iptu %></li>
+          <li>Condominio: R$ <%= @value.condominium %></li>
+        </ul>
       </div>
+
+      <div class="info-card">
+        <%= form_tag(admin_property_path(@property), method: "patch") do %>
+          <%= label_tag 'property[published]', 'Publicar' %>
+          <%= hidden_field_tag 'property[published]', false  %>
+          <%= check_box_tag 'property[published]', {}, @property.published, onchange: 'this.form.submit();' %>
+        <% end %>
+        <%= form_tag(admin_property_path(@property), method: "patch") do %>
+          <%= label_tag 'property[featured]', 'Destaque' %>
+          <%= hidden_field_tag 'property[featured]', false  %>
+          <%= check_box_tag 'property[featured]', {}, @property.featured, onchange: 'this.form.submit();' %>
+        <% end %>
+      </div>
+  <%  %>
+      <%= link_to "Deletar", admin_property_path(@property), data: {confirm: 'Tem certeza que quer deletar a propriedade?'}, class: "btn btn-danger", method: :delete  %>
     </div>
   </div>
 </div>
+
 <br>
 
 <% content_for :js do %>
-    <script type="text/javascript">
+  <%= javascript_tag do  %>
       $('.slider-for').slick({
         slidesToShow: 1,
         slidesToScroll: 1,
@@ -101,17 +120,17 @@
 
       var handler = Gmaps.build('Google', { markers: { clusterer: undefined } });
       handler.buildMap({ internal: { id: 'map' } }, function() {
-          circles = handler.addCircles(
+        markers = handler.addMarkers(
           [
             {
               "lat": coord.lat,
-              "lng": coord.lng,
-              "radius": 1000
+              "lng": coord.lng
             }, ]
           );
-        handler.bounds.extendWith(circles);
+        handler.bounds.extendWith(markers);
         handler.fitMapToBounds();
         handler.getMap().setZoom(13);
         });
-  </script>
+  <% end %>
 <% end %>
+

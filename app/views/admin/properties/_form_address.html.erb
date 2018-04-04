@@ -1,6 +1,7 @@
 <div class="form-property">
   <%= simple_form_for([:admin, property_address]) do |f| %>
     <%= f.input :property_id, :as => :hidden, input_html: { value: @property.id } %>
+    <%= f.country_select :country, {selected: "BR"}, {class: "form-control hidden" }  %>
     <%= f.input :cep %>
     <%= f.input :state %>
     <%= f.input :city %>

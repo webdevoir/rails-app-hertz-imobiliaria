@@ -13,9 +13,10 @@ class PropertiesController < ApplicationController
   def show
     @property = Property.find(params[:id])
     impressionist(@property, "Page View")
-    @address = @property.address
-    @area = @property.area
-    @value = @property.value
+    @area = !@property.property_area.nil? ? @property.property_area : PropertyArea.new
+    @address = !@property.property_address.nil? ? @property.property_address : PropertyAddress.new
+    @details = @property.property_details
+    @value = !@property.property_value.nil? ? @property.property_value : PropertyValue.new
     @property_coodinates = {lat: @address.latitude, lng: @address.longitude}
     render layout: "client-layout"
   end
