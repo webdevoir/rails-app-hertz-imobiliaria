@@ -1,12 +1,22 @@
   .client-property-show {
+    margin-top: 70px;
+  .negotiation {
+    font-size: 20px;
+    margin: 3px 0 0 20px;
+
+  }
     .info-card {
     background: white;
     padding: 1em;
     margin: 1em 0;
   }
 
-  .info-card p {
-    font-weight: 900;
+  .info-card  {
+    h3 {
+      margin: 5px 0;
+    }
+    p {
+    }
   }
 
   .slider-wrapper {
@@ -26,41 +36,30 @@
   }
 
 
-
-
   /*Contact Card Style*/
 
   .contact-card {
     background: white;
     margin-top: 19px;
-    padding-top: 1em;
-    height: 300px;
+    padding: 1em;
   }
 
   .form {
-  margin: 1em;
-  padding: 1em;
-  background: #999999;
+    margin: 1em;
+    padding: 1em;
 
   }
-
   .contato {
     background: #fe7e01;;
     border: none;
   }
 
-  input {
-    width: 80%;
-    margin: 5px 0;
-  }
 
   /*Reference to the show page*/
   .property-title {
-    font-size: 22px;
-    font-weight: 300;
+    font-size: 30px;
     padding-top: 10px;
     padding-left: 10px;
-    color: #999999;
   }
 
   }

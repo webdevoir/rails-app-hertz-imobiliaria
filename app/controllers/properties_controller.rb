@@ -18,6 +18,7 @@ class PropertiesController < ApplicationController
     @details = @property.property_details
     @value = !@property.property_value.nil? ? @property.property_value : PropertyValue.new
     @property_coodinates = {lat: @address.latitude, lng: @address.longitude}
+    @contact_form = ContactForm.new
     render layout: "client-layout"
   end
 

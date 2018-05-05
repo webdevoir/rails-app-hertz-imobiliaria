@@ -1,6 +1,7 @@
 <div class="client-property-show">
   <div class="row">
     <h2 class="property-title"> <%= @address.neighborhood %> • <%= @address.city %> - Cod. <%= @property.id %></h2>
+    <h3 class="negotiation"><%= "Venda" if @property.sale %> | <%= "Locação" if @property.rent  %></h3>
     <div class="col-lg-8">
       <div class="slider-wrapper">
         <div class="slider-for">
@@ -13,50 +14,31 @@
         <div class="slider-nav">
           <% @property.photos.reverse.each do |photo| %>
             <div>
-              <%= cl_image_tag photo.path, width: 220, height: 100, crop: :fill %>
+              <%= cl_image_tag photo.path, height: 100, crop: :fill %>
             </div>
           <% end  %>
         </div>
       </div>
       <div class="info-card">
-        <p>Valor</p>
-        <ul>
-          <li>Valor Total: <%= "R$#{@value.rent}" %></li>
-          <li>Iptu: <%= "R$#{@value.iptu}" %></li>
-          <li>Condominio: <%= "R$#{@value.condominium}" %></li>
-        </ul>
-      </div>
-      <div class="info-card">
-        <p>Informações Basicas</p>
-        <ul>
-          <li>Tipo Negocição: <%= @property.bussiness_type %></li>
-          <li>Tipo de Propriedade:<%= @property.property_type  %></li>
-          <li>Tipo: <%= @property.bussiness_type  %></li>
-          <li>Estado da Propriedade: <%= @property.condition  %></li>
-          <li>Posição da Propriedade: <%= @property.position  %></li>
-          <li>Estilo de contrução: <%= @property.style  %></li>
-          <li>Ano de Contrução: <%= @property.construction_year  %></li>
-          <li>Nº de Banheiros: <%= @property.bathrooms  %></li>
-          <li>Nº de Garages: <%= @property.garages  %></li>
-          <li>Descrição: <%= @property.description  %></li>
-        </ul>
-      </div>
-
-      <div class="info-card">
         <div id="map" style="height:300px;"></div>
       </div>
-
       <div class="info-card">
-        <p>Endereço</p>
+        <h3>Informações Basicas</h3>
         <ul>
-          <li>Pais: <%= @address.country %></li>
-          <li>Estado: <%= @address.state %></li>
-          <li>Cidade: <%= @address.city %></li>
-          <li>Bairro: <%= @address.neighborhood %></li>
+          <li>Tipo negociação: <%= @property.bussiness_type %></li>
+          <li>Tipo:<%= @property.property_type  %></li>
+          <li>Tipo: <%= @property.bussiness_type  %></li>
+          <li>Estado: <%= @property.condition  %></li>
+          <li>Posição: <%= @property.position  %></li>
+          <li>Estilo de contrução: <%= @property.style  %></li>
+          <li>Ano de construção: <%= @property.construction_year  %></li>
+          <li>Nº de banheiros: <%= @property.bathrooms  %></li>
+          <li>Nº de garages: <%= @property.garages  %></li>
         </ul>
+        <p>Descrição: <%= @property.description  %></p>
       </div>
       <div class="info-card">
-        <p>Area</p>
+        <h3>Area</h3>
         <ul>
           <li>Area Total: <%= "#{@area.total} #{@area.scale}" %></li>
           <li>Area Util: <%= "#{@area.usable} #{@area.scale}" %></li>
@@ -66,12 +48,20 @@
     </div>
     <div class="col-lg-4">
       <div class="contact-card text-center">
-        <div class="form">
-          <input type="text" placeholder="Nome">
-          <input type="text" placeholder="Telefone">
-          <input type="text" placeholder="email">
+        <ul>
+          <li>Valor Total: <%= "R$#{@value.rent}" %></li>
+          <li>Iptu: <%= "R$#{@value.iptu}" %></li>
+          <li>Condominio: <%= "R$#{@value.condominium}" %></li>
+        </ul>
+        <div>
+        <p>Marque sua visista</p>
+         <%= simple_form_for [@property, @contact_form] do |f| %>
+         <%= f.input :name, label: false, placeholder: "Nome completo" %>
+         <%= f.input :telefone, label: false, placeholder: "Tefone"  %>
+         <%= f.input :email, label: false, placeholder: "Email"  %>
+         <%= f.submit "Enviar Contato", class: "btn btn-danger contato" %>
+         <% end  %>
         </div>
-        <a href="#" class="btn btn-primary btn-lg contato">Receba Mais Informações</a>
       </div>
     </div>
   </div>

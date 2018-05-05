@@ -1,9 +1,12 @@
 Rails.application.routes.draw do
+  get 'contact_forms/create'
+
   mount Attachinary::Engine => "/attachinary"
   devise_for :users, skip: [:registrations]
   root to: 'properties#home'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources :properties, only: [:index, :show] do
+    resource :contact_forms, only: [:create]
   end
 
   namespace :admin do
