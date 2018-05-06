@@ -1,3 +1,8 @@
+<style>
+  body {
+    background: white;
+  }
+</style>
 <div class="client-property-show">
   <div class="row">
     <h2 class="property-title"> <%= @address.neighborhood %> • <%= @address.city %> - Cod. <%= @property.id %></h2>
@@ -48,18 +53,45 @@
     </div>
     <div class="col-lg-4">
       <div class="contact-card text-center">
-        <ul>
-          <li>Valor Total: <%= "R$#{@value.rent}" %></li>
-          <li>Iptu: <%= "R$#{@value.iptu}" %></li>
-          <li>Condominio: <%= "R$#{@value.condominium}" %></li>
-        </ul>
+        <table class="price-tabel">
+          <% if @property.sale %>
+            <tr>
+              <td><b>Venda</b></td>
+              <td><b><%= @value.sell %></b></td>
+            </tr>
+          <% end %>
+        </table>
+        <hr>
+        <table class="price-tabel">
+          <tbody>
+            <% if @property.rent %>
+              <tr>
+                <td><b>Locação<b></td>
+                <td><b><%= @value.rent %><b></td>
+              </tr>
+              <tr>
+                <td>Condominio</td>
+                <td><%= @value.condominium %></td>
+              </tr>
+              <tr>
+                <td>IPTU</td>
+                <td><%= @value.iptu %></td>
+              </tr>
+              <tr style="border-top: 1px solid;">
+                <td><b>Total<b></td>
+                <td><b><%= @value.rent + @value.condominium + @value.iptu %><b></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
         <div>
-        <p>Marque sua visista</p>
+          <br>
+        <p><b>Marque sua visista</b></p>
          <%= simple_form_for [@property, @contact_form] do |f| %>
          <%= f.input :name, label: false, placeholder: "Nome completo" %>
          <%= f.input :telefone, label: false, placeholder: "Tefone"  %>
          <%= f.input :email, label: false, placeholder: "Email"  %>
-         <%= f.submit "Enviar Contato", class: "btn btn-danger contato" %>
+         <%= f.submit "Entre em Contato", class: "btn btn-danger contato" %>
          <% end  %>
         </div>
       </div>

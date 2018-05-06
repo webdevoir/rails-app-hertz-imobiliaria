@@ -41,6 +41,7 @@
   .contact-card {
     background: white;
     margin-top: 19px;
+    box-shadow: 0px 0px 5px rgba(0,0,0, 0.2);
     padding: 1em;
   }
 
@@ -62,5 +63,16 @@
     padding-left: 10px;
   }
 
+  .price-tabel {
+    width:100%;
+    font-weight: 300;
+    font-size: 15px;
+    tr td:first-child {
+      text-align: left;
+    }
+    tr td:nth-child(2) {
+      text-align: right;
+    }
   }
+}
 
