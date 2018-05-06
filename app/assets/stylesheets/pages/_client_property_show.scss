@@ -20,19 +20,24 @@
   }
 
   .slider-wrapper {
-    background: white;
-    padding: 2em 2em 3px 2em;
     margin: 1em 0;
   }
 
-  .slider-wrapper .slider-for .image {
+  .slider-wrapper .slider-for-client .image {
     display: flex !important;
     justify-content: center;
+  }
 
+  .slider-for-client .slick-prev {
+    left: 25px;
+    z-index: 1000;
+  }
+  .slider-for-client .slick-next {
+    right: 52px;
   }
 
   .slick-prev:before, .slick-next:before {
-    color:black !important;
+    font-size: 45px
   }
 
 
