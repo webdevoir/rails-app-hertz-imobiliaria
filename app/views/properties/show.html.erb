@@ -1,23 +1,18 @@
 <style>
-  body {
-    background: white;
-  }
-
-
+  body { background: white }
 </style>
 </div>
-<div class="info-card">
-  <div id="map" style="height:300px;"></div>
-</div>
 <div class="container">
-
 <div class="client-property-show">
   <div class="row">
     <h2 class="property-title"> <%= @address.neighborhood %> • <%= @address.city %> - Cod. <%= @property.id %></h2>
     <h3 class="negotiation"><%= "Venda" if @property.sale %> | <%= "Locação" if @property.rent  %></h3>
     <div class="col-lg-8">
       <div class="slider-wrapper">
-        <div class="slider-for-client">
+        <button class="btn btn-primary" id="photoButton" style="background: white; color: black; outline: none;"><i class="fa fa-image"></i>Fotos</button>
+        <button class="btn btn-primary" id= "mapButton" style="outline:none;"><i class="fa fa-map"></i>Mapa</button>
+        <div id="map" style="height:500px; display: none; margin: 1em;"></div>
+        <div class="slider-for-client" id="photos">
           <% @property.photos.reverse.each do |photo| %>
             <div class="image">
               <%= cl_image_tag photo.path, height: 500, crop: :fill %>
@@ -114,12 +109,52 @@
             {
               "lat": coord.lat,
               "lng": coord.lng,
-              "radius": 1000
+              "radius": 250
             }, ]
           );
         handler.bounds.extendWith(circles);
         handler.fitMapToBounds();
-        handler.getMap().setZoom(13);
+        handler.getMap().setZoom(15);
         });
+
+      document.getElementById("photoButton").addEventListener("click", function(){
+        let photoDisplay = document.getElementById("photos").style.display;
+        if (photoDisplay === "none") {
+          this.style.background = "white";
+          this.style.color = "black";
+          document.getElementById("mapButton").style.background = "#469AE0";
+          document.getElementById("mapButton").style.color = "white";
+          document.getElementById("photos").style.display = "";
+          document.getElementById("map").style.display = "none";
+        }
+      });
+
+      document.getElementById("mapButton").addEventListener("click", function(){
+        let photoDisplay = document.getElementById("map").style.display;
+        if (photoDisplay === "none") {
+          this.style.background = "white";
+          this.style.color = "black";
+          document.getElementById("photoButton").style.background = "#469AE0";
+          document.getElementById("photoButton").style.color = "white";
+          document.getElementById("map").style.display = "";
+          document.getElementById("photos").style.display = "none";
+        }
+      });
+
+      function togglePhotos() {
+        let photoDisplay = document.getElementById("photos").style.display;
+        if (photoDisplay === "none") {
+        } else {
+          document.getElementById("photos").style.display = "none";
+        }
+      }
+
+      function toggleMap() {
+        let mapDisplay = document.getElementById("map").style.display;
+        if (mapDisplay === "none") {
+          document.getElementById("map").style.display = "";
+        } else {
+          }
+        }
   </script>
 <% end %>
