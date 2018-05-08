@@ -1,32 +1,4 @@
-<style>
-  .form-property-search {
-    width:75%;
-  }
-
-  .search-filter {
-    background: white;
-    padding: 1px 5px;
-    box-shadow: 1px 1px 5px black;
-  }
-</style>
-
 <div class="row">
-  <div class="col-md-12">
-    <div class="search-filter">
-      <%= form_tag(admin_properties_path, method: :get) do %>
-        <h3>Filtro</h3>
-        <%= label_tag("Tipo de Negociação") %>
-        <%= select_tag(:type_of_negotiation, options_for_select(["Comprar", "Alugel"])) %> <br>
-        <%= label_tag("Preço") %>
-        <%= range_field(:property, :price, in: 1..100) %>
-        <%= label_tag("Estado") %> <br>
-        <%= select_tag(:state, options_for_select(@estados, selected: "SP")) %> <br>
-        <%= label_tag("Cidade") %> <br>
-        <%= select_tag(:city, options_for_select(["city-1", "city-2", "city-3", "city-4"])) %>
-      <% end %>
-    </div>
-  </div>
-
   <div class="col-md-12">
     <h1>Propriedades</h1>
       <%= form_tag(admin_properties_path, method: :get) do  %>
