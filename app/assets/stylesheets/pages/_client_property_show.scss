@@ -1,11 +1,37 @@
   .client-property-show {
     margin-top: 75px;
+
   .negotiation {
     font-size: 20px;
-    margin: 3px 0 0 20px;
-
+    margin: 5px 0 0 12px;
   }
-    .info-card {
+
+  #photoButton {
+    background: white;
+    color: black;
+    outline: none;
+  }
+
+  #mapButton{
+    outline:none;
+  }
+
+  .option-button {
+    outline: none;
+    border-color: $orangehertz;
+    background: white;
+    color: $orangehertz;
+
+    i {
+      margin: 0 4px;
+    }
+  }
+  .active_button {
+    background: $orangehertz;
+    color: white;
+  }
+
+  .info-card {
     background: white;
     padding: 1em;
     margin: 1em 0;
@@ -62,11 +88,13 @@
     border: none;
   }
 
+  .options-buttons {
+    margin-left: 12px;
+  }
 
   /*Reference to the show page*/
   .property-title {
     font-size: 30px;
-    padding-left: 10px;
   }
 
   .price-tabel {
