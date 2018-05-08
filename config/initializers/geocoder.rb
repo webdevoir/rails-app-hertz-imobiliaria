@@ -17,7 +17,7 @@ Geocoder.configure(
   # always_raise: [],
 
   lookup:    :google,
-  api_key:   ENV['GMAPS_KEY'],
+  api_key:   ENV['GOOGLE_GEOCODE'],
   use_https: true,
   # Calculation options
   # units: :mi,                 # :km for kilometers or :mi for miles
