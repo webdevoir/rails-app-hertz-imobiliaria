@@ -54,6 +54,9 @@ gem 'impressionist'
 
 gem 'bootstrap-toggle-rails'
 
+#email
+gem 'sparkpost_rails'
+
 
 group :development, :test do
   gem "minitest", '5.10.1'
