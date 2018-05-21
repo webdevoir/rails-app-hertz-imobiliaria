@@ -1,0 +1,6 @@
+<%= simple_form_for [@property, @contact_form], remote: true do |f| %>
+  <%= f.input :name, label: false, placeholder: "Nome completo" %>
+  <%= f.input :telefone, label: false, placeholder: "Tefone" %>
+  <%= f.input :email, label: false, placeholder: "Email"  %>
+  <%= f.submit "Entre em Contato", class: "btn btn-danger contato" %>
+<% end  %>
