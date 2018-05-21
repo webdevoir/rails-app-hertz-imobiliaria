@@ -34,8 +34,10 @@ ActiveRecord::Schema.define(version: 20180505224305) do
     t.string "name"
     t.string "telefone"
     t.string "email"
+    t.bigint "property_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["property_id"], name: "index_contact_forms_on_property_id"
   end
 
   create_table "details_types", id: :serial, force: :cascade do |t|
@@ -193,6 +195,7 @@ ActiveRecord::Schema.define(version: 20180505224305) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "contact_forms", "properties"
   add_foreign_key "properties", "landlords"
   add_foreign_key "property_addresses", "properties"
   add_foreign_key "property_areas", "properties"

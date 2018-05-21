@@ -4,7 +4,7 @@ class CreateContactForms < ActiveRecord::Migration[5.1]
       t.string :name
       t.string :telefone
       t.string :email
-
+      t.references :property, foreign_key: true
       t.timestamps
     end
   end
