@@ -7,8 +7,8 @@ class Property < ApplicationRecord
   has_one :property_area, dependent: :destroy
   has_one :property_value, dependent: :destroy
   has_many :property_details
-  has_many :details_types, through: :property_details
-  has_many :contact_forms
+  has_many :details_types, through: :property_details, dependent: :destroy
+  has_many :contact_forms, dependent: :destroy
 
   validates :construction_year, presence: true, numericality: { greater_than: 1900}
   validates :property_type, presence: true
