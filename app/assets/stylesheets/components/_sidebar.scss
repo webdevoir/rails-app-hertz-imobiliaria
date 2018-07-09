@@ -5,6 +5,10 @@
   align-items: stretch;
   min-height: calc(100vh - 70px);
 
+  @media (max-width: 992px){ // or #{$retina}
+    padding-left: 0;
+  }
+
 }
 
 #sidebar {

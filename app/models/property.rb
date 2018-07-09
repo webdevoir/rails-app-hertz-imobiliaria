@@ -10,7 +10,7 @@ class Property < ApplicationRecord
   has_many :details_types, through: :property_details, dependent: :destroy
   has_many :contact_forms, dependent: :destroy
 
-  validates :construction_year, presence: true, numericality: { greater_than: 1900}
+  validates :construction_year, numericality: { greater_than: 1900}
   validates :property_type, presence: true
   validates :bathrooms, numericality: { greater_than: -1}
   validates :garages, numericality: { greater_than: -1}
