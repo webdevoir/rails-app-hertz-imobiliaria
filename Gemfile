@@ -57,6 +57,8 @@ gem 'bootstrap-toggle-rails'
 #email
 gem 'sparkpost_rails'
 
+gem 'exception_notification'
+
 
 group :development, :test do
   gem "minitest", '5.10.1'

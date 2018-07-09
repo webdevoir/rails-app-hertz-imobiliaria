@@ -1,5 +1,5 @@
 Rails.application.configure do
-  config.action_mailer.default_url_options = { host: "http://TODO_PUT_YOUR_DOMAIN_HERE" }
+  config.action_mailer.default_url_options = { host: "email.hertzimoveis.com.br" }
   # Settings specified here will take precedence over those in config/application.rb.
   config.action_mailer.delivery_method = :sparkpost
   # Code is not reloaded between requests.
@@ -75,6 +75,19 @@ Rails.application.configure do
   # Use a different logger for distributed setups.
   # require 'syslog/logger'
   # config.logger = ActiveSupport::TaggedLogging.new(Syslog::Logger.new 'app-name')
+
+
+  config.logger = Logger.new(STDOUT)
+
+  config.middleware.use ExceptionNotification::Rack,
+    email: {
+    email_prefix: '[Production Server Error] ',
+    sender_address: %{"Hertz Imoveis notifier" <noreplay@email.hertzimoveis.com.br>},
+    exception_recipients: %w{juan.couso@gmail.com}
+  }
+
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.raise_delivery_errors = true
 
   if ENV["RAILS_LOG_TO_STDOUT"].present?
     logger           = ActiveSupport::Logger.new(STDOUT)
