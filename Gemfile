@@ -60,6 +60,7 @@ gem 'sparkpost_rails'
 gem 'exception_notification'
 
 gem 'rails-i18n'
+gem 'devise-i18n'
 
 
 group :development, :test do
