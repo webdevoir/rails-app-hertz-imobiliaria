@@ -4,19 +4,27 @@
       <h2 class="title"> <i class="fa fa-home"></i> Cod. <%= @property.id %> - <%= 'Venda' if @property.sale %> <%= '/' if  @property.sale && @property.rent %> <%= 'Aluguel' if @property.rent %></h2>
       <div class="slider-wrapper">
         <div class="slider-for">
-          <% @property.photos.reverse.each do |photo| %>
+          <% if @property.photos.empty? %>
             <div class="image">
-              <%= cl_image_tag photo.path, height: 400, crop: :fill %>
-            </div>
-          <% end  %>
+                <%= image_tag 'placeholder-image.jpg', height: 400 %>
+              </div>
+          <% else %>
+            <% @property.photos.reverse.each do |photo| %>
+              <div class="image">
+                <%= cl_image_tag photo.path, height: 400, crop: :fill %>
+              </div>
+            <% end  %>
+          <% end %>
         </div>
-        <div class="slider-nav">
-          <% @property.photos.reverse.each do |photo| %>
-            <div>
-              <%= cl_image_tag photo.path, width: 220, height: 100, crop: :fill %>
-            </div>
-          <% end  %>
-        </div>
+        <% if @property.photos.count > 1 %>
+          <div class="slider-nav">
+            <% @property.photos.reverse.each do |photo| %>
+              <div>
+                <%= cl_image_tag photo.path, width: 220, height: 100, crop: :fill %>
+              </div>
+            <% end  %>
+          </div>
+        <% end %>
       </div>
       <div class="info-card">
         <p>Informações Basicas</p>
@@ -98,8 +106,8 @@
 <br>
 
 <% content_for :js do %>
-  <%= javascript_tag do  %>
-      $('.slider-for').slick({
+  <script>
+    $('.slider-for').slick({
         slidesToShow: 1,
         slidesToScroll: 1,
         arrows: false,
@@ -131,6 +139,6 @@
         handler.fitMapToBounds();
         handler.getMap().setZoom(13);
         });
-  <% end %>
+  </script>
 <% end %>
 

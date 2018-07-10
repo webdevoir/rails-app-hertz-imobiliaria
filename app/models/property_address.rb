@@ -1,7 +1,7 @@
 class PropertyAddress < ApplicationRecord
   belongs_to :property
   geocoded_by :full_address
-  after_validation :geocode, if: ->(obj){ obj.cep.present? and obj.cep_changed? }
+  after_validation :geocode, if: ->(obj){ obj.cep.present? and (obj.cep_changed? || obj.street_changed?) }
 
   def full_address
     "#{self.street} #{self.number}, #{self.city}, #{self.state}, #{self.country}"
