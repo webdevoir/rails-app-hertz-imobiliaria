@@ -1,11 +1,11 @@
 <div class="form-menu">
     <% if @property.id %>
       <%= link_to edit_admin_property_path(@property), class: "tab" + (activate == "basic" ? " active" : "") do %>
-        <p>Informações basica</p>
+        <p>Informações Básica</p>
       <% end %>
     <% else %>
       <%= link_to new_admin_property_path(@property), class: "tab" + (activate == "basic" ? " active" : "")  do %>
-        <p>Informações basica</p>
+        <p>Informações Básica</p>
       <% end %>
     <% end %>
 
@@ -21,31 +21,31 @@
 
     <% if @property.id %>
       <%= link_to details_admin_property_path(@property), class: "tab" + (activate == "details" ? " active" : "")  do %>
-        <p>Detalhes do Imovel</p>
+        <p>Detalhes do Imóvel</p>
       <% end %>
     <% else %>
       <a class="tab <%= 'active' if activate == 'detail' %>" href="#" onclick="alert('Cadastre as informação basicas do imovel antes de continuar');">
-      <p>Detalhes do Imovel</p>
+      <p>Detalhes do Imóvel</p>
       </a>
     <% end %>
 
     <% if @property.id %>
       <%= link_to area_admin_property_path(@property), class: "tab" + (activate == "area" ? " active" : "")  do %>
-        <p>Informações da Area</p>
+        <p>Informações da Área</p>
       <% end %>
     <% else %>
       <a class="tab <%= 'active' if activate == 'area' %>" href="#" onclick="alert('Cadastre as informação basicas do imovel antes de continuar');">
-      <p>Informações da Area</p>
+      <p>Informações da Área</p>
       </a>
     <% end %>
 
     <% if @property.id %>
       <%= link_to value_admin_property_path(@property), class: "tab" + (activate == "value" ? " active" : "")  do %>
-        <p>Valor do Imovel</p>
+        <p>Valor do Imóvel</p>
       <% end %>
     <% else %>
       <a class="tab <%= 'active' if activate == 'value' %>" href="#" onclick="alert('Cadastre as informação basicas do imovel antes de continuar');">
-      <p>Valor do Imovel</p>
+      <p>Valor do Imóvel</p>
       </a>
     <% end %>
 

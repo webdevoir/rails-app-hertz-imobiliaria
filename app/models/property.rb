@@ -13,6 +13,9 @@ class Property < ApplicationRecord
 
   has_many :contact_forms, dependent: :destroy
 
+
+  validates :sale, presence: {unless: :rent?, message: "Escolha pelos menos um tipo de negociação" }
+  validates :rent, presence: {unless: :sale?, message: "Escolha pelos menos um tipo de negociação"}
   validates :construction_year, numericality: { greater_than: 1900}, allow_blank: true
   validates :property_type, presence: true
   validates :bathrooms, numericality: { greater_than: -1}

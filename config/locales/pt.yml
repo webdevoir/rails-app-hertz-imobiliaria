@@ -1,51 +1,51 @@
 pt:
-  date:
-    order: [ !ruby/symbol day, !ruby/symbol month, !ruby/symbol year ]
-    formats:
-      default: "%Y-%m-%d"
-      short: "%b %d"
-      long: "%B %d, %Y"
-    day_names: [Segunda, Terça, Quarta, Quinta, Sexta, Sabado, Domingo]
-    month_names: [~, Janeiro, Fevereiro, Março, Abril, Maio, Junho, Julho, Agosto, Setembro, Outubro, Novembro, Dezembro]
+#   date:
+#     order: [ !ruby/symbol day, !ruby/symbol month, !ruby/symbol year ]
+#     formats:
+#       default: "%Y-%m-%d"
+#       short: "%b %d"
+#       long: "%B %d, %Y"
+#     day_names: [Segunda, Terça, Quarta, Quinta, Sexta, Sabado, Domingo]
+#     month_names: [~, Janeiro, Fevereiro, Março, Abril, Maio, Junho, Julho, Agosto, Setembro, Outubro, Novembro, Dezembro]
 
-  activerecord:
-    errors:
-      messages:
-        not_found: "Não encontrado"
-        record_invalid: "Não valido"
-      models:
-        user:
-          attributes:
-            email:
-              blank: "O email não pode estar vazio"
-        landlord:
-          attributes:
-            name:
-              blank: "Nome não pode esta em branco"
-            rg:
-              blank: "Documento não pode esta em branco"
-            cpf:
-              blank: "CPF não pode esta em branco"
-            profession:
-              blank: "Profissião não pode esta em branco"
-            birthday:
-              blank: "Data de Nacimento não pode esta em branco"
-            phone1:
-              blank: "Telefone não pode esta em branco"
-            email:
-              blank: "Email não pode esta em branco"
-            cep:
-              blank: "CEP não pode esta em branco"
-            city:
-              blank: "Cidade não pode esta em branco"
-            neighborhood:
-              blank: "Bairro não pode esta em branco"
-            street:
-              blank: "Logradouro não pode esta em branco"
-            number:
-              blank: "Numbero não pode esta em branco"
-            complement:
-              blank: "Complemento não pode esta em branco"
-            condo_name:
-              blank: "Condominio não pode esta em branco"
+  # activerecord:
+  #   errors:
+  #     messages:
+  #       not_found: "Não encontrado"
+  #       record_invalid: "Não valido"
+  #     models:
+  #       user:
+  #         attributes:
+  #           email:
+  #             blank: "O email não pode estar vazio"
+  #       landlord:
+  #         attributes:
+  #           name:
+  #             blank: "Nome não pode esta em branco"
+  #           rg:
+  #             blank: "Documento não pode esta em branco"
+  #           cpf:
+  #             blank: "CPF não pode esta em branco"
+  #           profession:
+  #             blank: "Profissião não pode esta em branco"
+  #           birthday:
+  #             blank: "Data de Nacimento não pode esta em branco"
+  #           phone1:
+  #             blank: "Telefone não pode esta em branco"
+  #           email:
+  #             blank: "Email não pode esta em branco"
+  #           cep:
+  #             blank: "CEP não pode esta em branco"
+  #           city:
+  #             blank: "Cidade não pode esta em branco"
+  #           neighborhood:
+  #             blank: "Bairro não pode esta em branco"
+  #           street:
+  #             blank: "Logradouro não pode esta em branco"
+  #           number:
+  #             blank: "Numbero não pode esta em branco"
+  #           complement:
+  #             blank: "Complemento não pode esta em branco"
+  #           condo_name:
+  #             blank: "Condominio não pode esta em branco"
 

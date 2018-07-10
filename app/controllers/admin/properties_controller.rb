@@ -109,6 +109,8 @@ class Admin::PropertiesController < ApplicationController
   def set_landlord
     if params[:landlord]
       @landlord = Landlord.find(params[:landlord])
+    elsif @property.nil?
+      redirect_to admin_landlords_path
     elsif @property.landlord.present?
       @landlord = @property.landlord
     else

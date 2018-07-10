@@ -1,5 +1,10 @@
 .form-property {
   padding: 20px 15px 15px 20px;
+
+  textarea.form-control {
+    resize: none;
+    height: 200px;
+  }
 }
 
 .space{

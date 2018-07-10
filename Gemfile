@@ -59,6 +59,8 @@ gem 'sparkpost_rails'
 
 gem 'exception_notification'
 
+gem 'rails-i18n'
+
 
 group :development, :test do
   gem "minitest", '5.10.1'
