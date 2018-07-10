@@ -25,6 +25,8 @@ module RailsAppHertzImobiliaria
     end
     config.action_view.embed_authenticity_token_in_remote_forms = true
     config.i18n.default_locale = :'pt-BR'
+    Time::DATE_FORMATS[:default] = "%d/%m/%Y %H:%M"
+    Date::DATE_FORMATS[:default] = "%d/%m/%Y"
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.

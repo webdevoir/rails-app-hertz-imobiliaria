@@ -61,6 +61,7 @@ gem 'exception_notification'
 
 gem 'rails-i18n'
 gem 'devise-i18n'
+gem 'autonumeric-rails'
 
 
 group :development, :test do

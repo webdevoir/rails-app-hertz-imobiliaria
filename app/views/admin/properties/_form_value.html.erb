@@ -1,10 +1,30 @@
 <div class="form-property">
   <%= simple_form_for([:admin, property_value]) do |f| %>
   <%= f.input :property_id, :as => :hidden, input_html: { value: @property.id } %>
-  <%= f.input :sell, label: "Valor de Venda" %>
-  <%= f.input :rent, label: "Valor do Aluguel" %>
-  <%= f.input :iptu, label: "Valor do IPTU" %>
-  <%= f.input :condominium, label: "Valor do Condomínio" %>
+
+  <% if property_value.property.sale %>
+    <div class="col-md-6">
+    <%= f.input :sell, label: "Valor de Venda", as: :currency %>
+  </div>
+  <% end %>
+
+  <% if property_value.property.rent %>
+    <div class="col-md-6">
+      <%= f.input :rent, label: "Valor do Aluguel", as: :currency  %>
+    </div>
+  <% end %>
+  <div class="col-md-6">
+    <%= f.input :iptu, label: "Valor do IPTU", as: :currency  %>
+  </div>
+  <div class="col-md-6">
+  <%= f.input :installments, label: "IPTU Parcelado?" %>
+    <%= f.input :number_of_installments, label: 'Numero de Parcelas', collection: Array(1..12), selected: property_value.nil? ? 1 : property_value.number_of_installments %>
+  </div>
+  <div class="col-md-12">
+  <%= f.input :condominium, label: "Valor do Condomínio", as: :currency %>
+  </div>
+  <div class="col-md-12">
   <%= f.button :submit, "Salvar", class: 'btn btn-primary' %>
+</div>
   <% end %>
 </div>

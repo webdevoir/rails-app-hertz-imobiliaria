@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180505224305) do
+ActiveRecord::Schema.define(version: 20180710222251) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -173,6 +173,8 @@ ActiveRecord::Schema.define(version: 20180505224305) do
     t.integer "property_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "installments"
+    t.integer "number_of_installments"
     t.index ["property_id"], name: "index_property_values_on_property_id"
   end
 
