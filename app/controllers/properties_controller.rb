@@ -16,7 +16,7 @@ class PropertiesController < ApplicationController
     @area = !@property.property_area.nil? ? @property.property_area : PropertyArea.new
     @address = !@property.property_address.nil? ? @property.property_address : PropertyAddress.new
     @details = @property.property_details
-    @value = !@property.property_value.nil? ? @property.property_value : PropertyValue.new
+    @value = !@property.property_value.nil? ? @property.property_value : PropertyValue.new(rent: 0, condominium: 0, iptu: 0)
     @property_coodinates = {lat: @address.latitude, lng: @address.longitude}
     @contact_form = ContactForm.new
     render layout: "client-layout"

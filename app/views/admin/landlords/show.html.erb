@@ -13,7 +13,7 @@
         </div>
         <div class="landlord-edit">
           <%= link_to 'Editar', edit_admin_landlord_path(@landlord), class: "btn btn-primary" %>
-          <%= link_to 'Deletar', admin_landlord_path(@landlord), data: {confirm: 'Tem certeza que quer deletar a propriedade?'}, class: "btn btn-danger"%>
+          <%= link_to 'Deletar', admin_landlord_path(@landlord), data: {confirm: 'Tem certeza que quer deletar a propriedade?'}, method: :delete, class: "btn btn-danger"%>
         </div>
         <div class="landlord-more-info collapse" id="collapseExample"">
           <div class="row">

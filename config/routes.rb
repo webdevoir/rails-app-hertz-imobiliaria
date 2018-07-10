@@ -13,9 +13,9 @@ Rails.application.routes.draw do
 
     get '/dashboard', to: 'properties#dashboard'
 
-    resources :landlords
+    resources :landlords, path: 'proprietarios'
 
-    resources :properties do
+    resources :properties, path: 'propriedades' do
       get :autocomplete_details_type_name, :on => :collection
       member do
         get :info

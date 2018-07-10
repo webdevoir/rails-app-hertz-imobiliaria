@@ -21,7 +21,6 @@ class Admin::PropertiesController < ApplicationController
     if @property.save
       redirect_to address_admin_property_path(@property)
     else
-
       render :new, landlord_id: property_params[:landlord_id]
     end
   end

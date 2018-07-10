@@ -39,6 +39,8 @@ before_action :set_landlord, only: [:edit, :update, :destroy, :show]
   end
 
   def destroy
+    @landlord.destroy
+    redirect_to admin_landlords_path
   end
 
   private
