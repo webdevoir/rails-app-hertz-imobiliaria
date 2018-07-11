@@ -1,5 +1,17 @@
 .property-show {
 
+  .slider-wrapper {
+    margin: 10px 40px;
+
+    .slider-for {
+      .image {
+        height: 500px;
+        background: no-repeat center center;
+        background-size: cover;
+      }
+    }
+  }
+
   .info-card {
     background: white;
     padding: 1em;
@@ -84,13 +96,13 @@ input:checked + .slider:before {
 }
 
 /* Rounded sliders */
-.slider.round {
-  border-radius: 34px;
-}
+  .slider.round {
+    border-radius: 34px;
+  }
 
-.slider.round:before {
-  border-radius: 50%;
-}
+  .slider.round:before {
+    border-radius: 50%;
+  }
 }
 
 
