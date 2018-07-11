@@ -10,11 +10,11 @@
 
     <%= f.input :name, label: 'Nome Completo', wrapper_html: {class: 'col-md-12'} %>
       <%= f.input :rg, label: 'Documento', wrapper_html: {class: 'col-md-4'} %>
-      <%= f.input :cpf, label: 'CPF', wrapper_html: {class: 'col-md-4'}, placeholder: '321.543.212-03' %>
+      <%= f.input :cpf, label: 'CPF', wrapper_html: {class: 'col-md-4'}, placeholder: 'xxx.xxx.xxx-xx' %>
       <%= f.input :martial_status, label: 'Estado Civil', collection: %w(Solteiro Casado Divorciado Viúvo União\ Estável), selected:'Solteiro', wrapper_html: {class: 'col-md-4'} %>
       <%= f.input :profession, label: 'Profissão', wrapper_html: {class: 'col-md-4'} %>
 
-      <%= f.input :birthday, as: :string, label: "Data de Nascimento", wrapper_html: {class: 'col-md-4'}, placeholder: '21/08/1983' %>
+      <%= f.input :birthday, as: :string, label: "Data de Nascimento", wrapper_html: {class: 'col-md-4'}, placeholder: 'DD/MM/YYYY' %>
     <div class="col-md-12">
       <h4 class="subtitle">Contato</h4>
       <hr class="line">
@@ -45,7 +45,7 @@
      </div>
 
 
-      <%= f.input :type_of_account, label: 'Tipo de Conta', collection: %w(Conta\ Corrente Conta\ Poupança), selected: 'Conta Corrente', id: 'conta', wrapper_html: {class: 'col-md-4'}  %>
+      <%= f.input :type_of_account, label: 'Tipo de Conta', collection: %w(Conta\ Corrente Conta\ Poupança), id: 'conta', wrapper_html: {class: 'col-md-4'}  %>
       <%= f.input :bank, label: 'Banco', wrapper_html: {class: 'col-md-4'} %>
 
       <%= f.input :agency, label: 'Número de Agencia', wrapper_html: {class: 'col-md-4'} %>
