@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180711124256) do
+ActiveRecord::Schema.define(version: 20180711142208) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,6 +30,10 @@ ActiveRecord::Schema.define(version: 20180711124256) do
     t.index ["attachinariable_type", "attachinariable_id", "scope"], name: "by_scoped_parent"
   end
 
+  create_table "business_types", force: :cascade do |t|
+    t.string "name"
+  end
+
   create_table "contact_forms", force: :cascade do |t|
     t.string "name"
     t.string "telefone"
@@ -45,6 +49,12 @@ ActiveRecord::Schema.define(version: 20180711124256) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "emails", force: :cascade do |t|
+    t.string "email"
+    t.bigint "landlord_id"
+    t.index ["landlord_id"], name: "index_emails_on_landlord_id"
   end
 
   create_table "impressions", id: :serial, force: :cascade do |t|
@@ -103,12 +113,16 @@ ActiveRecord::Schema.define(version: 20180711124256) do
     t.string "account_number"
   end
 
+  create_table "phones", force: :cascade do |t|
+    t.string "phone"
+    t.bigint "landlord_id"
+    t.index ["landlord_id"], name: "index_phones_on_landlord_id"
+  end
+
   create_table "properties", id: :serial, force: :cascade do |t|
     t.integer "landlord_id"
     t.boolean "sale", default: false
     t.boolean "rent", default: false
-    t.string "bussiness_type", default: ""
-    t.string "property_type", default: ""
     t.string "condition", default: ""
     t.string "position", default: ""
     t.string "style", default: ""
@@ -125,7 +139,11 @@ ActiveRecord::Schema.define(version: 20180711124256) do
     t.boolean "featured", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "business_type_id"
+    t.bigint "property_type_id"
+    t.index ["business_type_id"], name: "index_properties_on_business_type_id"
     t.index ["landlord_id"], name: "index_properties_on_landlord_id"
+    t.index ["property_type_id"], name: "index_properties_on_property_type_id"
   end
 
   create_table "property_addresses", id: :serial, force: :cascade do |t|
@@ -166,6 +184,10 @@ ActiveRecord::Schema.define(version: 20180711124256) do
     t.index ["property_id"], name: "index_property_details_on_property_id"
   end
 
+  create_table "property_types", force: :cascade do |t|
+    t.string "name"
+  end
+
   create_table "property_values", id: :serial, force: :cascade do |t|
     t.decimal "rent"
     t.decimal "sell"
@@ -199,6 +221,8 @@ ActiveRecord::Schema.define(version: 20180711124256) do
   end
 
   add_foreign_key "contact_forms", "properties"
+  add_foreign_key "emails", "landlords"
+  add_foreign_key "phones", "landlords"
   add_foreign_key "properties", "landlords"
   add_foreign_key "property_addresses", "properties"
   add_foreign_key "property_areas", "properties"

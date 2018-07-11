@@ -4,8 +4,9 @@
       <%= f.input :landlord_id, as: :hidden, input_html: { value: check_landlord_id(params)}%>
       <%= f.input :sale, label: 'Venda', wrapper_html: {class: 'col-md-2'}, onchange: "showAddInfo();"  %>
       <%= f.input :rent, label: 'Locação', wrapper_html: {class: 'col-md-8'} %>
-      <%= f.input :bussiness_type, label: 'Tipo de Negócio', collection: ['Residencial', 'Comercial'], wrapper_html: {class: 'col-md-6'} %>
-      <%= f.input :property_type, label: 'Tipo de Propriedade', collection: ['Casa', 'Apartamento'], wrapper_html: {class: 'col-md-6'}  %>
+      <%= f.input :business_type_id, collection: BusinessType.all, label: 'Tipo de Negócio', wrapper_html: {class: 'col-md-6'} %>
+
+      <%= f.input :property_type_id, collection: PropertyType.all, label: 'Tipo de Propriedade', wrapper_html: {class: 'col-md-6'}  %>
       <%= f.input :construction_year, label: 'Ano de Construção', wrapper_html: {class: 'col-md-3'} %>
       <%= f.input :condition, label: 'Condição do Imóvel', collection: ['Novo', 'Ótimo', 'Bom', 'Reformado'], wrapper_html: {class: 'col-md-3'} %>
       <%= f.input :position, label: 'Posição', wrapper_html: {class: 'col-md-3'}  %>

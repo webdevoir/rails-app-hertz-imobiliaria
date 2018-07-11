@@ -18,6 +18,9 @@ class Admin::PropertiesController < ApplicationController
 
   def create
     @property = Property.new(property_params)
+    # @property.business_type = BusinessType.find(business_type_params[:business_type])
+    # @property.property_type = PropertyType.find(property_type_params[:property_type])
+
     if @property.save
       redirect_to address_admin_property_path(@property)
     else
@@ -29,6 +32,8 @@ class Admin::PropertiesController < ApplicationController
   end
 
   def update
+    # @property.business_type = BusinessType.find(business_type_params[:business_type])
+    # @property.property_type = PropertyType.find(property_type_params[:property_type])
     unless params[:landlord_id].nil?
       if @property.update(property_params)
         redirect_to admin_landlord_path(params[:landlord_id])
@@ -125,10 +130,18 @@ class Admin::PropertiesController < ApplicationController
 
   def property_params
     params.require(:property).permit(:id, :landlord_id, :sale, :rent,
-      :bussiness_type, :property_type, :condition, :position, :style,
+      :business_type_id, :property_type_id, :condition, :position, :style,
       :construction_year, :bathrooms, :rooms, :garages, :suites,
       :sell_conditions, :rent_guarantee, :description, :observations,
       :published, :featured, photos: [])
+  end
+
+  def business_type_params
+    params.require(:property).permit(:business_type)
+  end
+
+  def property_type_params
+    params.require(:property).permit(:property_type)
   end
 
 end

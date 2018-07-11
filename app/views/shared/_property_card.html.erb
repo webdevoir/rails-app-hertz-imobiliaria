@@ -8,8 +8,8 @@
       </div>
     <% end %>
     <div class="info">
+      <p><b>Cod.<%= property.id %></b></p>
       <% if !property.property_address.nil? %>
-        <p><b>Cod.<%= property.id %></b></p>
         <p><%= property.property_address.neighborhood %> • <%= property.property_address.city %></p>
         <p><b>Lagradouro:</b> <%= property.property_address.street %>, <%= property.property_address.number  %></p>
       <% end %>

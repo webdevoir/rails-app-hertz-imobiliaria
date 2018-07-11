@@ -1,12 +1,12 @@
-User.destroy_all
-admin = {
-  name: "Juan Couso",
-  email: 'admin@admin.com',
-  password: 123123,
-  admin: true,
-}
+# User.destroy_all
+# admin = {
+#   name: "Juan Couso",
+#   email: 'admin@admin.com',
+#   password: 123123,
+#   admin: true,
+# }
 
-User.create(admin)
+# User.create(admin)
 
 # PropertyDetail.destroy_all
 # puts 'Destroying all Property Details'
@@ -180,10 +180,47 @@ User.create(admin)
 # puts gen.property_area_generator
 # puts gen.property_value_generator
 
+business_types = [
+    {name: 'Residencial'},
+    {name: 'Comercial'},
+    {name: 'Rural'} ]
+
+property_types = [
+  { name: 'Casa' },
+  { name: 'Apartamento'},
+  { name: 'Loja' },
+  { name: 'Chácara' },
+  { name: 'Conjunto Comercial' },
+  { name: 'Fazenda' },
+  { name: 'Flat' },
+  { name: 'Garagem' },
+  { name: 'Hotel' },
+  { name: 'Prédio' },
+  { name: 'Sala' },
+  { name: 'Salão' },
+  { name: 'Ponto Comercial' },
+  { name: 'Terreno' },
+  { name: 'Pousada' },
+  { name: 'Estúdio' },
+  { name: 'Lote' },
+  { name: 'Kitnet' },
+  { name: 'Cobertura' },
+  { name: 'Assobradado' },
+  { name: 'Casa de Vila' },
+  { name: 'Casa em Condomínio' },
+  { name: 'Mansão' },
+  { name: 'Sobrado em Condomínio'},
+  { name: 'Sobrado em Vila'},
+  { name: 'Lavoura'} ]
+
+property_types.each do |property_type|
+  PropertyType.create(property_type)
+end
 
 
-
-
+business_types.each do |business_type|
+  BusinessType.create(business_type)
+end
 
 
 
