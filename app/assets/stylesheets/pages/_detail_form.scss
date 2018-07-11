@@ -4,9 +4,11 @@
     padding: 3px 10px;
     border-radius: 30px;
     display: inline-flex;
-    flex-wrap: wrap;
     margin: 5px;
     font-weight: 300;
+    label {
+      font-weight: 300;
+    }
   }
 
   #detail {
@@ -25,7 +27,6 @@
   }
 
   #submit-detail {
-    float: right;
   }
 
   .ui-helper-hidden-accessible {

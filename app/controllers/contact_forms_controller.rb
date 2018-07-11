@@ -2,7 +2,6 @@ class ContactFormsController < ApplicationController
   def create
     @contact_form = ContactForm.new(contact_form_params)
     @contact_form.property = Property.find(params[:property_id])
-    binding.pry
     if @contact_form.save
       flash[:notice] = "Seu contato foi enviado com sucesso"
       respond_to do |format|

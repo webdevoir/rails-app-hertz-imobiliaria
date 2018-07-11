@@ -5,9 +5,15 @@
     <div class="main-info">
       <p class="landlord-name"><%= landlord.name %></p>
       <div class="tel-info">
-        <p><b><i class="fa fa-phone"></i></b> <%= landlord.phone1 %></p>
-        <p><b><i class="fa fa-mobile"></i></b> <%= landlord.phone2 %></p>
-        <p><b><i class="fa fa-envelope"></i></b> <%= landlord.email %></p>
+        <% if !landlord.phone1.blank? %>
+          <p><b><i class="fa fa-phone"></i></b> <%= landlord.phone1 %></p>
+        <% end %>
+        <% if !landlord.phone2.blank? %>
+          <p><b><i class="fa fa-mobile"></i></b> <%= landlord.phone2 %></p>
+        <% end %>
+        <% if !landlord.email.blank? %>
+          <p><b><i class="fa fa-envelope"></i></b> <%= landlord.email %></p>
+        <% end %>
       </div>
     </div>
     <div class="booked text-right">

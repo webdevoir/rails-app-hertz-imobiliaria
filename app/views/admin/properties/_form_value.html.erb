@@ -1,14 +1,13 @@
 <div class="form-property">
   <%= simple_form_for([:admin, property_value]) do |f| %>
   <%= f.input :property_id, :as => :hidden, input_html: { value: @property.id } %>
-
-  <% if property_value.property.sale %>
+  <% if @property.sale %>
     <div class="col-md-6">
     <%= f.input :sell, label: "Valor de Venda", as: :currency %>
   </div>
   <% end %>
 
-  <% if property_value.property.rent %>
+  <% if @property.rent %>
     <div class="col-md-6">
       <%= f.input :rent, label: "Valor do Aluguel", as: :currency  %>
     </div>

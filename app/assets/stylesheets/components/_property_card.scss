@@ -7,14 +7,36 @@
   border-top: 5px solid #f88004;
   position: relative;
   box-shadow: 2px 2px 5px #808080;
-
-  .info {
-    margin-left: 10px;
+  p {
+    margin: 1px;
   }
 
-  .property-left {
+  .left {
     display:flex;
+
+    .info {
+      margin-left: 10px;
+    }
   }
+
+  .right {
+    font-weight: 700;
+
+    .featured {
+      color: gold;
+    }
+
+    .published {
+      color: green;
+
+    }
+
+    .not-published {
+      color: red;
+    }
+  }
+
+
 
   .property-link {
     position: absolute;

@@ -1,12 +1,17 @@
 <div class="property-card">
-  <div class="property-left">
-    <% if property.photos.first %>
-      <p><%= cl_image_tag (property.photos.first).path, width: 100, height: 100, crop: :fill %></p>
+  <div class="left">
+    <% if property.photos.last %>
+      <div><%= cl_image_tag (property.photos.first).path, width: 100, height: 100, crop: :fill %>
+      </div>
+    <% else %>
+      <div><%= image_tag 'placeholder-image.jpg', width: 100, height: 100, crop: :fill %>
+      </div>
     <% end %>
     <div class="info">
       <% if !property.property_address.nil? %>
-        <p>Cod.<%= property.id %> • <%= property.property_address.neighborhood %> • <%= property.property_address.city %></p>
-        <p><%= property.property_address.street %>, <%= property.property_address.number  %></p>
+        <p><b>Cod.<%= property.id %></b></p>
+        <p><%= property.property_address.neighborhood %> • <%= property.property_address.city %></p>
+        <p><b>Lagradouro:</b> <%= property.property_address.street %>, <%= property.property_address.number  %></p>
       <% end %>
       <% if !property.property_value.nil? %>
       <p><%= (number_to_currency property.property_value.sell.floor, unit: "R$", delimiter: ".", precision: 0) if property.property_value.sell != nil %></p>
@@ -14,8 +19,21 @@
     </div>
   </div>
 
-  <div class="bussiness-type">
-    <p><b><%= %></b></p>
+  <div class="right">
+    <% if property.published %>
+      <p class="published">Publicado</p>
+    <% else %>
+      <p class="not-published">Não Publicado</p>
+    <% end %>
+
+    <% if property.featured %>
+      <p class="featured"> Destaque</p>
+    <% end %>
+
+    <p><span><%= 'Venda' if property.sale %>
+    <%= '/' if property.sale  && property.rent %>
+    <%= 'Aluguel' if property.rent  %></span></p>
+
   </div>
   <%= link_to "", admin_property_path(property), class: "property-link" %>
 </div>

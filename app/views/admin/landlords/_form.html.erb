@@ -1,20 +1,20 @@
 <div class="landlord-form">
   <% if @landlord.new_record? %>
-    <h2>Novo Proprietario</h2>
+    <h2>Novo Proprietário</h2>
   <% else %>
-    <h2>Proprietario: <%= @landlord.name %> - RG: <%= @landlord.rg %></h2>
+    <h2>Proprietário: <%= @landlord.name %> - RG: <%= @landlord.rg %></h2>
   <% end %>
   <%= simple_form_for ([:admin, landlord]) do |f| %>
-    <h4 class="subtitle">Informação Pessoais</h4>
+    <h4 class="subtitle">Informações Pessoais</h4>
     <hr class="line">
 
     <%= f.input :name, label: 'Nome Completo', wrapper_html: {class: 'col-md-12'} %>
       <%= f.input :rg, label: 'Documento', wrapper_html: {class: 'col-md-4'} %>
       <%= f.input :cpf, label: 'CPF', wrapper_html: {class: 'col-md-4'}, placeholder: '321.543.212-03' %>
-      <%= f.input :martial_status, label: 'Estado Civil', collection: %w(Solteiro Casado Divorciado Viuvo União\ Estavel), selected:'Solteiro', wrapper_html: {class: 'col-md-4'} %>
+      <%= f.input :martial_status, label: 'Estado Civil', collection: %w(Solteiro Casado Divorciado Viúvo União\ Estável), selected:'Solteiro', wrapper_html: {class: 'col-md-4'} %>
       <%= f.input :profession, label: 'Profissão', wrapper_html: {class: 'col-md-4'} %>
 
-      <%= f.input :birthday, as: :string, label: "Data de Nacimento", wrapper_html: {class: 'col-md-4'}, placeholder: '21/08/1983' %>
+      <%= f.input :birthday, as: :string, label: "Data de Nascimento", wrapper_html: {class: 'col-md-4'}, placeholder: '21/08/1983' %>
     <div class="col-md-12">
       <h4 class="subtitle">Contato</h4>
       <hr class="line">
@@ -22,19 +22,19 @@
 
     <%= f.input :phone1, label: 'Telefone', wrapper_html: {class: 'col-md-3'} %>
     <%= f.input :phone2, label: 'Outro Telefone', wrapper_html: {class: 'col-md-3'} %>
-    <%= f.input :email, label: 'Email', wrapper_html: {class: 'col-md-6'} %>
+    <%= f.input :email, label: 'E-mail', wrapper_html: {class: 'col-md-6'} %>
     <%= f.input :cep, label: 'CEP', id: 'cep', wrapper_html: {class: 'col-md-12'} %>
     <%= f.country_select :country, {selected: "BR"}, {class: "form-control hidden" }  %>
     <%= f.input :state, collection: @estados, label: 'UF', selected: "SP", wrapper_html: {class: 'col-md-1'} %>
     <%= f.input :city, label: 'Cidade', wrapper_html: {class: 'col-md-5'} %>
     <%= f.input :neighborhood, label: 'Bairro', wrapper_html: {class: 'col-md-6'}%>
     <%= f.input :street, label: 'Logradouro', wrapper_html: {class: 'col-md-6'} %>
-    <%= f.input :number, label: 'Nr.', wrapper_html: {class: 'col-md-2'} %>
+    <%= f.input :number, label: 'Nº', wrapper_html: {class: 'col-md-2'} %>
     <%= f.input :complement, label: 'Complemento', wrapper_html: {class: 'col-md-4'}%>
     <%= f.input :condo_name, label: 'Condominio', wrapper_html: {class: 'col-md-6'} %>
 
     <div class="col-md-12">
-      <h4 class="subtitle">Informaçõs de Pagamento</h4>
+      <h4 class="subtitle">Informações de Pagamento</h4>
       <hr class="line">
     </div>
 
@@ -45,21 +45,21 @@
      </div>
 
 
-      <%= f.input :type_of_account, label: 'Tipo de Conta', collection: %w(Conta\ Corrente Conta\ Poupaça), selected: 'Conta Corrente', id: 'conta', wrapper_html: {class: 'col-md-4'}  %>
+      <%= f.input :type_of_account, label: 'Tipo de Conta', collection: %w(Conta\ Corrente Conta\ Poupança), selected: 'Conta Corrente', id: 'conta', wrapper_html: {class: 'col-md-4'}  %>
       <%= f.input :bank, label: 'Banco', wrapper_html: {class: 'col-md-4'} %>
 
-      <%= f.input :agency, label: 'Numero de Agencia', wrapper_html: {class: 'col-md-4'} %>
+      <%= f.input :agency, label: 'Número de Agencia', wrapper_html: {class: 'col-md-4'} %>
 
-      <%= f.input :number, label: 'Numero de Conta', wrapper_html: {class: 'col-md-4'} %>
+      <%= f.input :number, label: 'Número de Conta', wrapper_html: {class: 'col-md-4'} %>
 
     <div class="col-md-12">
       <h4 class="subtitle">Taxas</h4>
       <hr class="line">
     </div>
 
-      <%= f.input :adm_rate, label: 'Taxa Administração Mesal', wrapper_html: {class: 'col-md-4'}%>
+      <%= f.input :adm_rate, label: 'Taxa Administração Mesal', wrapper_html: {class: 'col-md-4'}, data: {autonumeric: { aSep:".", aDec: ','}} %>
 
-      <%= f.input :first_rate, label: 'Taxa Administrativa 1º', wrapper_html: {class: 'col-md-4'} %>
+      <%= f.input :first_rate, label: '1º Taxa Administrativa', wrapper_html: {class: 'col-md-4'}, data: {autonumeric: { aSep:".", aDec: ','}}  %>
 
     <br>
 
