@@ -1,7 +1,7 @@
 <div class="property-card">
   <div class="left">
     <% if property.photos.last %>
-      <div><%= cl_image_tag (property.photos.first).path, width: 100, height: 100, crop: :fill %>
+      <div><%= cl_image_tag (property.photos.last).path, width: 100, height: 100, crop: :fill %>
       </div>
     <% else %>
       <div><%= image_tag 'placeholder-image.jpg', width: 100, height: 100, crop: :fill %>
