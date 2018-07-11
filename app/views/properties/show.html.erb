@@ -24,9 +24,8 @@
       </div>
       <div class="info-card">
         <ul>
-          <li>Tipo negociação: <%= @property.bussiness_type %></li>
-          <li>Tipo:<%= @property.property_type  %></li>
-          <li>Tipo: <%= @property.bussiness_type  %></li>
+          <li>Tipo negociação: <%= @property.business_type if !@property.business_type.nil?  %></li>
+          <li>Tipo:<%= @property.property_type if !@property.property_type.nil? %></li>
           <li>Estado: <%= @property.condition  %></li>
           <li>Posição: <%= @property.position  %></li>
           <li>Estilo de contrução: <%= @property.style  %></li>
