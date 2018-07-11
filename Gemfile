@@ -63,6 +63,8 @@ gem 'rails-i18n'
 gem 'devise-i18n'
 gem 'autonumeric-rails'
 
+gem "cocoon"
+
 
 group :development, :test do
   gem "minitest", '5.10.1'

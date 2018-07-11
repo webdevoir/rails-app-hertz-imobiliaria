@@ -1,6 +1,12 @@
 class Landlord < ApplicationRecord
   has_many :properties, dependent: :destroy
 
+  has_many :emails, inverse_of: :landlord
+  accepts_nested_attributes_for :emails, reject_if: :all_blank, allow_destroy: true
+
+  has_many :phones, inverse_of: :landlord
+  accepts_nested_attributes_for :phones, reject_if: :all_blank, allow_destroy: true
+
   validates :name, presence: true, length: {minimum: 5, maximum: 50}, allow_blank: false
   # validates :rg, presence: true
   # validates :cpf, presence: true

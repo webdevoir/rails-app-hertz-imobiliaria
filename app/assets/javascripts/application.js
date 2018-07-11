@@ -14,4 +14,5 @@
 //= require chartkick
 //= require bootstrap-toggle
 //= require autonumeric
+//= require cocoon
 //= require_tree .

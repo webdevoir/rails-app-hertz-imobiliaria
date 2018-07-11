@@ -20,9 +20,30 @@
       <hr class="line">
     </div>
 
-    <%= f.input :phone1, label: 'Telefone', wrapper_html: {class: 'col-md-3'} %>
-    <%= f.input :phone2, label: 'Outro Telefone', wrapper_html: {class: 'col-md-3'} %>
-    <%= f.input :email, label: 'E-mail', wrapper_html: {class: 'col-md-6'} %>
+    <div class="col-md-6">
+    <h5>Telefones:</h3>
+      <div id='phones'>
+        <%= f.simple_fields_for :phones do |phone| %>
+        <%= render 'phone_fields', :f => phone %>
+        <% end %>
+      <div class='links'>
+        <%= link_to_add_association 'Adicionar Telefone', f, :phones %>
+      </div>
+    </div>
+    </div>
+
+    <div class="col-md-6">
+    <h5>E-mails:</h3>
+      <div id='emails'>
+        <%= f.simple_fields_for :emails do |email| %>
+        <%= render 'email_fields', :f => email %>
+        <% end %>
+      <div class='links'>
+        <%= link_to_add_association 'Adicionar Email', f, :emails %>
+      </div>
+    </div>
+    </div>
+
     <%= f.input :cep, label: 'CEP', id: 'cep', wrapper_html: {class: 'col-md-12'} %>
     <%= f.country_select :country, {selected: "BR"}, {class: "form-control hidden" }  %>
     <%= f.input :state, collection: @estados, label: 'UF', selected: "SP", wrapper_html: {class: 'col-md-1'} %>

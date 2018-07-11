@@ -1,5 +1,6 @@
 class Admin::LandlordsController < ApplicationController
 before_action :set_landlord, only: [:edit, :update, :destroy, :show]
+
   def index
     if params[:query].present?
       @landlords = Landlord.search(params[:query])
@@ -51,7 +52,8 @@ before_action :set_landlord, only: [:edit, :update, :destroy, :show]
                                     :cep, :country, :state, :city, :neighborhood,
                                     :street, :number, :complement, :condo_name,
                                     :type_of_account, :bank, :deposit, :agency,
-                                    :adm_rate, :first_rate)
+                                    :adm_rate, :first_rate, phones_attributes:[:id, :phone, :_destroy],
+                                    emails_attributes:[:id, :email, :_destroy] )
   end
 
   def set_landlord
