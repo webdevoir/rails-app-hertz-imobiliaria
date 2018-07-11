@@ -133,15 +133,15 @@ class Admin::PropertiesController < ApplicationController
       :business_type_id, :property_type_id, :condition, :position, :style,
       :construction_year, :bathrooms, :rooms, :garages, :suites,
       :sell_conditions, :rent_guarantee, :description, :observations,
-      :published, :featured, photos: [])
+      :business_type_id, :property_type_id, :published, :featured, photos: [])
   end
 
-  def business_type_params
-    params.require(:property).permit(:business_type)
-  end
+  # def business_type_params
+  #   params.require(:property).permit(:business_type)
+  # end
 
-  def property_type_params
-    params.require(:property).permit(:property_type)
-  end
+  # def property_type_params
+  #   params.require(:property).permit(:property_type)
+  # end
 
 end

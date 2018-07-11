@@ -33,8 +33,8 @@
         <p>Informações Basicas</p>
         <%= link_to "Editar", edit_admin_property_path(@property), class: 'edit' %>
         <ul>
-          <li>Tipo de Propriedade:<%= @property.business_type  %></li>
-          <li>Tipo: <%= @property.property_type %></li>
+          <li>Tipo de Propriedade:<%= @property.business_type.name if !@property.business_type.nil? %></li>
+          <li>Tipo: <%= @property.property_type.name if !@property.property_type.nil? %></li>
           <li>Estado da Propriedade: <%= @property.condition  %></li>
           <li>Posição da Propriedade: <%= @property.position  %></li>
           <li>Estilo de contrução<%= @property.style  %></li>

@@ -21,8 +21,8 @@ class Property < ApplicationRecord
   validates :sale, presence: {unless: :rent?, message: "Escolha pelos menos um tipo de negociação" }
   validates :rent, presence: {unless: :sale?, message: "Escolha pelos menos um tipo de negociação"}
   validates :construction_year, numericality: { greater_than: 1900}, allow_blank: true
-  validates :property_type, presence: true
-  validates :business_type, presence: true
+  validates :property_type_id, presence: true
+  validates :business_type_id, presence: true
   validates :bathrooms, numericality: { greater_than: -1}
   validates :garages, numericality: { greater_than: -1}
   validates :suites, numericality: { greater_than: -1}
