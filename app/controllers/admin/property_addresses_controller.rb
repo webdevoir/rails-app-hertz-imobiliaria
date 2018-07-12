@@ -1,19 +1,21 @@
 class Admin::PropertyAddressesController < ApplicationController
   def create
     @property_address = PropertyAddress.new(property_address_params)
-    if @property_address.save!
+    @property = @property_address.property
+    if @property_address.save
       redirect_to details_admin_property_path(@property_address.property)
     else
-      render 'properties/address'
+      render 'admin/properties/address'
     end
   end
 
   def update
     @property_address = PropertyAddress.find(params[:id])
+    @property = @property_address.property
     if @property_address.update(property_address_params)
       redirect_to admin_property_path(@property_address.property)
     else
-      render address_admin_property(@property_address.property)
+      render 'admin/properties/address'
     end
   end
 

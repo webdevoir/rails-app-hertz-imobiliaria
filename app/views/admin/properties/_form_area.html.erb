@@ -2,7 +2,7 @@
   <%= simple_form_for([:admin, property_area]) do |f| %>
     <%= f.input :property_id, :as => :hidden, input_html: { value: @property.id } %>
     <%= f.input :scale, label: "Escala", collection: ["m2", "km2"] %>
-    <%= f.input :total, label: "Total de Área" %>
+    <%= f.input :total, label: "Área Total/Metragem" %>
     <%= f.input :usable, label: "Area Útil" %>
     <%= f.input :land, label: "Area do terreno" %>
     <%= f.button :submit, "Salvar", class: 'btn btn-primary' %>

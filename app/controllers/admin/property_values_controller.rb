@@ -2,20 +2,22 @@ class Admin::PropertyValuesController < ApplicationController
 
   def create
     @property_value = PropertyValue.new(property_value_params)
-    if @property_value.save!
+    @property = @property_value.property
+    if @property_value.save
       redirect_to photos_admin_property_path(@property_value.property)
     else
-      render :new
+      render 'admin/properties/value'
     end
 
   end
 
   def update
     @property_value = PropertyValue.find(params[:id])
+    @property = @property_value.property
     if @property_value.update(property_value_params)
       redirect_to admin_property_path(@property_value.property)
     else
-      render value_admin_property(@property_are.property)
+      render 'admin/properties/value'
     end
   end
 

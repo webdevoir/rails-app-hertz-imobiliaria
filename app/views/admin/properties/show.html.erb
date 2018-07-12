@@ -43,6 +43,19 @@
           <li><b>Nº de Banheiros: </b><%= @property.bathrooms.blank? ||(@property.bathrooms == 0) ? 'Não tem' : @property.bathrooms  %></li>
           <li><b>Nº de Suites: </b><%= @property.suites.blank? || (@property.suites == 0) ? 'Não tem' : @property.suites %></li>
           <li><b>Nº Vagas: </b><%= @property.garages.blank? || (@property.garages == 0) ? 'Não tem' : @property.garages%></li>
+          <% if !@area.total.blank? %>
+            <li><b>Area/Metragem: </b><%= @area.total %> <%= @area.scale %></li>
+          <% else %>
+            <br>
+            <p> Não exite informções sobre a metragem total do imóvel </p>
+          <% end %>
+          <% if !@area.usable.blank?%>
+            <li><b>Área Util: </b><%= @area.usable %> <%= @area.scale %></li>
+          <% end %>
+          <% if !@area.land.blank?%>
+            <li><b>Área do Terreno: </b><%= @area.land %> <%= @area.scale %></li>
+          <% end %>
+          <%= link_to 'Editar área do imóvel', area_admin_property_path(@property) %>
         </ul>
 
         <p><b>Descrição:</b></p>
@@ -56,8 +69,18 @@
           <p><%= @property.rent_guarantee %></p>
         <% end %>
         <p><b>Observações:</b></p>
-        <p><%= @property.observations %></p>
-        <p><b>Proprietario: </b><%= link_to "#{@property.landlord.name}", admin_landlord_path(@property.landlord)  %>
+        <% if @property.observations.blank? %>
+          <p>Sem Observações</p>
+        <% else %>
+          <p><%= @property.observations %></p>
+        <% end %>
+        <h4>Detalhes</h4>
+        <% @property.details_types.each do |detail| %>
+          <span><%= detail.name %></span>
+        <% end %>
+        <p><b> Data do Cadastro: </b><%= @property.created_at %></p>
+        <p><b> Ultima atualização: </b><%= @property.updated_at %></p>
+        <p><b>Proprietário: </b><%= link_to "#{@property.landlord.name}", admin_landlord_path(@property.landlord)  %>
       </div>
 
       <div class="info-card">
@@ -68,23 +91,17 @@
         <h3>Endereço</h3>
         <%= link_to "Editar", address_admin_property_path(@property), class: 'edit' %>
         <ul>
-          <li>CEP: <%= @address.cep %></li>
-          <li>Estado: <%= @address.state %></li>
-          <li>Cidade: <%= @address.city %></li>
-          <li>Bairro: <%= @address.neighborhood %></li>
-          <li>Largadouro: <%= @address.street %>, <%= @address.number  %></li>
-          <li>Complemento: <%= @address.complement %></li>
-          <li>Condominio: <%= @address.condo_name %></li>
-        </ul>
-      </div>
-
-      <div class="info-card">
-        <h3>Area</h3>
-        <%= link_to "Editar", area_admin_property_path(@property), class: 'edit' %>
-        <ul>
-          <li>Area Total: <%= @area.total %><%= @area.scale %></li>
-          <li>Area Util: <%= @area.usable %><%= @area.scale %></li>
-          <li>Area do Terreno: <%= @area.land %><%= @area.scale %></li>
+          <li><b>CEP: </b><%= @address.cep %></li>
+          <li><b>Estado: </b><%= @address.state %></li>
+          <li><b>Cidade: </b><%= @address.city %></li>
+          <li><b>Bairro: </b><%= @address.neighborhood %></li>
+          <li><b>Largadouro: </b><%= @address.street %><%= ", #{@address.number}" if !@address.number.blank?%></li>
+          <% if !@address.complement.empty? %>
+            <li><b>Complemento: </b><%= @address.complement %></li>
+          <% end %>
+          <% if !@address.complement.empty? %>
+            <li><b>Condominio: </b><%= @address.condo_name %></li>
+          <% end %>
         </ul>
       </div>
 
@@ -92,9 +109,10 @@
         <h3>Valor</h3>
         <%= link_to "Editar", value_admin_property_path(@property), class: 'edit' %>
         <ul>
-          <li>Valor Total: R$<%= @value.sell %></li>
-          <li>Iptu: R$ <%= @value.iptu %></li>
-          <li>Condominio: R$ <%= @value.condominium %></li>
+          <li><b>Valor de venda:</b> <%= number_to_currency(@value.sell, unit: "R$", separator: ",", delimiter: ".") %></li>
+          <li><b>Valor do aluguel:</b> <%= number_to_currency(@value.rent, unit: "R$", separator: ",", delimiter: ".") %></li>
+          <li><b>Iptu:</b> <%= number_to_currency(@value.iptu, unit: "R$", separator: ",", delimiter: ".")  %></li>
+          <li><b>Condominio:</b> <%= number_to_currency(@value.condominium , unit: "R$", separator: ",", delimiter: ".") %></li>
         </ul>
       </div>
 
@@ -155,10 +173,8 @@
 
           handler.bounds.extendWith(markers);
           handler.fitMapToBounds();
-          handler.getMap().setZoom(13);
+          handler.getMap().setZoom(15);
         }
-
-
         });
   </script>
 <% end %>
