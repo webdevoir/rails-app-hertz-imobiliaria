@@ -7,7 +7,10 @@ class PropertiesController < ApplicationController
     else
       @properties = Property.fast_search(params[:query])
     end
-      render layout: "client-layout"
+
+    @markers = build_marker_for_maps(@properties)
+
+    render layout: "client-layout"
   end
 
   def show
@@ -26,6 +29,21 @@ class PropertiesController < ApplicationController
     @properties_rent = Property.where(rent: true, featured:true, published: true).order(:created_at).limit(10)
     @properties_sale = Property.where(sale: true, featured:true, published: true).order(:created_at).limit(10)
     render layout: 'landing-page'
+  end
+
+  private
+
+  def build_marker_for_maps(properties)
+    markers = []
+    properties.each do |property|
+      add = property.property_address
+      unless add.nil?
+        unless add.latitude.nil? || add.longitude.nil?
+          markers << {lat: add.latitude, lng: add.longitude, id: add.property_id}
+        end
+      end
+    end
+    return markers
   end
 
 end

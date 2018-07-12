@@ -15,21 +15,31 @@
 </div>
 
 <% content_for :js do %>
-  <%= javascript_tag do  %>
-      const coord = <%= raw @property_coodinates.to_json %>;
+  <script>
+    initMap();
+    function initMap(lat, lng) {
 
-      var handler = Gmaps.build('Google', { markers: { clusterer: undefined } });
-      handler.buildMap({ internal: { id: 'map' } }, function() {
-        markers = handler.addMarkers(
-          [
-            {
-              "lat": coord.lat,
-              "lng": coord.lng
-            }, ]
-          );
-        handler.bounds.extendWith(markers);
-        handler.fitMapToBounds();
-        handler.getMap().setZoom(13);
+        var map = new google.maps.Map(document.getElementById('map'), {
         });
-  <% end %>
+
+        var gm_markers = new Array();
+        <% @markers.each do |marker| %>
+          gm_markers[<%= marker[:id].to_s %>] = new google.maps.Marker({
+                                      position: {lat: <%= marker[:lat] %>, lng: <%=marker[:lng] %>},
+                                      map: map,
+                                      });
+         <% end %>
+
+        var bounds = new google.maps.LatLngBounds();
+
+        <% @markers.each do |marker| %>
+          bounds.extend(gm_markers[<%= marker[:id].to_s %>].getPosition());
+        <% end %>
+        map.setCenter(bounds.getCenter());
+        map.fitBounds(bounds);
+        map.setZoom(map.getZoom());
+
+    }
+
+  </script>
 <% end %>

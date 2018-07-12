@@ -3,11 +3,8 @@ function addFlash(reviewHTML) {
   notifications.insertAdjacentHTML('beforeend', reviewHTML);
 }
 
-
 <% if @property.errors.any? %>
-  // $('#profeatpubl').append("<span>Houve um problema, tente novamente mais tarde</span>")
+  addFlash('<%= j render "shared/flashes", Alert: "Houve um problema tente mais tarde" %>')
 <% else %>
-  // $('#profeatpubl').append("<span>Atualizado corretamente</span>")
-
   addFlash('<%= j render "shared/flashes", notice: "Atualizado corretamente" %>')
 <% end %>
