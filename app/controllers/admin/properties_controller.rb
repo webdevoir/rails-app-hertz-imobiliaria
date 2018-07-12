@@ -37,7 +37,6 @@ class Admin::PropertiesController < ApplicationController
       end
     else
       if @property.update(property_params)
-        flash[:notice] = "Atualizado corretamente"
         respond_to do |format|
           format.html { render 'admin/properties/show'}
           format.js

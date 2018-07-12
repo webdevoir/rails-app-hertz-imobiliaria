@@ -13,11 +13,14 @@
   </head>
   <body style="position:relative;">
     <%= javascript_include_tag 'application' %>
+
     <%= render 'shared/navbar' %>
+
     <div id="notifications">
       <%= render 'shared/flashes' %>
     </div>
     <div class="main-wrapper">
+
       <%= render 'shared/sidebar' %>
       <div class="container" style="overflow-x: hidden;">
       <%= yield %>

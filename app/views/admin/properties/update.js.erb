@@ -1,7 +1,13 @@
+function addFlash(reviewHTML) {
+  const notifications = document.getElementById('notifications');
+  notifications.insertAdjacentHTML('beforeend', reviewHTML);
+}
+
 
 <% if @property.errors.any? %>
   // $('#profeatpubl').append("<span>Houve um problema, tente novamente mais tarde</span>")
 <% else %>
   // $('#profeatpubl').append("<span>Atualizado corretamente</span>")
-  $('#notifications').append(<%= j render "shared/flashes", notice: notice %>);
+
+  addFlash('<%= j render "shared/flashes", notice: "Atualizado corretamente" %>')
 <% end %>
