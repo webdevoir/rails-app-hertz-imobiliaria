@@ -1,4 +1,4 @@
-<div class="client-property-card">
+<div class="client-property-card" >
   <% photo_url = property.photos.empty? ? (image_path 'placeholder-image.jpg') : (cloudinary_url property.photos.first.path, height: 160, width: 250, crop: :fill) %>
 
 

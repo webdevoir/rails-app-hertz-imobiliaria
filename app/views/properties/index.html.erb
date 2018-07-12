@@ -18,26 +18,25 @@
   <script>
     initMap();
     function initMap(lat, lng) {
+      var map = new google.maps.Map(document.getElementById('map'), {
+      });
 
-        var map = new google.maps.Map(document.getElementById('map'), {
-        });
+      var gm_markers = new Array();
+      <% @markers.each do |marker| %>
+        gm_markers[<%= marker[:id].to_s %>] = new google.maps.Circle({
+                                    center: {lat: <%= marker[:lat] %>, lng: <%=marker[:lng] %>},
+                                    map: map,
+                                    radius: 200
+                                    });
+       <% end %>
 
-        var gm_markers = new Array();
-        <% @markers.each do |marker| %>
-          gm_markers[<%= marker[:id].to_s %>] = new google.maps.Circle({
-                                      center: {lat: <%= marker[:lat] %>, lng: <%=marker[:lng] %>},
-                                      map: map,
-                                      radius: 200
-                                      });
-         <% end %>
+      var bounds = new google.maps.LatLngBounds();
 
-        var bounds = new google.maps.LatLngBounds();
-
-        <% @markers.each do |marker| %>
-          bounds.extend({lat: <%= marker[:lat] %>, lng: <%=marker[:lng] %>});
-        <% end %>
-        map.setCenter(bounds.getCenter());
-        map.fitBounds(bounds);
+      <% @markers.each do |marker| %>
+        bounds.extend({lat: <%= marker[:lat] %>, lng: <%=marker[:lng] %>});
+      <% end %>
+      map.setCenter(bounds.getCenter());
+      map.fitBounds(bounds);
     }
 
   </script>

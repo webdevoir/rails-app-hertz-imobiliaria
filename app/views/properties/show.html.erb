@@ -72,7 +72,7 @@
               </tr>
               <tr style="border-top: 1px solid;">
                 <td><b>Total<b></td>
-                <td><b><%= @value.rent + @value.condominium + @value.iptu %><b></td>
+                <td><b><%= (@value.rent.blank? ? 0 : @value.rent) + (@value.condominium.blank? ? 0 : @values.condominium) + (@value.iptu.blank? ? 0 : @value.iptu)%><b></td>
               </tr>
             <% end %>
           </tbody>
