@@ -25,21 +25,19 @@
         var gm_markers = new Array();
         <% @markers.each do |marker| %>
           gm_markers[<%= marker[:id].to_s %>] = new google.maps.Circle({
-                                      position: {lat: <%= marker[:lat] %>, lng: <%=marker[:lng] %>},
+                                      center: {lat: <%= marker[:lat] %>, lng: <%=marker[:lng] %>},
                                       map: map,
-                                      radius: 250
+                                      radius: 200
                                       });
          <% end %>
 
         var bounds = new google.maps.LatLngBounds();
 
         <% @markers.each do |marker| %>
-          bounds.extend(gm_markers[<%= marker[:id].to_s %>].getBounds());
+          bounds.extend({lat: <%= marker[:lat] %>, lng: <%=marker[:lng] %>});
         <% end %>
         map.setCenter(bounds.getCenter());
         map.fitBounds(bounds);
-        map.setZoom(map.getZoom());
-
     }
 
   </script>
