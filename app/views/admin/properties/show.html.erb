@@ -41,7 +41,7 @@
           <li><b>Estilo: </b><%= @property.style  %></li>
           <li><b>Nº de Quartos: </b><%= @property.rooms.blank? || (@property.rooms == 0) ? 'Não tem' : @property.rooms %></li>
           <li><b>Nº de Banheiros: </b><%= @property.bathrooms.blank? ||(@property.bathrooms == 0) ? 'Não tem' : @property.bathrooms  %></li>
-          <li><b>Nº de Suites: </b><%= @property.suites.blank? || (@property.suites == 0) ? 'Não tem' : @property.suites %></li>
+          <li><b>Nº de Suítes: </b><%= @property.suites.blank? || (@property.suites == 0) ? 'Não tem' : @property.suites %></li>
           <li><b>Nº Vagas: </b><%= @property.garages.blank? || (@property.garages == 0) ? 'Não tem' : @property.garages%></li>
           <% if !@area.total.blank? %>
             <li><b>Área/Metragem: </b><%= @area.total %> <%= @area.scale %></li>
@@ -101,12 +101,12 @@
           <li><b>Estado: </b><%= @address.state %></li>
           <li><b>Cidade: </b><%= @address.city %></li>
           <li><b>Bairro: </b><%= @address.neighborhood %></li>
-          <li><b>Largadouro: </b><%= @address.street %><%= ", #{@address.number}" if !@address.number.blank?%></li>
-          <% if !@address.complement.empty? %>
+          <li><b>Lagradouro: </b><%= @address.street %><%= ", #{@address.number}" if !@address.number.blank?%></li>
+          <% if !@address.compl sement.empty? %>
             <li><b>Complemento: </b><%= @address.complement %></li>
           <% end %>
           <% if !@address.complement.empty? %>
-            <li><b>Condominio: </b><%= @address.condo_name %></li>
+            <li><b>Condomínio: </b><%= @address.condo_name %></li>
           <% end %>
         </ul>
       </div>

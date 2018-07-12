@@ -6,7 +6,7 @@
       <%= f.input :rent, label: 'Locação', wrapper_html: {class: 'col-md-8'} %>
       <%= f.input :business_type_id, collection: BusinessType.all, label: 'Tipo de Negócio', wrapper_html: {class: 'col-md-6'} %>
 
-      <%= f.input :property_type_id, collection: PropertyType.all, label: 'Tipo de Propriedade', wrapper_html: {class: 'col-md-6'}  %>
+      <%= f.input :property_type_id, collection: PropertyType.all.sort_by { |type| type.name }, label: 'Tipo de Propriedade', wrapper_html: {class: 'col-md-6'}  %>
       <%= f.input :construction_year, label: 'Ano de Construção', wrapper_html: {class: 'col-md-3'} %>
       <%= f.input :condition, label: 'Condição do Imóvel', collection: ['Novo', 'Ótimo', 'Bom', 'Reformado'], wrapper_html: {class: 'col-md-3'} %>
       <%= f.input :position, label: 'Posição', wrapper_html: {class: 'col-md-3'}  %>
