@@ -44,6 +44,7 @@
           <li><b>Nº de Suites: </b><%= @property.suites.blank? || (@property.suites == 0) ? 'Não tem' : @property.suites %></li>
           <li><b>Nº Vagas: </b><%= @property.garages.blank? || (@property.garages == 0) ? 'Não tem' : @property.garages%></li>
         </ul>
+
         <p><b>Descrição:</b></p>
         <p><%= @property.description %></p>
         <% if !@property.sell_conditions.blank? %>
@@ -56,6 +57,7 @@
         <% end %>
         <p><b>Observações:</b></p>
         <p><%= @property.observations %></p>
+        <p><b>Proprietario: </b><%= link_to "#{@property.landlord.name}", admin_landlord_path(@property.landlord)  %>
       </div>
 
       <div class="info-card">
