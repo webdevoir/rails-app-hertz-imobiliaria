@@ -1,4 +1,4 @@
-<div class="row">
+  <div class="row">
   <div class="col-md-12">
     <div class="property-show">
       <h2 class="title"> <i class="fa fa-home"></i> Cod. <%= @property.id %> - <%= 'Venda' if @property.sale %> <%= '/' if  @property.sale && @property.rent %> <%= 'Aluguel' if @property.rent %></h2>
@@ -30,24 +30,31 @@
       </div>
 
       <div class="info-card">
-        <p>Informações Basicas</p>
+        <h3>Informações Básicas</h3>
         <%= link_to "Editar", edit_admin_property_path(@property), class: 'edit' %>
         <ul>
-          <li>Tipo de Propriedade:<%= @property.business_type.name if !@property.business_type.nil? %></li>
-          <li>Tipo: <%= @property.property_type.name if !@property.property_type.nil? %></li>
-          <li>Estado da Propriedade: <%= @property.condition  %></li>
-          <li>Posição da Propriedade: <%= @property.position  %></li>
-          <li>Estilo de contrução<%= @property.style  %></li>
-          <li>Ano de Contrução: <%= @property.construction_year  %></li>
-          <li>Nº de Quartos: <%= @property.rooms  %></li>
-          <li>Nº de Banheiros: <%= @property.bathrooms  %></li>
-          <li>Nº de Suites: <%= @property.suites  %></li>
-          <li>Nº de Garages<%= @property.garages  %></li>
-          <li>Descrição<%= @property.description  %></li>
-          <li>Condições de Venda<%= @property.sell_conditions %></li>
-          <li>Garantias de Aluguel<%= @property.rent_guarantee %></li>
-          <li>Observações<%= @property.observations %></li>
+          <li><b>Tipo de Negócio: </b><%= @property.business_type.name if !@property.business_type.nil? %></li>
+          <li><b>Tipo de Propriedade: </b><%= @property.property_type.name if !@property.property_type.nil? %></li>
+          <li><b>Ano de Construção: </b><%= @property.construction_year %></li>
+          <li><b>Condição do Imóvel: </b><%= @property.condition %></li>
+          <li><b>Posição: </b><%= @property.position %></li>
+          <li><b>Estilo: </b><%= @property.style  %></li>
+          <div>
+            <li><b>Nº de Quartos: </b><%= @property.rooms.blank? || (@property.rooms == 0) ? 'Não tem' : @property.rooms %></li>
+            <li><b>Nº de Banheiros: </b><%= @property.bathrooms.blank? ||(@property.bathrooms == 0) ? 'Não tem' : @property.bathrooms  %></li>
+            <li><b>Nº de Suites: </b><%= @property.suites.blank? || (@property.suites == 0) ? 'Não tem' : @property.suites %></li>
+            <li><b>Nº Vagas: </b><%= @property.garages.blank? || (@property.garages == 0) ? 'Não tem' : @property.garages%></li>
+          </div>
         </ul>
+        <p><b>Descrição:</b><%= @property.description %></li></p>
+        <% if !@property.sell_conditions.blank? %>
+          <p><b>Condições de Venda:</b> <%= @property.sell_conditions %>
+        <% end %>
+        <% if !@property.rent_guarantee .blank? %>
+          <b>Garantias de Aluguel:</b><%= @property.rent_guarantee %>
+        <% end %>
+        <p><b>Observações:</b> <%= @property.observations %></p>
+
       </div>
 
       <div class="info-card">
@@ -55,7 +62,7 @@
       </div>
 
       <div class="info-card">
-        <p>Endereço</p>
+        <h3>Endereço</h3>
         <%= link_to "Editar", address_admin_property_path(@property), class: 'edit' %>
         <ul>
           <li>CEP: <%= @address.cep %></li>
@@ -69,7 +76,7 @@
       </div>
 
       <div class="info-card">
-        <p>Area</p>
+        <h3>Area</h3>
         <%= link_to "Editar", area_admin_property_path(@property), class: 'edit' %>
         <ul>
           <li>Area Total: <%= @area.total %><%= @area.scale %></li>
@@ -79,7 +86,7 @@
       </div>
 
       <div class="info-card">
-        <p>Valor</p>
+        <h3>Valor</h3>
         <%= link_to "Editar", value_admin_property_path(@property), class: 'edit' %>
         <ul>
           <li>Valor Total: R$<%= @value.sell %></li>
