@@ -24,9 +24,10 @@
 
         var gm_markers = new Array();
         <% @markers.each do |marker| %>
-          gm_markers[<%= marker[:id].to_s %>] = new google.maps.Marker({
+          gm_markers[<%= marker[:id].to_s %>] = new google.maps.Circle({
                                       position: {lat: <%= marker[:lat] %>, lng: <%=marker[:lng] %>},
                                       map: map,
+                                      radius: 250
                                       });
          <% end %>
 
