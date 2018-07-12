@@ -39,22 +39,23 @@
           <li><b>Condição do Imóvel: </b><%= @property.condition %></li>
           <li><b>Posição: </b><%= @property.position %></li>
           <li><b>Estilo: </b><%= @property.style  %></li>
-          <div>
-            <li><b>Nº de Quartos: </b><%= @property.rooms.blank? || (@property.rooms == 0) ? 'Não tem' : @property.rooms %></li>
-            <li><b>Nº de Banheiros: </b><%= @property.bathrooms.blank? ||(@property.bathrooms == 0) ? 'Não tem' : @property.bathrooms  %></li>
-            <li><b>Nº de Suites: </b><%= @property.suites.blank? || (@property.suites == 0) ? 'Não tem' : @property.suites %></li>
-            <li><b>Nº Vagas: </b><%= @property.garages.blank? || (@property.garages == 0) ? 'Não tem' : @property.garages%></li>
-          </div>
+          <li><b>Nº de Quartos: </b><%= @property.rooms.blank? || (@property.rooms == 0) ? 'Não tem' : @property.rooms %></li>
+          <li><b>Nº de Banheiros: </b><%= @property.bathrooms.blank? ||(@property.bathrooms == 0) ? 'Não tem' : @property.bathrooms  %></li>
+          <li><b>Nº de Suites: </b><%= @property.suites.blank? || (@property.suites == 0) ? 'Não tem' : @property.suites %></li>
+          <li><b>Nº Vagas: </b><%= @property.garages.blank? || (@property.garages == 0) ? 'Não tem' : @property.garages%></li>
         </ul>
-        <p><b>Descrição:</b><%= @property.description %></li></p>
+        <p><b>Descrição:</b></p>
+        <p><%= @property.description %></p>
         <% if !@property.sell_conditions.blank? %>
-          <p><b>Condições de Venda:</b> <%= @property.sell_conditions %>
+          <p><b>Condições de Venda:</b></p>
+          <p><%= @property.sell_conditions %></p>
         <% end %>
         <% if !@property.rent_guarantee .blank? %>
-          <b>Garantias de Aluguel:</b><%= @property.rent_guarantee %>
+          <p><b>Garantias de Aluguel:</b></p>
+          <p><%= @property.rent_guarantee %></p>
         <% end %>
-        <p><b>Observações:</b> <%= @property.observations %></p>
-
+        <p><b>Observações:</b></p>
+        <p><%= @property.observations %></p>
       </div>
 
       <div class="info-card">
