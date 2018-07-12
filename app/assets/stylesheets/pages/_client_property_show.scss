@@ -108,5 +108,25 @@
       text-align: right;
     }
   }
+
+  .info-icons {
+    display: flex;
+    justify-content: space-around;
+    margin: 0 0 20px 0;
+    i {
+      color: $orangehertz;
+      font-size: 35px;
+    }
+    .icon {
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+      margin: 0 15px;
+
+      span {
+        font-size: 15px;
+      }
+    }
+  }
 }
 

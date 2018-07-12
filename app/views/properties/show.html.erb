@@ -7,13 +7,13 @@
   <div class="row">
     <div class="col-lg-8">
       <h2 class="property-title">
-        <% if @address.neighborhood.nil? || @address.city %>
+        <% if @address.neighborhood.nil? || @address.city.nil? || @address.street.nil?  %>
           Imóvel - Codigo <%= @property.id %>
         <% else %>
-          <%= @address.neighborhood %> • <%= @address.city %> - Cod. <%= @property.id %>
+          <%= @address.street %> • <%= @address.neighborhood %> • <%= @address.city %> - Codigo <%= @property.id %>
         <% end %>
       </h2>
-      <h3 class="negotiation"><%= "Venda" if @property.sale %> <% "|" if @property.sale && @property.rent %><%= "Locação" if @property.rent  %></h3>
+      <h3 class="negotiation"><%= "Venda" if @property.sale %> <%= "|" if @property.sale && @property.rent %> <%= "Locação" if @property.rent %></h3>
       <div class="slider-wrapper">
         <div class="options-buttons">
           <button class="btn btn-primary option-button active_button" ><i class="fa fa-image"></i>Fotos</button>
@@ -33,25 +33,75 @@
         </div>
       </div>
       <div class="info-card">
-        <ul>
-          <li>Tipo negociação: <%= @property.business_type if !@property.business_type.nil?  %></li>
-          <li>Tipo:<%= @property.property_type if !@property.property_type.nil? %></li>
-          <li>Estado: <%= @property.condition  %></li>
-          <li>Posição: <%= @property.position  %></li>
-          <li>Estilo de contrução: <%= @property.style  %></li>
-          <li>Ano de construção: <%= @property.construction_year  %></li>
-          <li>Nº de banheiros: <%= @property.bathrooms  %></li>
-          <li>Nº de garages: <%= @property.garages  %></li>
-        </ul>
-        <p>Descrição: <%= @property.description  %></p>
-      </div>
-      <div class="info-card">
-        <h3>Area</h3>
-        <ul>
-          <li>Area Total: <%= "#{@area.total} #{@area.scale}" %></li>
-          <li>Area Util: <%= "#{@area.usable} #{@area.scale}" %></li>
-          <li>Area do Terreno: <%= "#{@area.total} #{@area.scale}" %></li>
-        </ul>
+        <div class="info-icons">
+          <% unless @area.total.nil? %>
+            <div class="icon">
+              <i class="fa fa-arrows" aria-hidden="true"></i>
+              <span><%= "#{@area.total.round}#{@area.scale}"  %><span>
+              </div>
+          <% end %>
+          <% unless @property.rooms.nil? || @property.rooms < 1 %>
+            <div class="icon">
+              <i class="fa fa-bed" aria-hidden="true"></i>
+              <span><%= pluralize(@property.rooms, 'quarto',' quartos' ) %><span>
+
+              <% if @property.suites.nil? || @property.suites == 0 %>
+                <br>
+                <span>(<%= pluralize(@property.suites, 'suite', 'suites') %>)<span>
+              <% end %>
+            </div>
+          <% end %>
+          <% unless @property.bathrooms.nil? ||  @property.bathrooms < 1 %>
+            <div class="icon">
+              <i class="fa fa-bath" aria-hidden="true"></i>
+              <span><%= pluralize(@property.rooms, 'banheiro',' banheiros' ) %><span>
+            </div>
+          <% end %>
+
+          <% unless @property.garages.nil? || @property.garages < 1 %>
+            <div class="icon">
+              <i class="fa fa-car" aria-hidden="true"></i>
+              <span><%= pluralize(@property.garages, 'vaga',' vagas' ) %><span>
+            </div>
+          <% end %>
+
+          <% unless @property.condition.nil? %>
+            <div class="icon">
+              <i class="fa fa-star" aria-hidden="true"></i>
+              <span>Estado <%= @property.condition %><span>
+            </div>
+          <% end %>
+        </div>
+        <br>
+        <h3> Imóvel <%= @property.business_type.name %></h3>
+        <h4> <%= @property.property_type.name %></h4>
+
+        <% unless @property.details_types.empty? %>
+          <div style="margin: 20px 0 40px 0;">
+            <% @property.details_types.each do |detail| %>
+              <div class="delete-detail detail"><%= detail.name %></div>
+            <% end %>
+          </div>
+        <% end %>
+
+        <% unless @property.description.blank? %>
+          <p><%= @property.description %></p>
+        <% end %>
+        <br>
+        <% unless @property.sell_conditions.blank? %>
+          <h4>Condições de Venda</h4>
+          <p><%= @property.sell_conditions %></p>
+        <% end %>
+        <br>
+        <% unless @property.rent_guarantee .blank? %>
+          <h4>Garantias de Aluguel</h4>
+          <p><%= @property.rent_guarantee %></p>
+        <% end %>
+        <br>
+        <% if @property.observations.blank? %>
+          <h4>Observações</h4>
+          <p>Sem observações</p>
+        <% end %>
       </div>
     </div>
     <div class="col-lg-4">

@@ -19,11 +19,12 @@
     <div id="notifications">
       <%= render 'shared/flashes' %>
     </div>
+
     <div class="main-wrapper">
 
       <%= render 'shared/sidebar' %>
       <div class="container" style="overflow-x: hidden;">
-      <%= yield %>
+        <%= yield %>
       </div>
     </div>
     <%= cloudinary_js_config %>
