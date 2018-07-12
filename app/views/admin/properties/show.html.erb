@@ -47,7 +47,7 @@
             <li><b>Area/Metragem: </b><%= @area.total %> <%= @area.scale %></li>
           <% else %>
             <br>
-            <p> Não exite informções sobre a metragem total do imóvel </p>
+            <p> Não exite informações sobre a metragem total do imóvel </p>
           <% end %>
           <% if !@area.usable.blank?%>
             <li><b>Área Util: </b><%= @area.usable %> <%= @area.scale %></li>
@@ -59,7 +59,11 @@
         </ul>
 
         <p><b>Descrição:</b></p>
-        <p><%= @property.description %></p>
+        <% if @property.description.blank? %>
+          <p>Sem descrição</p>
+        <% else %>
+          <p><%= @property.description %></p>
+        <% end %>
         <% if !@property.sell_conditions.blank? %>
           <p><b>Condições de Venda:</b></p>
           <p><%= @property.sell_conditions %></p>
@@ -70,14 +74,16 @@
         <% end %>
         <p><b>Observações:</b></p>
         <% if @property.observations.blank? %>
-          <p>Sem Observações</p>
+          <p>Sem observações</p>
         <% else %>
           <p><%= @property.observations %></p>
         <% end %>
-        <h4>Detalhes</h4>
+        <p><b>Detalhes: </b></p>
         <% @property.details_types.each do |detail| %>
-          <span><%= detail.name %></span>
+          <div class="delete-detail detail"><%= detail.name %></div>
         <% end %>
+        <br>
+        <br>
         <p><b> Data do Cadastro: </b><%= @property.created_at %></p>
         <p><b> Ultima atualização: </b><%= @property.updated_at %></p>
         <p><b>Proprietário: </b><%= link_to "#{@property.landlord.name}", admin_landlord_path(@property.landlord)  %>
