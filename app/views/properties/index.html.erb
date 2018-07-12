@@ -34,7 +34,7 @@
         var bounds = new google.maps.LatLngBounds();
 
         <% @markers.each do |marker| %>
-          bounds.extend(gm_markers[<%= marker[:id].to_s %>].getBounds();
+          bounds.extend(gm_markers[<%= marker[:id].to_s %>].getBounds());
         <% end %>
         map.setCenter(bounds.getCenter());
         map.fitBounds(bounds);
