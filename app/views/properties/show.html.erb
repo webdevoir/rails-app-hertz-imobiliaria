@@ -6,8 +6,14 @@
 <div class="client-property-show">
   <div class="row">
     <div class="col-lg-8">
-      <h2 class="property-title"> <%= @address.neighborhood %> • <%= @address.city %> - Cod. <%= @property.id %></h2>
-      <h3 class="negotiation"><%= "Venda" if @property.sale %> | <%= "Locação" if @property.rent  %></h3>
+      <h2 class="property-title">
+        <% if @address.neighborhood.nil? || @address.city %>
+          Imóvel - Codigo <%= @property.id %>
+        <% else %>
+          <%= @address.neighborhood %> • <%= @address.city %> - Cod. <%= @property.id %>
+        <% end %>
+      </h2>
+      <h3 class="negotiation"><%= "Venda" if @property.sale %> <% "|" if @property.sale && @property.rent %><%= "Locação" if @property.rent  %></h3>
       <div class="slider-wrapper">
         <div class="options-buttons">
           <button class="btn btn-primary option-button active_button" ><i class="fa fa-image"></i>Fotos</button>
@@ -15,11 +21,15 @@
         </div>
         <div id="map" style="height:500px; display: none; margin: 1em;"></div>
         <div class="slider-for-client" id="photos">
-          <% @property.photos.reverse.each do |photo| %>
-            <div class="image">
-              <%= cl_image_tag photo.path, height: 500, crop: :fill %>
-            </div>
-          <% end  %>
+          <% if @property.photos.empty? %>
+            <%= image_tag 'placeholder-image.jpg', height: 500, crop: :fill %>
+          <% else %>
+            <% @property.photos.reverse.each do |photo| %>
+              <div class="image">
+                <%= cl_image_tag photo.path, height: 500, crop: :fill %>
+              </div>
+            <% end %>
+          <% end %>
         </div>
       </div>
       <div class="info-card">
@@ -46,37 +56,39 @@
     </div>
     <div class="col-lg-4">
       <div class="contact-card text-center">
-        <table class="price-tabel">
           <% if @property.sale %>
-            <tr>
-              <td><b>Venda</b></td>
-              <td><b><%= @value.sell %></b></td>
-            </tr>
+            <table class="price-tabel">
+              <tr>
+                <td><b>Venda</b></td>
+                <td><b><%= number_to_currency(@value.sell, unit: "R$", separator: ",", delimiter: ".") %></b></td>
+              </tr>
+            </table>
+            <hr>
           <% end %>
-        </table>
-        <hr>
+          <% if @property.rent %>
         <table class="price-tabel">
           <tbody>
-            <% if @property.rent %>
               <tr>
                 <td><b>Locação<b></td>
-                <td><b><%= @value.rent %><b></td>
+                <td><b><%= number_to_currency(@value.rent, unit: "R$", separator: ",", delimiter: ".") %><b></td>
               </tr>
               <tr>
                 <td>Condominio</td>
-                <td><%= @value.condominium %></td>
+                <td><%= number_to_currency(@value.condominium, unit: "R$", separator: ",", delimiter: ".")%></td>
               </tr>
               <tr>
                 <td>IPTU</td>
-                <td><%= @value.iptu %></td>
+                <td><%=number_to_currency(@value.iptu, unit: "R$", separator: ",", delimiter: ".") %></td>
               </tr>
               <tr style="border-top: 1px solid;">
                 <td><b>Total<b></td>
-                <td><b><%= (@value.rent.blank? ? 0 : @value.rent) + (@value.condominium.blank? ? 0 : @value.condominium) + (@value.iptu.blank? ? 0 : @value.iptu)%><b></td>
+                  <% total_value = (@value.rent.blank? ? 0 : @value.rent) + (@value.condominium.blank? ? 0 : @value.condominium) + (@value.iptu.blank? ? 0 : @value.iptu) %>
+                <td><b><%= number_to_currency(total_value, unit: "R$", separator: ",", delimiter: ".") %><b></td>
               </tr>
-            <% end %>
-          </tbody>
-        </table>
+            </tbody>
+          </table>
+        <% end %>
+
         <div>
           <br>
         <p><b>Marque sua visista</b></p>

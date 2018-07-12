@@ -102,10 +102,10 @@
           <li><b>Cidade: </b><%= @address.city %></li>
           <li><b>Bairro: </b><%= @address.neighborhood %></li>
           <li><b>Lagradouro: </b><%= @address.street %><%= ", #{@address.number}" if !@address.number.blank?%></li>
-          <% if !@address.complement.empty? %>
+          <% if !@address.complement.nil? %>
             <li><b>Complemento: </b><%= @address.complement %></li>
           <% end %>
-          <% if !@address.complement.empty? %>
+          <% if !@address.complement.nil? %>
             <li><b>Condomínio: </b><%= @address.condo_name %></li>
           <% end %>
         </ul>
