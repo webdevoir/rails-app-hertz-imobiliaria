@@ -1,0 +1,16 @@
+function addSuccessMessage(reviewHTML) {
+  const formDiv = document.getElementById('message-form');
+  formDiv.insertAdjacentHTML('beforeend', reviewHTML);
+}
+
+function removeForm() {
+  const form = document.getElementById('new_contact_form');
+  form.remove();
+}
+
+<% if @contact_form.errors.any? %>
+  addFlash('<%= j render "shared/flashes", alert: "Houve um problema tente mais tarde" %>');
+<% else %>
+  addSuccessMessage('<p style="color:green">Seu contato foi enviado com sucesso</p>');
+  removeForm();
+<% end %>

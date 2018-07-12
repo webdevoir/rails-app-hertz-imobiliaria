@@ -1,5 +1,10 @@
-  .client-property-show {
+.client-property-show {
     margin-top: 75px;
+
+  .contact_form_message textarea {
+    resize: none;
+    height: 150px;
+  }
 
   .negotiation {
     font-size: 20px;

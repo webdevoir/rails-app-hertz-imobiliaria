@@ -139,10 +139,10 @@
           </table>
         <% end %>
 
-        <div>
+        <div id="message-form">
           <br>
         <p><b>Marque sua visista</b></p>
-        <%= render 'contact_form', property: @property, contact_form: @contact_form %>
+        <%= render 'contact_forms/form', property: @property, contact_form: @contact_form %>
         </div>
       </div>
     </div>

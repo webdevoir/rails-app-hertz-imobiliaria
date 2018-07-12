@@ -1,16 +1,17 @@
 class ContactFormsController < ApplicationController
   def create
     @contact_form = ContactForm.new(contact_form_params)
-    @contact_form.property = Property.find(params[:property_id])
+    @property = Property.find(params[:property_id])
+    @contact_form.property = @property
     if @contact_form.save
-      flash[:notice] = "Seu contato foi enviado com sucesso"
       respond_to do |format|
-        format.json
+        format.html { redirect_to property_path(@property)}
+        format.js
       end
     else
       respond_to do |format|
-        # format.html { redirect_to properties_path(@contact_form.property), notice: 'Task was successfully destroyed.' }
-        format.json { render json: @contact_form.errors, status: :unprocessable_entity  }
+        format.html { render 'properties/show' }
+        format.js
       end
     end
   end

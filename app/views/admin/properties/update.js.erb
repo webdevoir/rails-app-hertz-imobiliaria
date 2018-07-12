@@ -4,7 +4,7 @@ function addFlash(reviewHTML) {
 }
 
 <% if @property.errors.any? %>
-  addFlash('<%= j render "shared/flashes", Alert: "Houve um problema tente mais tarde" %>')
+  addFlash('<%= j render "shared/flashes", alert: "Houve um problema tente mais tarde" %>')
 <% else %>
   addFlash('<%= j render "shared/flashes", notice: "Atualizado corretamente" %>')
 <% end %>
