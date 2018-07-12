@@ -44,7 +44,7 @@
           <li><b>Nº de Suites: </b><%= @property.suites.blank? || (@property.suites == 0) ? 'Não tem' : @property.suites %></li>
           <li><b>Nº Vagas: </b><%= @property.garages.blank? || (@property.garages == 0) ? 'Não tem' : @property.garages%></li>
           <% if !@area.total.blank? %>
-            <li><b>Area/Metragem: </b><%= @area.total %> <%= @area.scale %></li>
+            <li><b>Área/Metragem: </b><%= @area.total %> <%= @area.scale %></li>
           <% else %>
             <br>
             <p> Não exite informações sobre a metragem total do imóvel </p>
@@ -82,8 +82,8 @@
         <% @property.details_types.each do |detail| %>
           <div class="delete-detail detail"><%= detail.name %></div>
         <% end %>
-        <br>
-        <br>
+
+        <p><%= link_to 'Editar detalhes', details_admin_property_path(@property) %></p>
         <p><b> Data do Cadastro: </b><%= @property.created_at %></p>
         <p><b> Ultima atualização: </b><%= @property.updated_at %></p>
         <p><b>Proprietário: </b><%= link_to "#{@property.landlord.name}", admin_landlord_path(@property.landlord)  %>
@@ -115,26 +115,32 @@
         <h3>Valor</h3>
         <%= link_to "Editar", value_admin_property_path(@property), class: 'edit' %>
         <ul>
-          <li><b>Valor de venda:</b> <%= number_to_currency(@value.sell, unit: "R$", separator: ",", delimiter: ".") %></li>
-          <li><b>Valor do aluguel:</b> <%= number_to_currency(@value.rent, unit: "R$", separator: ",", delimiter: ".") %></li>
+          <% if @property.sale %>
+            <li><b>Valor de venda:</b> <%= number_to_currency(@value.sell, unit: "R$", separator: ",", delimiter: ".") %></li>
+          <% end %>
+          <% if @property.rent %>
+            <li><b>Valor do aluguel:</b> <%= number_to_currency(@value.rent, unit: "R$", separator: ",", delimiter: ".") %></li>
+          <% end %>
+
           <li><b>Iptu:</b> <%= number_to_currency(@value.iptu, unit: "R$", separator: ",", delimiter: ".")  %></li>
           <li><b>Condominio:</b> <%= number_to_currency(@value.condominium , unit: "R$", separator: ",", delimiter: ".") %></li>
         </ul>
       </div>
 
-      <div class="info-card">
-        <%= form_tag(admin_property_path(@property), method: "patch") do %>
+      <div class="info-card" id="profeatpubl">
+        <%= form_tag ['admin', @property], remote: true, method: 'patch' do %>
           <%= label_tag 'property[published]', 'Publicar' %>
           <%= hidden_field_tag 'property[published]', false  %>
-          <%= check_box_tag 'property[published]', {}, @property.published, onchange: 'this.form.submit();' %>
+          <%= check_box_tag 'property[published]', {}, @property.published , onchange: "$('#property_published').submit();" %>
         <% end %>
-        <%= form_tag(admin_property_path(@property), method: "patch") do %>
+        <%= form_tag ['admin', @property], remote: true, method: 'patch' do %>
           <%= label_tag 'property[featured]', 'Destaque' %>
           <%= hidden_field_tag 'property[featured]', false  %>
-          <%= check_box_tag 'property[featured]', {}, @property.featured, onchange: 'this.form.submit();' %>
+          <%= check_box_tag 'property[featured]', {}, @property.featured, onchange: "$('#property_featured').submit();" %>
         <% end %>
+
+
       </div>
-  <%  %>
       <%= link_to "Deletar", admin_property_path(@property), data: {confirm: 'Tem certeza que quer deletar a propriedade?'}, class: "btn btn-danger", method: :delete  %>
     </div>
   </div>

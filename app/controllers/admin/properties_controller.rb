@@ -18,9 +18,6 @@ class Admin::PropertiesController < ApplicationController
 
   def create
     @property = Property.new(property_params)
-    # @property.business_type = BusinessType.find(business_type_params[:business_type])
-    # @property.property_type = PropertyType.find(property_type_params[:property_type])
-
     if @property.save
       redirect_to address_admin_property_path(@property)
     else
@@ -32,21 +29,31 @@ class Admin::PropertiesController < ApplicationController
   end
 
   def update
-    # @property.business_type = BusinessType.find(business_type_params[:business_type])
-    # @property.property_type = PropertyType.find(property_type_params[:property_type])
-    unless params[:landlord_id].nil?
-      if @property.update(property_params)
-        redirect_to admin_landlord_path(params[:landlord_id])
-      else
-        render :edit
-      end
-    else
+    unless property_params[:landlord_id].nil?
       if @property.update(property_params)
         redirect_to admin_property_path(params[:id])
       else
         render :edit
       end
+    else
+      if @property.update(property_params)
+        flash[:notice] = "Atualizado corretamente"
+        respond_to do |format|
+          format.html { render 'admin/properties/show'}
+          format.js
+        end
+      else
+        respond_to do |format|
+          format.html { render 'admin/properties/show' }
+          format.js
+        end
+      end
     end
+  end
+
+  def destroy
+    @property.destroy
+    redirect_to admin_properties_path
   end
 
   def show
@@ -85,7 +92,6 @@ class Admin::PropertiesController < ApplicationController
   end
 
   def dashboard
-    # binding.pry
     @properties = Property.all
     @landlords = Landlord.all
     @data = []
@@ -104,10 +110,6 @@ class Admin::PropertiesController < ApplicationController
     @property_details = PropertyDetail.where(property_id: params[:id]).map{ |detail| detail.details_type.name }
   end
 
-  def destroy
-    @property.destroy
-    redirect_to admin_properties_path
-  end
 
   private
 
@@ -135,13 +137,5 @@ class Admin::PropertiesController < ApplicationController
       :sell_conditions, :rent_guarantee, :description, :observations,
       :business_type_id, :property_type_id, :published, :featured, photos: [])
   end
-
-  # def business_type_params
-  #   params.require(:property).permit(:business_type)
-  # end
-
-  # def property_type_params
-  #   params.require(:property).permit(:property_type)
-  # end
 
 end
