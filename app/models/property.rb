@@ -5,8 +5,6 @@ class Property < ApplicationRecord
   belongs_to :business_type
   belongs_to :property_type
 
-  has_attachments :photos, maximum: 20
-
   has_one :property_address, dependent: :destroy
   has_one :property_area, dependent: :destroy
   has_one :property_value, dependent: :destroy
@@ -16,7 +14,7 @@ class Property < ApplicationRecord
 
   has_many :contact_forms, dependent: :destroy
 
-
+  has_attachments :photos, maximum: 20
 
   validates :sale, presence: {unless: :rent?, message: "Escolha pelos menos um tipo de negociação" }
   validates :rent, presence: {unless: :sale?, message: "Escolha pelos menos um tipo de negociação"}
@@ -26,7 +24,6 @@ class Property < ApplicationRecord
   validates :bathrooms, numericality: { greater_than: -1}
   validates :garages, numericality: { greater_than: -1}
   validates :suites, numericality: { greater_than: -1}
-
 
   def self.fast_search(query)
     # sql_query = " \

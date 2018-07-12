@@ -23,8 +23,8 @@ class PropertiesController < ApplicationController
   end
 
   def home
-    @properties_rent = Property.where(rent: true, published:true).order(:created_at).limit(10)
-    @properties_sale = Property.where(sale: true, published:true).order(:created_at).limit(10)
+    @properties_rent = Property.where(rent: true, featured:true, published: true).order(:created_at).limit(10)
+    @properties_sale = Property.where(sale: true, featured:true, published: true).order(:created_at).limit(10)
     render layout: 'landing-page'
   end
 
