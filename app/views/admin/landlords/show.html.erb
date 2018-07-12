@@ -5,17 +5,11 @@
       <div class="landlord-info">
         <h3><%= @landlord.name %></h3>
         <div class="basic-info">
-          <% if !@landlord.phone1.blank?  %>
-            <p><i class="fa fa-phone"></i> <%= @landlord.phone1 %>
+          <% @landlord.phones.each do |phone| %>
+            <span><i class="fa fa-phone"></i><%= phone %></span>
           <% end %>
-          <% if !@landlord.phone2.blank? && !@landlord.email.blank? %>
-            <span class="small-info">&bull;</span>
-          <% end %>
-          <% if !@landlord.phone2.blank?  %>
-            <i class="fa fa-mobile"></i> <%= @landlord.phone2 %> <span class="small-info">&bull;</span>
-          <% end %>
-          <% if !@landlord.email.blank? %>
-            <i class="fa fa-envelope"></i> <%= @landlord.email %></p>
+          <% @landlord.emails.each do |email| %>
+            <span><i class="fa fa-envelope"></i><%= email %></span>
           <% end %>
           <div id="property-count">
           <p><b><i class="fa fa-home"></i> Propriedades Cadastradas:</b> <%= @landlord.properties.count %></p></div>
