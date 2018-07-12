@@ -29,7 +29,7 @@ class Admin::PropertiesController < ApplicationController
   end
 
   def update
-    unless property_params[:landlord_id].nil?
+    unless property_params[:landlord_id].nil? && property_params[:photos].nil?
       if @property.update(property_params)
         redirect_to admin_property_path(params[:id])
       else
