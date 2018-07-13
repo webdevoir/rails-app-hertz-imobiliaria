@@ -15,6 +15,11 @@
             <li><%= link_to 'Dashboard', admin_dashboard_path, class: "hidden-md hidden-lg" %></li>
             <li><%= link_to 'Proprietarios', admin_landlords_path, class: "hidden-md hidden-lg" %></li>
             <li><%= link_to 'Propriedades', admin_properties_path, class: "hidden-md hidden-lg" %></li>
+            <li>
+              <%= link_to admin_contact_forms_path, class: "hidden-md hidden-lg" do %>
+                Menssagens <%= "(#{@contact_form_count})" if @contact_form_count > 0 %>
+              <% end %>
+            </li>
             <li><%= link_to 'Log Out', destroy_user_session_path, method: :delete %>
             </li>
           </ul>
