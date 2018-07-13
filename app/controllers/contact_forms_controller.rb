@@ -1,4 +1,6 @@
 class ContactFormsController < ApplicationController
+  skip_before_action :authenticate_user!, only: :create
+
   def create
     @contact_form = ContactForm.new(contact_form_params)
     @property = Property.find(params[:property_id])
