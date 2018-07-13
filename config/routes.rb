@@ -33,7 +33,7 @@ Rails.application.routes.draw do
     resources :property_values, only: [:create, :update]
     resources :property_details, only: [:create, :update]
 
-    resources :contact_forms, only: [:index, :show, :destroy]
+    resources :contact_forms, only: [:index, :show, :destroy], path: 'messagens'
 
   end
 end

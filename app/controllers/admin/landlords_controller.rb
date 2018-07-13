@@ -24,9 +24,7 @@ before_action :set_landlord, only: [:edit, :update, :destroy, :show]
     else
       render :new
     end
-
   end
-
 
   def edit
   end

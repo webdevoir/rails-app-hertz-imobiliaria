@@ -4,7 +4,6 @@ class Admin::ContactFormsController < ApplicationController
   end
 
   def show
-
   end
 
   def destroy

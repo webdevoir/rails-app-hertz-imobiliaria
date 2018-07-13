@@ -10,7 +10,7 @@ class PropertiesController < ApplicationController
 
     @markers = build_marker_for_maps(@properties)
 
-    render layout: "client-layout"
+    render layout: "search-layout"
   end
 
   def show
