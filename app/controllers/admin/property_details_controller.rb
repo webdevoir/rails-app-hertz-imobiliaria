@@ -1,4 +1,5 @@
 class Admin::PropertyDetailsController < ApplicationController
+
   def create
     @property = Property.find_by(id: property_param[:id])
     @new_property_details = details_params.keys

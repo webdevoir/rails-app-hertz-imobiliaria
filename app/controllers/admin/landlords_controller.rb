@@ -60,4 +60,5 @@ before_action :set_landlord, only: [:edit, :update, :destroy, :show]
     @landlord = Landlord.find(params[:id])
   end
 
+
 end

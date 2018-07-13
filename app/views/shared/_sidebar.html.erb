@@ -19,6 +19,6 @@
     <% end %>
 
     <%= link_to admin_contact_forms_path, class: 'sidebar-button ' + current_class?('messagens') do %>
-      <i class="fa fa-envelope"></i></i><p>Menssagens</p>
+      <i class="fa fa-envelope"></i></i><p>Menssagens <%= "(#{@contact_form_count})" if @contact_form_count > 0 %> </p>
     <% end %>
 </div>
