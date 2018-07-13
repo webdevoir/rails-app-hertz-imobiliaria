@@ -1,0 +1,39 @@
+<style>
+  .contact-forms-list {
+    background: white;
+    margin: 10px 5px;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+  }
+</style>
+
+
+
+<% unless @contact_forms.empty? %>
+  <% @contact_forms.each do |contact_form| %>
+    <div class="contact-forms-list">
+      <div class="left">
+        <p><b>Nome:</b> <%= contact_form.name %></p>
+        <p><b>Telefone:</b> <%= contact_form.telefone %></p>
+        <p><b>E-mail:</b> <%= contact_form.email %></p>
+        <p><b>Messagem:</b> <%= contact_form.message %></p>
+        <p><b>Código de Imóvel:</b> <%= link_to admin_properties_path(contact_form.property) do %>
+            <%= contact_form.property.id %> | <%= contact_form.property.property_address.street %>, <%= contact_form.property.property_address.number %>, <%= contact_form.property.property_address.neighborhood %>, <%= contact_form.property.property_address.city %>, <%= contact_form.property.property_address.state %>
+          <% end %></p>
+        <p><b>Proprietário:</b>
+          <%= link_to admin_landlords_path(contact_form.property.landlord) do %>
+          <%= contact_form.property.landlord.name %>
+          <% end %>
+        </p>
+        <p><b>Recebido em:</b> <%= contact_form.created_at  %>
+      </div>
+      <div class="right">
+        <%= link_to "Deletar", admin_contact_form_path(contact_form), data: {confirm: 'Tem certeza que você quer deletar esta messagem?'}, class: "btn btn-danger", method: :delete  %>
+      </div>
+    </div>
+  <% end %>
+<% else %>
+  <h3>Não tem messagems novas</h3>
+<% end %>
+

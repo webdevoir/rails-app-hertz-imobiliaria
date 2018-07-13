@@ -25,12 +25,15 @@ Rails.application.routes.draw do
         get :photos, path: 'fotos'
         get :details, path: 'detalhes'
       end
+
     end
 
     resources :property_addresses, only: [:create, :update]
     resources :property_areas, only: [:create, :update]
     resources :property_values, only: [:create, :update]
     resources :property_details, only: [:create, :update]
+
+    resources :contact_forms, only: [:index, :show, :destroy]
 
   end
 end
