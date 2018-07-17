@@ -13,10 +13,6 @@ class Landlord < ApplicationRecord
   # validates :birthday, presence: true
   # validates :martial_status, presence: true
   # validates :profession, presence: true
-  validates :phone1, presence: true
-  validates :email, format: { with: URI::MailTo::EMAIL_REGEXP, message: "Use um email valido"},
-                    uniqueness: { message: "Voce já usou esse email"},
-                    length: {minimum: 5, maximum: 25}, allow_blank: true
   # # validates :cep, presence: true
   # # validates :state, presence: true
   # # validates :city, presence: true

@@ -5,14 +5,16 @@
     <div class="main-info">
       <p class="landlord-name"><%= landlord.name %></p>
       <div class="tel-info">
-        <% if !landlord.phone1.blank? %>
-          <p><b><i class="fa fa-phone"></i></b> <%= landlord.phone1 %></p>
+        <% if !landlord.phones.empty? %>
+          <% landlord.phones.each do |phone| %>
+            <p><b><i class="fa fa-phone"></i></b> <%= phone.phone %></p>
+          <% end %>
         <% end %>
-        <% if !landlord.phone2.blank? %>
-          <p><b><i class="fa fa-mobile"></i></b> <%= landlord.phone2 %></p>
-        <% end %>
-        <% if !landlord.email.blank? %>
-          <p><b><i class="fa fa-envelope"></i></b> <%= landlord.email %></p>
+
+        <% if !landlord.emails.empty? %>
+            <% landlord.emails.each do |email| %>
+              <p><b><i class="fa fa-envelope"></i></b> <%= email.email %></p>
+            <% end %>
         <% end %>
       </div>
     </div>

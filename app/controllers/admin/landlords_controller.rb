@@ -19,7 +19,7 @@ before_action :set_landlord, only: [:edit, :update, :destroy, :show]
 
   def create
     @landlord = Landlord.new(landlord_params)
-    if @landlord.save
+    if @landlord.save!
       redirect_to admin_landlord_path(@landlord)
     else
       render :new
@@ -30,7 +30,7 @@ before_action :set_landlord, only: [:edit, :update, :destroy, :show]
   end
 
   def update
-    if @landlord.update(landlord_params)
+    if @landlord.update!(landlord_params)
       redirect_to admin_landlord_path(@landlord)
     else
       render :edit
@@ -46,9 +46,8 @@ before_action :set_landlord, only: [:edit, :update, :destroy, :show]
 
   def  landlord_params
     params.require(:landlord).permit(:name, :rg, :cpf, :birthday, :martial_status,
-                                    :profession, :phone1, :phone2, :email,
-                                    :cep, :country, :state, :city, :neighborhood,
-                                    :street, :number, :complement, :condo_name,
+                                    :profession, :cep, :country, :state, :city,
+                                    :neighborhood, :street, :number, :complement, :condo_name,
                                     :type_of_account, :bank, :deposit, :agency,
                                     :adm_rate, :first_rate, :account_number, phones_attributes:[:id, :phone, :_destroy],
                                     emails_attributes:[:id, :email, :_destroy] )
