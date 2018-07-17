@@ -50,7 +50,7 @@ before_action :set_landlord, only: [:edit, :update, :destroy, :show]
                                     :cep, :country, :state, :city, :neighborhood,
                                     :street, :number, :complement, :condo_name,
                                     :type_of_account, :bank, :deposit, :agency,
-                                    :adm_rate, :first_rate, phones_attributes:[:id, :phone, :_destroy],
+                                    :adm_rate, :first_rate, :account_number, phones_attributes:[:id, :phone, :_destroy],
                                     emails_attributes:[:id, :email, :_destroy] )
   end
 
