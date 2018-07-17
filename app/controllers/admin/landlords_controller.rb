@@ -30,7 +30,7 @@ before_action :set_landlord, only: [:edit, :update, :destroy, :show]
   end
 
   def update
-    if @landlord.update!(landlord_params)
+    if @landlord.update(landlord_params)
       redirect_to admin_landlord_path(@landlord)
     else
       render :edit
